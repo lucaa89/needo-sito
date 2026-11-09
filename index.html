@@ -26,7 +26,7 @@
   --bg:#FFFBF7; --surface:#FFFFFF; --soft:#FFF0E5; --ink:#17120E; --muted:#5F554D; --line:#EFE4D9;
   --brand:#FF6A1A; --on-brand:#17120E; --brand-text:#C84C12; --brand-big:#E8590C;
   --why-bg:#FF6A1A; --why-ink:#17120E; --err:#B42318;
-  --btn2-bg:#17120E; --btn2-ink:#FFFBF7;
+  --btn2-bg:#17120E; --btn2-ink:#FFFBF7; --err-dark:#FFB4A6;
   --shadow:0 1px 2px rgba(40,20,10,.05),0 16px 40px rgba(40,20,10,.08);
   --head:'Plus Jakarta Sans',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
   color-scheme:light;
@@ -36,7 +36,7 @@
     --bg:#121010; --surface:#1D1916; --soft:#26201B; --ink:#F7F1EA; --muted:#B8ADA3; --line:#332B25;
     --brand:#FF7A33; --on-brand:#17120E; --brand-text:#FF8A4C; --brand-big:#FF7A33;
     --why-bg:#FF7A33; --why-ink:#17120E; --err:#FF9B8A;
-    --btn2-bg:#F7F1EA; --btn2-ink:#121010;
+    --btn2-bg:#F7F1EA; --btn2-ink:#121010; --err-dark:#B42318;
     --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.4);
     color-scheme:dark;
   }
@@ -45,7 +45,7 @@
   --bg:#121010; --surface:#1D1916; --soft:#26201B; --ink:#F7F1EA; --muted:#B8ADA3; --line:#332B25;
   --brand:#FF7A33; --on-brand:#17120E; --brand-text:#FF8A4C; --brand-big:#FF7A33;
   --why-bg:#FF7A33; --why-ink:#17120E; --err:#FF9B8A;
-  --btn2-bg:#F7F1EA; --btn2-ink:#121010;
+  --btn2-bg:#F7F1EA; --btn2-ink:#121010; --err-dark:#B42318;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.4);
   color-scheme:dark;
 }
@@ -187,7 +187,7 @@ section{padding:clamp(64px,10vw,128px) 0}
 .field input,.field select{font-family:var(--body);font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;min-height:52px;padding:0 14px;width:100%;scroll-margin-top:96px}
 .field.invalid input{border-color:var(--err);border-width:2px}
 .err{font-size:14px;line-height:1.4;color:var(--err);margin:0;font-weight:600}
-.form-dark .err{color:#FFB4A6}
+.form-dark .err,.form-dark .fail{color:var(--err-dark)}
 .err[hidden],.extra[hidden]{display:none}
 .fix{font:inherit;font-weight:800;color:inherit;background:none;border:0;padding:0;margin-left:4px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -203,7 +203,25 @@ section{padding:clamp(64px,10vw,128px) 0}
 .done p{margin-top:8px;opacity:.8}
 .sent form{display:none}
 .sent .done{display:block}
-.fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px}
+.fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px;line-height:1.45}
+.fail a{color:inherit;font-weight:800}
+.field .opt{font-weight:500;opacity:.7}
+.done .to{font-weight:800;word-break:break-all}
+.done .tip{font-size:14px;margin-top:12px}
+.done .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.done .acts .btn{width:auto;min-height:46px;padding:0 20px;font-size:15px;margin:0}
+.form-dark .btn-ghost{color:inherit;border-color:color-mix(in srgb,currentColor 30%,transparent)}
+.done .note{font-size:14px;font-weight:600;margin-top:14px;min-height:1.4em}
+.btn[disabled]{opacity:.6;cursor:default;transform:none}
+dialog.verify{width:min(480px,calc(100% - 32px));border:0;border-radius:24px;padding:36px 28px 30px;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35);text-align:center}
+dialog.verify::backdrop{background:rgba(10,8,6,.55)}
+dialog.verify .ic{margin:0 auto 16px;width:64px;height:64px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center}
+dialog.verify .ic svg{width:30px;height:30px;stroke:var(--on-brand);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+dialog.verify h2{font-size:28px;letter-spacing:-.03em}
+dialog.verify p{color:var(--muted);margin-top:10px}
+dialog.verify .btn{margin-top:22px}
+.spin{width:30px;height:30px;border-radius:50%;border:3px solid color-mix(in srgb,var(--on-brand) 25%,transparent);border-top-color:var(--on-brand);animation:sp 0.9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
 
 /* privacy */
 .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;margin:4px 0 16px}
@@ -408,6 +426,10 @@ header.scrolled .nav{height:58px}
             <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="f-email-err"><p class="err" id="f-email-err" aria-live="polite" hidden></p></div>
           </div>
           <div class="row2">
+            <div class="field"><label for="f-email2">Ripeti l'email</label><input id="f-email2" name="email2" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="f-email" aria-describedby="f-email2-err"><p class="err" id="f-email2-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="f-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="f-tel-err"><p class="err" id="f-tel-err" aria-live="polite" hidden></p></div>
+          </div>
+          <div class="row2">
             <div class="field"><label for="f-zona">Zona</label>
               <select id="f-zona" name="zona" required>
                 <option value="">Scegli il municipio…</option>
@@ -436,13 +458,17 @@ header.scrolled .nav{height:58px}
           <div class="field extra" id="f-altro-wrap" hidden><label for="f-altro">Per chi, esattamente?</label>
             <input id="f-altro" name="per_altro" placeholder="Es. mia zia, un vicino di casa"></div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button> e acconsento al trattamento dei miei dati per essere ricontattato.</span></label>
+          <input type="hidden" name="sostituisce" value="">
           <button class="btn btn-primary" type="submit">Entra nella lista d'attesa <span class="arr" aria-hidden="true">→</span></button>
-          <p class="fail" role="alert" hidden>Qualcosa non ha funzionato. Riprova tra poco.</p>
+          <p class="fail" role="alert" hidden></p>
         </form>
         <div class="done" role="status">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
-          <h4>Grazie, ci sentiamo presto.</h4>
-          <p>Ti scriviamo appena partiamo nella tua zona.</p>
+          <h4>Ultimo passo: conferma la tua email.</h4>
+          <p class="msg">Ti abbiamo scritto a <span class="to"></span>. Clicca il link nell'email: così siamo sicuri di poterti avvisare appena partiamo nella tua zona.</p>
+          <p class="tip">Non la trovi? Guarda anche in Spam o Posta indesiderata.</p>
+          <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
+          <p class="note" aria-live="polite"></p>
         </div>
       </div>
 
@@ -459,16 +485,25 @@ header.scrolled .nav{height:58px}
             <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" autocomplete="given-name" required></div>
             <div class="field"><label for="s-email">Email universitaria</label><input id="s-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required data-uni="1" placeholder="nome@studenti.uniroma1.it" aria-describedby="s-email-err"><p class="err" id="s-email-err" aria-live="polite" hidden></p></div>
           </div>
+          <div class="row2">
+            <div class="field"><label for="s-email2">Ripeti l'email</label><input id="s-email2" name="email2" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="s-email" aria-describedby="s-email2-err"><p class="err" id="s-email2-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="s-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="s-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="s-tel-err"><p class="err" id="s-tel-err" aria-live="polite" hidden></p></div>
+          </div>
+          <input type="hidden" name="uni_manuale" value="">
           <div class="field"><label for="s-nascita">Data di nascita</label><input id="s-nascita" name="nascita" type="text" inputmode="numeric" placeholder="gg/mm/aaaa" maxlength="10" required autocomplete="bday" aria-describedby="s-nascita-err"><p class="err" id="s-nascita-err" aria-live="polite" hidden></p></div>
           <div class="field"><label for="s-uni">Università e corso</label><input id="s-uni" name="universita" placeholder="Es. Sapienza, Lettere" required></div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button>, confermo di avere almeno 18 anni e acconsento al trattamento dei miei dati per valutare la candidatura.</span></label>
+          <input type="hidden" name="sostituisce" value="">
           <button class="btn btn-primary" type="submit">Candidati <span class="arr" aria-hidden="true">→</span></button>
-          <p class="fail" role="alert" hidden>Qualcosa non ha funzionato. Riprova tra poco.</p>
+          <p class="fail" role="alert" hidden></p>
         </form>
         <div class="done" role="status">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
           <h4>Controlla la tua email.</h4>
-          <p>Ti abbiamo mandato un link alla tua email universitaria: cliccalo per confermare la candidatura. Poi ti contattiamo per un breve colloquio.</p>
+          <p class="msg">Ti abbiamo scritto a <span class="to"></span>. Clicca il link nell'email per confermare la candidatura, poi ti contattiamo per un breve colloquio.</p>
+          <p class="tip">Non la trovi? Guarda anche in Spam o Posta indesiderata.</p>
+          <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
+          <p class="note" aria-live="polite"></p>
         </div>
       </div>
     </div>
@@ -491,20 +526,27 @@ header.scrolled .nav{height:58px}
     <p>Titolare del trattamento: Luca Gragnoli. Contatto: <a href="mailto:privacy@getneedo.com">privacy@getneedo.com</a>.</p>
     <h3>Quali dati raccogliamo</h3>
     <ul>
-      <li><b>Lista d'attesa:</b> nome, email, zona o città, per chi è il servizio.</li>
-      <li><b>Candidature studenti:</b> nome, email universitaria, data di nascita, università e corso.</li>
+      <li><b>Lista d'attesa:</b> nome, email, telefono (se lo lasci), zona o città, per chi è il servizio.</li>
+      <li><b>Candidature studenti:</b> nome, email universitaria, telefono (se lo lasci), data di nascita, università e corso.</li>
     </ul>
     <h3>Perché li usiamo</h3>
     <ul>
       <li>Lista d'attesa: per avvisarti quando il servizio è disponibile nella tua zona. Base giuridica: il tuo consenso (art. 6.1.a GDPR).</li>
       <li>Studenti: per verificare l'email universitaria e la maggiore età, valutare la candidatura e contattarti per un colloquio. Base giuridica: misure precontrattuali richieste da te (art. 6.1.b) e il tuo consenso (art. 6.1.a).</li>
     </ul>
-    <p>Non vendiamo i tuoi dati e non li usiamo per pubblicità di terzi.</p>
+    <p>Dopo l'iscrizione ti mandiamo un'email per confermare l'indirizzo; se non la confermi, ti mandiamo al massimo due promemoria. Non vendiamo i tuoi dati e non li usiamo per pubblicità di terzi.</p>
     <h3>Dove sono conservati e per quanto</h3>
     <p>I dati sono conservati su servizi di Google (Google Sheets e Gmail), che agisce come fornitore. Google può trattare dati anche fuori dall'Unione Europea, con le garanzie previste dal GDPR (clausole contrattuali standard). Conserviamo i dati per al massimo 12 mesi, o meno se ritiri il consenso.</p>
     <h3>I tuoi diritti</h3>
     <p>Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso o riceverne una copia, e ritirare il consenso, scrivendo a <a href="mailto:privacy@getneedo.com">privacy@getneedo.com</a>. Puoi anche presentare un reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
   </div>
+</dialog>
+
+<dialog class="verify" id="verify" aria-labelledby="verify-title">
+  <div class="ic" aria-hidden="true"><div class="spin"></div></div>
+  <h2 id="verify-title">Confermo la tua email…</h2>
+  <p class="vmsg">Un attimo.</p>
+  <button type="button" class="btn btn-primary vbtn" hidden>Chiudi</button>
 </dialog>
 
 <script>
@@ -581,14 +623,21 @@ toggleExtra(document.getElementById('f-per'),'altro','f-altro-wrap');
 
 /* email checks */
 var EMAIL_RE=/^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
-var TYPOS={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gnail.com':'gmail.com','gmal.com':'gmail.com','gmail.co':'gmail.com','gmail.con':'gmail.com','gmail.cm':'gmail.com',
-  'hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.co':'hotmail.com','hotmail.con':'hotmail.com','hotmai.it':'hotmail.it',
-  'yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.co':'yahoo.com','yaho.it':'yahoo.it','outlok.com':'outlook.com','outlook.co':'outlook.com','outlok.it':'outlook.it',
-  'iclod.com':'icloud.com','icloud.co':'icloud.com','libero.com':'libero.it','liber.it':'libero.it','virgilio.com':'virgilio.it','tiscali.com':'tiscali.it',
-  'uniroma.it':'uniroma1.it','studenti.uniroma.it':'studenti.uniroma1.it','studenti.uniroma1.com':'studenti.uniroma1.it','uniroma1.com':'uniroma1.it'};
+var TYPOS={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gnail.com':'gmail.com','gmal.com':'gmail.com','gmaill.com':'gmail.com','gmsil.com':'gmail.com','gmali.com':'gmail.com','gmail.co':'gmail.com','gmail.it':'gmail.com','gmail.cm':'gmail.com','googlemail.it':'googlemail.com',
+  'hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmai.com':'hotmail.com','hotmail.co':'hotmail.com','hotmai.it':'hotmail.it','hotmial.it':'hotmail.it','hotmal.it':'hotmail.it',
+  'yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.co':'yahoo.com','yaho.it':'yahoo.it','yahooo.it':'yahoo.it','outlok.com':'outlook.com','outlook.co':'outlook.com','outlok.it':'outlook.it','otlook.it':'outlook.it',
+  'iclod.com':'icloud.com','icloud.co':'icloud.com','icloud.it':'icloud.com','iclound.com':'icloud.com','libero.com':'libero.it','liber.it':'libero.it','libbero.it':'libero.it','virgilio.com':'virgilio.it','virgillio.it':'virgilio.it','tiscali.com':'tiscali.it','alice.com':'alice.it','fastweb.it':'fastwebnet.it',
+  'uniroma.it':'uniroma1.it','studenti.uniroma.it':'studenti.uniroma1.it','studenti.uniroma1.com':'studenti.uniroma1.it','uniroma1.com':'uniroma1.it','studenti.uniroma1.ti':'studenti.uniroma1.it'};
+function suggestDomain(dom){
+  if(TYPOS[dom]) return TYPOS[dom];
+  var m=/^(.*)\.(con|cmo|ocm|vom|xom|comm|cpm|coom)$/.exec(dom); if(m) return m[1]+'.com';
+  m=/^(.*)\.(ti|iy|itt|iit|ut)$/.exec(dom); if(m) return m[1]+'.it';
+  return '';
+}
 /* universities: Rome first, then main Italian ones; plus .edu / .ac.xx / "uni..." / "studenti." patterns */
-var UNI_DOMAINS=['uniroma1.it','uniroma2.it','uniroma2.eu','uniroma3.it','uniroma4.it','luiss.it','luiss.edu','lumsa.it','unicampus.it','unicatt.it','icatt.it','unier.it','unint.eu','unilink.it','unisanraffaele.gov.it','uninettunouniversity.net','johncabot.edu','aur.edu','unigre.it','pusc.it','pul.va','pust.it','urbaniana.edu','unibocconi.it','studbocconi.it','polimi.it','polito.it','poliba.it','univpm.it','sns.it','santannapisa.it','sissa.it','iuav.it','iulm.it','unisr.it','hunimed.eu','imtlucca.it','gssi.it','unistrapg.it','unistrasi.it'];
+var UNI_DOMAINS=['uniroma1.it','uniroma2.it','uniroma2.eu','uniroma3.it','uniroma4.it','luiss.it','luiss.edu','lumsa.it','lumsastud.it','unicampus.it','unicatt.it','icatt.it','unier.it','unint.eu','unilink.it','unisanraffaele.gov.it','uninettunouniversity.net','unicusano.it','johncabot.edu','aur.edu','unigre.it','pusc.it','pul.va','pust.it','urbaniana.edu','unibocconi.it','studbocconi.it','polimi.it','polito.it','poliba.it','univpm.it','sns.it','santannapisa.it','sissa.it','iuav.it','iulm.it','unisr.it','hunimed.eu','imtlucca.it','gssi.it','unistrapg.it','unistrasi.it'];
 var NOT_UNI=['unicredit','unipol','unipolsai','unieuro','unicef','unilever','uniqlo','unisalute','unicoop','uniontrasporti','unibet','unicode','uniud-shop'];
+var FREEMAIL=['gmail.com','googlemail.com','hotmail.com','hotmail.it','outlook.com','outlook.it','live.com','live.it','yahoo.com','yahoo.it','icloud.com','me.com','libero.it','virgilio.it','tiscali.it','alice.it','tim.it','fastwebnet.it','email.it','inwind.it','aol.com','proton.me','protonmail.com','msn.com'];
 function isUniversityEmail(v){
   var d=v.split('@').pop().toLowerCase();
   for(var i=0;i<UNI_DOMAINS.length;i++){var u=UNI_DOMAINS[i]; if(d===u||d.slice(-(u.length+1))==='.'+u) return true;}
@@ -599,37 +648,73 @@ function isUniversityEmail(v){
   if(['it','eu','va','sm','ch','es','fr','de','pt','at','be','nl'].indexOf(tld)<0) return false;
   return labels.some(function(l){return /^uni[a-z0-9-]{2,}$/.test(l)||/^(studenti|studente|students|student|stud|studium)$/.test(l);});
 }
-function checkEmail(input, strict){
+function fieldError(input, html){
   var err=document.getElementById(input.id+'-err'), field=input.parentElement;
-  var v=input.value.trim(); input.value=v;
-  function show(html,s){err.dataset.sugg=s||''; err.innerHTML=html; err.hidden=false; field.classList.add('invalid'); input.setAttribute('aria-invalid','true');}
-  function clear(){err.hidden=true; err.textContent=''; err.dataset.sugg=''; field.classList.remove('invalid'); input.removeAttribute('aria-invalid');}
-  if(!v){ if(strict){show(input.dataset.uni?'Inserisci la tua email universitaria.':'Inserisci la tua email.'); return false;} clear(); return true; }
-  if(!EMAIL_RE.test(v) || v.indexOf('..')>-1){ show('Controlla l’email: dovrebbe essere come nome@esempio.it'); return false; }
-  var at=v.lastIndexOf('@'), dom=v.slice(at+1).toLowerCase(), fix=TYPOS[dom];
-  if(fix && !(strict && input.dataset.ok===v)){
-    var sugg=v.slice(0,at+1)+fix;
-    if(strict) input.dataset.ok=v;
-    if(!err.hidden && err.dataset.sugg===sugg) return false;
-    show('Intendevi <b></b>? <button type="button" class="fix">Sì, correggi</button>',sugg);
-    err.querySelector('b').textContent=sugg;
-    err.querySelector('.fix').onclick=function(){input.value=sugg; clear(); input.focus();};
-    return false;
-  }
-  if(input.dataset.uni && !isUniversityEmail(v)){
-    show('Usa la tua email universitaria (per esempio nome@studenti.uniroma1.it). Per ora accettiamo solo studenti universitari.');
-    return false;
-  }
-  clear(); return true;
+  if(html===null||html===''){ err.hidden=true; err.textContent=''; err.dataset.sugg=''; field.classList.remove('invalid'); input.removeAttribute('aria-invalid'); return; }
+  err.innerHTML=html; err.hidden=false; field.classList.add('invalid'); input.setAttribute('aria-invalid','true');
 }
+function setText(el, parts){ /* parts: array of strings or {b:text} -> safe html */
+  el.textContent=''; parts.forEach(function(p){ if(typeof p==='string') el.appendChild(document.createTextNode(p)); else { var b=document.createElement('b'); b.textContent=p.b; el.appendChild(b);} });
+}
+function checkEmail(input, strict){
+  var err=document.getElementById(input.id+'-err');
+  var v=input.value.trim().replace(/\s+/g,''); input.value=v;
+  var uniField=!!input.dataset.uni, form=input.form, manual=form && form.elements.uni_manuale;
+  if(!v){ if(strict){ fieldError(input, uniField?'Inserisci la tua email universitaria.':'Inserisci la tua email.'); return false;} fieldError(input,null); return true; }
+  if(!EMAIL_RE.test(v) || v.indexOf('..')>-1){ fieldError(input,'Controlla l’email: dovrebbe essere come nome@esempio.it'); return false; }
+  var at=v.lastIndexOf('@'), dom=v.slice(at+1).toLowerCase(), fix=suggestDomain(dom);
+  if(fix && input.dataset.typook!==v){
+    var sugg=v.slice(0,at+1)+fix;
+    if(!err.hidden && err.dataset.sugg===sugg) return false;
+    fieldError(input,'Intendevi <b></b>? <button type="button" class="fix yes">Sì, correggi</button> <button type="button" class="fix no">No, è giusta</button>');
+    err.dataset.sugg=sugg; err.querySelector('b').textContent=sugg;
+    err.querySelector('.yes').onclick=function(){ input.value=sugg; fieldError(input,null); syncConfirm(input); input.focus(); };
+    err.querySelector('.no').onclick=function(){ input.dataset.typook=v; fieldError(input,null); input.focus(); };
+    return false;
+  }
+  if(uniField && !isUniversityEmail(v)){
+    if(manual && manual.value==='1' && input.dataset.uniok===v){ fieldError(input,null); return true; }
+    if(FREEMAIL.indexOf(dom)>-1){ fieldError(input,'Questa è un’email personale: usa quella della tua università (per esempio nome@studenti.uniroma1.it).'); return false; }
+    fieldError(input,'Non riconosciamo <b></b> come università. Se è davvero la tua email universitaria, <button type="button" class="fix">confermalo qui</button> e la controlliamo noi.');
+    err.querySelector('b').textContent='@'+dom;
+    err.querySelector('.fix').onclick=function(){ input.dataset.uniok=v; if(manual) manual.value='1'; fieldError(input,null); };
+    return false;
+  }
+  if(manual && uniField && isUniversityEmail(v)) manual.value='';
+  fieldError(input,null); return true;
+}
+function checkConfirm(input, strict){
+  var main=document.getElementById(input.dataset.confirm);
+  var a=main.value.trim().toLowerCase(), b=input.value.trim().replace(/\s+/g,'').toLowerCase(); input.value=input.value.trim().replace(/\s+/g,'');
+  if(!b){ if(strict){ fieldError(input,'Riscrivi la tua email per conferma.'); return false;} fieldError(input,null); return true; }
+  if(a && a!==b){ fieldError(input,'Le due email non coincidono. Controlla di averle scritte uguali.'); return false; }
+  fieldError(input,null); return true;
+}
+function syncConfirm(main){ var c=main.form && main.form.querySelector('[data-confirm="'+main.id+'"]'); if(c && c.value) checkConfirm(c,false); }
+function checkPhone(input){
+  var v=input.value.trim(); if(!v){ fieldError(input,null); return true; }
+  var digits=v.replace(/[^\d]/g,'');
+  if(!/^[+\d\s().\/-]+$/.test(v) || digits.length<6 || digits.length>15){ fieldError(input,'Controlla il numero: solo cifre, per esempio 333 123 4567.'); return false; }
+  fieldError(input,null); return true;
+}
+/* messages shown on blur would shift the layout under a click in progress (the click would miss);
+   so while a pointer is pressed we wait until the click has happened */
+var pointerIsDown=false, afterClick=[];
+document.addEventListener('pointerdown',function(){ pointerIsDown=true; },true);
+document.addEventListener('pointerup',function(){ setTimeout(function(){ pointerIsDown=false; var q=afterClick; afterClick=[]; q.forEach(function(fn){ fn(); }); },0); },true);
+document.addEventListener('pointercancel',function(){ pointerIsDown=false; },true);
+function onBlurSafe(inp, fn){ inp.addEventListener('blur',function(){ if(pointerIsDown) afterClick.push(fn); else fn(); }); }
 document.querySelectorAll('input[type=email]').forEach(function(inp){
-  inp.addEventListener('blur',function(){ if(inp.value) checkEmail(inp,false); });
+  var isConf=!!inp.dataset.confirm;
+  onBlurSafe(inp,function(){ if(!inp.value) return; if(isConf) checkConfirm(inp,false); else { checkEmail(inp,false); syncConfirm(inp);} });
   inp.addEventListener('input',function(){
     if(!inp.parentElement.classList.contains('invalid')) return;
+    if(isConf){ var m=document.getElementById(inp.dataset.confirm); if(inp.value.trim().toLowerCase()===m.value.trim().toLowerCase()) fieldError(inp,null); return; }
     var v=inp.value.trim();
-    if(EMAIL_RE.test(v) && (!inp.dataset.uni || isUniversityEmail(v))){ inp.parentElement.classList.remove('invalid'); var e=document.getElementById(inp.id+'-err'); e.hidden=true; e.dataset.sugg=''; inp.removeAttribute('aria-invalid'); }
+    if(EMAIL_RE.test(v) && !suggestDomain(v.split('@').pop().toLowerCase()) && (!inp.dataset.uni || isUniversityEmail(v))) fieldError(inp,null);
   });
 });
+document.querySelectorAll('input[type=tel]').forEach(function(inp){ onBlurSafe(inp,function(){ checkPhone(inp); }); });
 
 /* age check: students must be 18+ */
 /* dd/mm/yyyy -> yyyy-mm-dd (or '' if not a real date) */
@@ -650,7 +735,7 @@ function checkAge(input){
     if(e.inputType && e.inputType.indexOf('delete')===0 && /\/$/.test(dob.value)) out=dob.value;
     dob.value=out;
   });
-  dob.addEventListener('blur',function(){ if(dob.value) checkAge(dob); });
+  onBlurSafe(dob,function(){ if(dob.value) checkAge(dob); });
 })();
 
 /* privacy dialog */
@@ -661,33 +746,173 @@ function checkAge(input){
   dlg.addEventListener('click',function(e){ if(e.target===dlg && dlg.close) dlg.close(); });
 })();
 
-/* send to Google Sheets (via Apps Script) */
-function sendData(kind, form){
+/* ===== sending: real answer from the server, retries, nothing gets lost ===== */
+function uid(){ try{ return crypto.randomUUID(); }catch(e){ return 'id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); } }
+function wait(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
+function post(params, timeout){
+  var ctl=('AbortController' in window)?new AbortController():null, t=ctl?setTimeout(function(){ctl.abort();},timeout||20000):0;
+  return fetch(ENDPOINT,{method:'POST',body:params,signal:ctl?ctl.signal:undefined})
+    .then(function(r){ clearTimeout(t); if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+    .catch(function(e){ clearTimeout(t); throw e; });
+}
+/* tries a few times; if the answer can't be read at all, sends once more "blind" (the server ignores duplicates) */
+function sendReliably(params){
+  var tries=[0,1500,4000];
+  function attempt(i){
+    return wait(tries[i]).then(function(){ return post(params); }).catch(function(err){
+      if(i<tries.length-1) return attempt(i+1);
+      return fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:params}).then(function(){ return {ok:true, blind:true}; });
+    });
+  }
+  return attempt(0);
+}
+var PENDING_KEY='needo-pending';
+function readPending(){ try{ return JSON.parse(localStorage.getItem(PENDING_KEY)||'[]'); }catch(e){ return []; } }
+function writePending(list){ try{ if(list.length) localStorage.setItem(PENDING_KEY,JSON.stringify(list)); else localStorage.removeItem(PENDING_KEY); }catch(e){} }
+function addPending(qs){ var l=readPending(); if(l.indexOf(qs)<0) l.push(qs); writePending(l); }
+function removePending(qs){ writePending(readPending().filter(function(x){ return x!==qs; })); }
+/* a request saved on this device because the connection was down: send it again on the next visit */
+(function(){
+  var list=readPending(); if(!list.length || !ENDPOINT) return;
+  list.forEach(function(qs){ sendReliably(new URLSearchParams(qs)).then(function(){ removePending(qs); }).catch(function(){}); });
+})();
+
+function collect(kind, form, sid){
   var data=new URLSearchParams();
-  data.append('kind',kind);
-  Array.prototype.forEach.call(form.elements,function(el){ if(el.name && !el.closest('[hidden]')) data.append(el.name, el.name==='nascita' ? toISO(el.value) : el.value.trim()); });
-  if(!ENDPOINT) return Promise.resolve();
-  return fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:data});
+  data.append('kind',kind); data.append('sid',sid);
+  Array.prototype.forEach.call(form.elements,function(el){
+    if(!el.name || el.closest('[hidden]') || el.type==='submit' || el.type==='button') return;
+    if(el.type==='checkbox'){ if(el.checked) data.append(el.name, el.value); return; }
+    var v=el.value.trim();
+    if(el.name==='nascita') v=toISO(v);
+    if(el.type==='email') v=v.toLowerCase();
+    data.append(el.name, v);
+  });
+  return data;
+}
+
+function showFail(form, parts){
+  var fail=form.querySelector('.fail'); fail.textContent='';
+  parts.forEach(function(p){
+    if(typeof p==='string') fail.appendChild(document.createTextNode(p));
+    else { var a=document.createElement('a'); a.href=p.href; a.textContent=p.text; fail.appendChild(a); }
+  });
+  fail.hidden=false;
+}
+function mailtoFor(kind, form){
+  var lines=[]; Array.prototype.forEach.call(form.elements,function(el){ if(el.name && el.type!=='hidden' && el.type!=='checkbox' && el.value && !el.closest('[hidden]')) lines.push((el.labels&&el.labels[0]?el.labels[0].textContent.replace(/\s*\(facoltativo\)/,''):el.name)+': '+el.value.trim()); });
+  return 'mailto:ciao@getneedo.com?subject='+encodeURIComponent(kind==='studente'?'Candidatura studente':'Lista d’attesa')+'&body='+encodeURIComponent(lines.join('\n'));
+}
+
+function handleServerError(form, res){
+  var email=form.querySelector('input[type=email]:not([data-confirm])'), conf=form.querySelector('[data-confirm]');
+  switch(res.error){
+    case 'email': fieldError(email,'Controlla l’email: dovrebbe essere come nome@esempio.it'); email.focus(); return;
+    case 'conferma': fieldError(conf,'Le due email non coincidono. Controlla di averle scritte uguali.'); conf.focus(); return;
+    case 'dominio':
+      fieldError(email,'L’indirizzo <b></b> non esiste o non riceve email. Controlla di averlo scritto bene.');
+      document.getElementById(email.id+'-err').querySelector('b').textContent='@'+(res.dominio||email.value.split('@').pop()); email.focus(); return;
+    case 'universita': checkEmail(email,true); email.focus(); return;
+    case 'eta': var d=form.querySelector('#s-nascita'); if(d){ checkAge(d); d.focus(); } return;
+    case 'privacy': var c=form.querySelector('input[name=privacy]'); c.focus(); c.reportValidity && c.reportValidity(); return;
+    default: showFail(form,['Qualcosa non ha funzionato. Riprova tra poco oppure scrivici a ',{href:'mailto:ciao@getneedo.com',text:'ciao@getneedo.com'},'.']);
+  }
+}
+
+function showDone(form, email, res){
+  var card=form.parentElement, done=card.querySelector('.done');
+  done.querySelector('.to').textContent=email;
+  var note=done.querySelector('.note'); note.textContent='';
+  if(res && res.inviata===false) note.textContent='L’email di conferma sta partendo: potrebbe arrivare tra qualche minuto.';
+  card.classList.add('sent');
+  card.dataset.sid=form.dataset.sid; card.dataset.email=email;
+  done.setAttribute('tabindex','-1'); done.focus({preventScroll:true});
+  var r=card.getBoundingClientRect(); if(r.top<0||r.top>innerHeight*0.6) card.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 document.querySelectorAll('form[data-kind]').forEach(function(f){
+  var kind=f.dataset.kind, card=f.parentElement, done=card.querySelector('.done');
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var email=f.querySelector('input[type=email]');
-    var okEmail=checkEmail(email,true);
-    var first=null;
-    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ if(!first && c!==email && !c.checkValidity()) first=c; });
-    if(!okEmail){ email.focus(); return; }
+    var email=f.querySelector('input[type=email]:not([data-confirm])'), conf=f.querySelector('[data-confirm]'), tel=f.querySelector('input[type=tel]');
+    var fail=f.querySelector('.fail'); fail.hidden=true;
+    if(!checkEmail(email,true)){ email.focus(); return; }
+    if(!checkConfirm(conf,true)){ conf.focus(); return; }
+    if(tel && !checkPhone(tel)){ tel.focus(); return; }
     var dob=f.querySelector('#s-nascita');
     if(dob && !checkAge(dob)){ dob.focus(); return; }
+    var first=null;
+    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ if(!first && c.type!=='hidden' && !c.closest('[hidden]') && !c.checkValidity()) first=c; });
     if(first){ first.reportValidity(); return; }
-    var btn=f.querySelector('button[type=submit]'), fail=f.querySelector('.fail');
-    btn.disabled=true; fail.hidden=true;
-    sendData(f.dataset.kind,f).then(function(){ f.parentElement.classList.add('sent'); })
-      .catch(function(){ fail.hidden=false; })
-      .then(function(){ btn.disabled=false; });
+    if(!ENDPOINT){ showDone(f,email.value,null); return; }
+    var btn=f.querySelector('button[type=submit]'), label=btn.innerHTML;
+    btn.disabled=true; btn.textContent='Invio in corso…';
+    f.dataset.sid=f.dataset.pendingSid||uid(); f.dataset.pendingSid=f.dataset.sid;  /* same id if the person presses again */
+    var params=collect(kind,f,f.dataset.sid), qs=params.toString();
+    addPending(qs);  /* saved on this device until the server confirms */
+    sendReliably(params).then(function(res){
+      if(res && res.ok){ removePending(qs); delete f.dataset.pendingSid; showDone(f,res.email||email.value.toLowerCase(),res); }
+      else { removePending(qs); delete f.dataset.pendingSid; handleServerError(f,res||{}); }
+    }).catch(function(){
+      showFail(f,['Sembra che la connessione non funzioni. Abbiamo salvato i tuoi dati su questo dispositivo e li invieremo da soli appena possibile. Puoi anche riprovare ora oppure ',{href:mailtoFor(kind,f),text:'mandarceli via email'},'.']);
+    }).then(function(){ btn.disabled=false; btn.innerHTML=label; });
+  });
+
+  /* "Reinvia l'email" */
+  var resend=done.querySelector('.resend'), note=done.querySelector('.note');
+  resend.addEventListener('click',function(){
+    resend.disabled=true; note.textContent='Invio in corso…';
+    var p=new URLSearchParams(); p.append('action','reinvia'); p.append('sid',card.dataset.sid||'');
+    post(p).then(function(res){
+      if(res.ok && res.verificata) note.textContent='La tua email è già confermata ✓';
+      else if(res.ok) note.textContent='Fatto: te l’abbiamo rimandata. Controlla anche Spam o Posta indesiderata.';
+      else if(res.error==='limite') setText(note,['Ti abbiamo già scritto più volte. Scrivici a ',{b:'ciao@getneedo.com'},' e ti aiutiamo noi.']);
+      else note.textContent='Non è stato possibile reinviarla. Riprova tra poco.';
+    }).catch(function(){ note.textContent='Connessione assente. Riprova tra poco.'; })
+      .then(function(){ setTimeout(function(){ resend.disabled=false; },30000); });
+  });
+
+  /* "Ho sbagliato email": back to the form, the old entry gets marked as replaced */
+  done.querySelector('.change').addEventListener('click',function(){
+    f.elements.sostituisce.value=card.dataset.sid||'';
+    card.classList.remove('sent');
+    var email=f.querySelector('input[type=email]:not([data-confirm])'), conf=f.querySelector('[data-confirm]');
+    conf.value=''; email.dataset.typook=''; email.focus(); email.select();
+    var fail=f.querySelector('.fail'); fail.hidden=true;
   });
 });
+
+/* ===== email confirmation link: getneedo.com/?verifica=... ===== */
+(function(){
+  var q=new URLSearchParams(location.search), token=q.get('verifica');
+  if(!token) return;
+  var dlg=document.getElementById('verify'), ic=dlg.querySelector('.ic'), h=dlg.querySelector('h2'), msg=dlg.querySelector('.vmsg'), btn=dlg.querySelector('.vbtn');
+  var OK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>', NO='<svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg>';
+  function open(){ if(dlg.showModal){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }
+  function close(){ dlg.close?dlg.close():dlg.removeAttribute('open'); }
+  btn.onclick=close; dlg.addEventListener('click',function(e){ if(e.target===dlg) close(); });
+  function clean(){ try{ q.delete('verifica'); history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash); }catch(e){} }
+  function run(){
+    ic.innerHTML='<div class="spin"></div>'; h.textContent='Confermo la tua email…'; msg.textContent='Un attimo.'; btn.hidden=true; open();
+    var tries=[0,1500,4000];
+    (function attempt(i){
+      wait(tries[i]).then(function(){ return fetch(ENDPOINT+'?action=verifica&t='+encodeURIComponent(token)).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }); })
+      .then(function(res){
+        btn.hidden=false; btn.textContent='Vai al sito'; btn.onclick=close;
+        if(res.ok){ ic.innerHTML=OK; h.textContent='Email confermata';
+          msg.textContent=(res.nome?'Grazie '+res.nome+'! ':'Grazie! ')+(res.kind==='studente'?'Ti contattiamo presto per un breve colloquio.':'Ti scriviamo appena partiamo nella tua zona.'); clean(); }
+        else { ic.innerHTML=NO; h.textContent='Link non valido';
+          setText(msg,['Questo link non è più valido, forse perché hai corretto l’email. Se hai dubbi scrivici a ',{b:'ciao@getneedo.com'},'.']); clean(); }
+      })
+      .catch(function(){
+        if(i<tries.length-1) return attempt(i+1);
+        ic.innerHTML=NO; h.textContent='Non riusciamo a confermare ora'; msg.textContent='Controlla la connessione e riprova: il link resta valido.';
+        btn.hidden=false; btn.textContent='Riprova'; btn.onclick=run;
+      });
+    })(0);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+})();
 </script>
 </body>
 </html>

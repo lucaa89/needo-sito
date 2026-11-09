@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Needo · La tua casa. La tua vita. A modo tuo.</title>
+<meta name="description" content="Studenti universitari di fiducia vengono a casa tua o dei tuoi cari: la spesa, il telefono, un caffè o due chiacchiere. Dopo ogni visita, un breve racconto di com'è andata. Roma.">
+<meta name="theme-color" content="#FFFBF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121010" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://getneedo.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getneedo.com/">
+<meta property="og:title" content="Needo · La tua casa. La tua vita. A modo tuo.">
+<meta property="og:description" content="Studenti universitari di fiducia, a casa tua o dei tuoi cari. Roma.">
+<meta property="og:image" content="https://getneedo.com/og-image.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#FFFBF7; --surface:#FFFFFF; --soft:#FFF0E5; --ink:#17120E; --muted:#5F554D; --line:#EFE4D9;
+  --brand:#FF6A1A; --on-brand:#17120E; --brand-text:#C84C12; --brand-big:#E8590C;
+  --why-bg:#FF6A1A; --why-ink:#17120E; --err:#B42318;
+  --btn2-bg:#17120E; --btn2-ink:#FFFBF7;
+  --shadow:0 1px 2px rgba(40,20,10,.05),0 16px 40px rgba(40,20,10,.08);
+  --head:'Plus Jakarta Sans',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121010; --surface:#1D1916; --soft:#26201B; --ink:#F7F1EA; --muted:#B8ADA3; --line:#332B25;
+    --brand:#FF7A33; --on-brand:#17120E; --brand-text:#FF8A4C; --brand-big:#FF7A33;
+    --why-bg:#FF7A33; --why-ink:#17120E; --err:#FF9B8A;
+    --btn2-bg:#F7F1EA; --btn2-ink:#121010;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.4);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121010; --surface:#1D1916; --soft:#26201B; --ink:#F7F1EA; --muted:#B8ADA3; --line:#332B25;
+  --brand:#FF7A33; --on-brand:#17120E; --brand-text:#FF8A4C; --brand-big:#FF7A33;
+  --why-bg:#FF7A33; --why-ink:#17120E; --err:#FF9B8A;
+  --btn2-bg:#F7F1EA; --btn2-ink:#121010;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:clamp(16px,.95rem + .25vw,18px);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-left:clamp(20px,4vw,48px);padding-right:clamp(20px,4vw,48px)}
+h1,h2,h3,h4{margin:0;font-family:var(--head);font-weight:800;letter-spacing:-.035em;line-height:1.02}
+p{margin:0}
+a{color:var(--brand-text)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-text)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;font-family:var(--body);font-weight:700;font-size:16px;line-height:1;text-decoration:none;border:0;cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,.theme-btn:focus-visible,.field input:focus-visible,.field select:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.btn-primary{background:var(--brand);color:var(--on-brand);box-shadow:0 8px 24px -8px rgba(255,106,26,.6)}
+.btn-dark{background:var(--btn2-bg);color:var(--btn2-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn .arr{transition:transform .18s}
+.btn:hover .arr{transform:translateX(3px)}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:baseline;gap:2px;text-decoration:none;color:var(--ink);font-family:var(--head);font-weight:800;font-size:26px;letter-spacing:-.05em}
+.logo i{width:9px;height:9px;border-radius:50%;background:var(--brand);display:inline-block;margin-left:1px}
+.links{display:flex;gap:22px;align-items:center}
+.links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.links a:hover{color:var(--brand-text)}
+.links .btn{min-height:44px;padding:0 20px;font-size:15px;color:var(--on-brand)}
+@media (max-width:860px){.links .hide-sm{display:none}}
+.theme-btn{width:44px;height:44px;flex:none;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.theme-btn:hover{border-color:var(--brand)}
+.theme-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-btn .sun{display:none}
+.is-dark .theme-btn .sun{display:block}
+.is-dark .theme-btn .moon{display:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,5vw,72px);align-items:center;padding-top:clamp(40px,7vw,96px);padding-bottom:clamp(56px,8vw,112px)}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-size:clamp(46px,6.6vw,112px);line-height:.94;letter-spacing:-.05em}
+@media (max-width:900px){.hero h1{font-size:clamp(46px,13vw,96px)}}
+.hero h1 .o{color:var(--brand-big)}
+.hero h1{letter-spacing:-.04em!important;word-spacing:.06em}
+.hero h1 .p{margin-left:-.07em}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fact b{color:#C84C12}}
+:root[data-theme="dark"] .fact b{color:#C84C12}
+.why blockquote,.head h2,.join-head h2{word-spacing:.05em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .ln>span{display:inline-block;transform:translateY(110%);animation:lineUp 1s cubic-bezier(.16,1,.3,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes lineUp{to{transform:none}}
+::selection{background:var(--brand);color:var(--on-brand)}
+.story{transition:transform .5s cubic-bezier(.16,1,.3,1);will-change:transform}
+.why{margin:0 clamp(8px,1.6vw,24px);border-radius:clamp(28px,4vw,56px)}
+.bigmark{font-family:var(--head);font-weight:800;font-size:clamp(96px,25vw,380px);letter-spacing:-.075em;line-height:.78;color:var(--ink);white-space:nowrap;padding:clamp(24px,4vw,56px) 0 clamp(20px,3vw,40px);user-select:none}
+.bigmark i{display:inline-block;width:.16em;height:.16em;border-radius:50%;background:var(--brand);margin-left:.02em}
+.btn-primary:hover{box-shadow:0 14px 34px -10px rgba(255,106,26,.75)}
+@media (prefers-reduced-motion: reduce){.hero h1 .ln>span{animation:none;transform:none}.story{transition:none}}
+.lead{font-size:clamp(18px,1rem + .5vw,22px);color:var(--muted);max-width:32em;margin-top:clamp(20px,3vw,32px);line-height:1.5}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.note{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:15px;font-weight:600;color:var(--ink)}
+.note i{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 0 rgba(255,106,26,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,106,26,.55)}70%{box-shadow:0 0 0 10px rgba(255,106,26,0)}100%{box-shadow:0 0 0 0 rgba(255,106,26,0)}}
+
+.stage{position:relative;padding:30px 0}
+.stage::before{content:"";position:absolute;inset:0 0 0 28px;border-radius:44px;background:var(--brand);opacity:.14}
+.stage::after{content:"";position:absolute;width:110px;height:110px;right:-6px;top:-18px;border-radius:50%;background:var(--brand)}
+.card{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:22px}
+.stack{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;padding-right:22px}
+.ping{align-self:flex-start;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:700}
+.ping i{width:10px;height:10px;border-radius:50%;background:#1F9D55;display:block}
+.ping small{color:var(--muted);font-weight:500;font-size:14px}
+.story{margin-left:28px}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--on-brand);background:var(--brand);flex:none;font-family:var(--head)}
+.who b{display:block;font-size:15px;line-height:1.3}
+.who small{display:block;color:var(--muted);font-size:13px}
+.quote{font-size:clamp(16px,1rem + .2vw,18px);line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{background:var(--soft);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
+.mini{align-self:flex-end;padding:16px 20px;min-width:210px}
+.mini small{display:block;color:var(--muted);font-size:13px}
+.mini b{display:block;font-family:var(--head);font-size:22px;letter-spacing:-.02em;margin:2px 0}
+
+/* marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--surface)}
+.track{display:flex;gap:40px;width:max-content;animation:slide 28s linear infinite}
+.track span{font-family:var(--head);font-weight:800;font-size:clamp(22px,3vw,34px);letter-spacing:-.03em;white-space:nowrap;display:flex;align-items:center;gap:40px}
+.track span::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--brand);display:block}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:clamp(64px,10vw,128px) 0}
+.why{background:var(--why-bg);color:var(--why-ink)}
+.why .eyebrow{color:var(--why-ink);opacity:.75}
+.why blockquote{margin:22px 0 0;font-family:var(--head);font-weight:800;font-size:clamp(34px,5.6vw,80px);line-height:1.02;letter-spacing:-.045em;max-width:15em}
+.head{margin-bottom:clamp(32px,5vw,64px)}
+.head h2{font-size:clamp(34px,5.4vw,72px);margin-top:14px;max-width:14em}
+
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+@media (max-width:900px){.steps{grid-template-columns:minmax(0,1fr)}}
+.step{border-top:2px solid var(--ink);padding-top:22px}
+.step .num{font-family:var(--head);font-weight:800;font-size:clamp(44px,5vw,64px);letter-spacing:-.05em;color:var(--brand-big);line-height:1}
+.step h3{font-size:clamp(22px,1.2rem + .6vw,28px);margin-top:18px;letter-spacing:-.03em;line-height:1.1}
+.step p{color:var(--muted);margin-top:10px}
+
+.whatbg{background:var(--soft)}
+.svcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,20px)}
+@media (max-width:1000px){.svcs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.svcs{grid-template-columns:minmax(0,1fr)}}
+.svc{padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:14px;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.svc:hover{transform:translateY(-4px)}
+.ic{width:52px;height:52px;border-radius:16px;background:var(--brand);display:flex;align-items:center;justify-content:center;flex:none}
+.ic svg{width:26px;height:26px;stroke:var(--on-brand);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:clamp(20px,1.1rem + .4vw,24px);letter-spacing:-.03em;line-height:1.1}
+.svc p{color:var(--muted);font-size:clamp(15px,.9rem + .15vw,16px)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,20px);margin-top:clamp(14px,1.6vw,20px)}
+@media (max-width:700px){.facts{grid-template-columns:minmax(0,1fr)}}
+.fact{padding:clamp(24px,3vw,36px)}
+.fact small{color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.fact b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-.05em;line-height:1;margin-top:10px}
+.fact p{color:var(--muted);margin-top:10px}
+
+/* forms */
+.join{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+@media (max-width:900px){.join{grid-template-columns:minmax(0,1fr)}}
+.form{padding:clamp(22px,3vw,40px)}
+.form h3{font-size:clamp(28px,3vw,40px);letter-spacing:-.04em}
+.form .intro{color:var(--muted);margin:12px 0 22px}
+.form-dark{background:var(--btn2-bg);color:var(--btn2-ink)}
+.form-dark .intro,.form-dark .field label{color:inherit}
+.form-dark .intro{opacity:.8}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;min-width:0}
+.field label{font-size:14px;font-weight:700}
+.field input,.field select{font-family:var(--body);font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;min-height:52px;padding:0 14px;width:100%;scroll-margin-top:96px}
+.field.invalid input{border-color:var(--err);border-width:2px}
+.err{font-size:14px;line-height:1.4;color:var(--err);margin:0;font-weight:600}
+.form-dark .err{color:#FFB4A6}
+.err[hidden],.extra[hidden]{display:none}
+.fix{font:inherit;font-weight:800;color:inherit;background:none;border:0;padding:0;margin-left:4px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:480px){.row2{grid-template-columns:minmax(0,1fr)}}
+.form .btn{width:100%;margin-top:6px}
+.perks{display:flex;flex-direction:column;gap:10px;margin:0 0 22px;padding:0;list-style:none}
+.perks li{display:flex;gap:10px;align-items:center;font-size:17px;font-weight:600}
+.perks svg{flex:none;width:22px;height:22px;stroke:var(--brand);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.hint{font-size:13px;opacity:.75;margin-top:-6px;margin-bottom:14px}
+.done{display:none;text-align:center;padding:28px 0 8px}
+.done .ic{margin:0 auto 16px;width:64px;height:64px;border-radius:50%}
+.done h4{font-size:28px;letter-spacing:-.03em}
+.done p{margin-top:8px;opacity:.8}
+.sent form{display:none}
+.sent .done{display:block}
+.fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px}
+
+/* privacy */
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;margin:4px 0 16px}
+.check input{width:20px;height:20px;flex:none;margin:1px 0 0;accent-color:var(--brand);cursor:pointer}
+.check a,.linkbtn{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.linkbtn{background:none;border:0;padding:0;font:inherit;cursor:pointer}
+dialog.priv{width:min(720px,calc(100% - 32px));max-height:min(80vh,800px);border:0;border-radius:24px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog.priv::backdrop{background:rgba(10,8,6,.55)}
+.priv-in{padding:clamp(22px,4vw,40px);overflow:auto;max-height:min(80vh,800px)}
+.priv h2{font-size:clamp(26px,3vw,34px);letter-spacing:-.03em;margin-bottom:6px}
+.priv h3{font-size:17px;letter-spacing:-.01em;margin:22px 0 6px;font-family:var(--head)}
+.priv p,.priv li{font-size:15px;color:var(--muted)}
+.priv ul{padding-left:20px;margin:6px 0}
+.priv .close{position:sticky;top:0;float:right;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:22px;cursor:pointer;line-height:1}
+.foot a,.foot .linkbtn{color:var(--muted)}
+
+footer{padding:40px 0 calc(40px + env(safe-area-inset-bottom, 0px));border-top:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;color:var(--muted);font-size:15px}
+
+/* ===== v2: bolder, Bending-Spoons-like ===== */
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:var(--brand);transform-origin:0 50%;transform:scaleX(0)}
+header .nav{transition:height .25s ease}
+header.scrolled .nav{height:58px}
+
+.rot{margin-top:18px;font-family:var(--head);font-weight:800;font-size:clamp(20px,1.1rem + .9vw,30px);letter-spacing:-.03em;line-height:1.2}
+.rot .w{display:inline-block;color:var(--brand-text);border-bottom:3px solid var(--brand);transition:opacity .25s ease,transform .25s ease}
+.rot .w.out{opacity:0;transform:translateY(10px)}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.marquee{background:var(--btn2-bg);color:var(--btn2-ink);border:0;padding:26px 0}
+.marquee .track span{font-size:clamp(28px,4.4vw,56px)}
+
+.why{padding:clamp(80px,14vw,180px) 0}
+.why blockquote{font-size:clamp(38px,6.4vw,96px);max-width:13.5em}
+.why .wd{opacity:.22;transition:opacity .25s linear}
+.why .wd.on{opacity:1}
+
+@media (min-width:1000px){
+  #come .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:start}
+  #come .head{position:sticky;top:110px;margin:0}
+  #come .steps{grid-template-columns:minmax(0,1fr);gap:0}
+}
+#come .step{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(18px,3vw,36px);padding:clamp(22px,3vw,36px) 0;border-top:1.5px solid var(--line)}
+#come .step:last-child{border-bottom:1.5px solid var(--line)}
+#come .step .num{grid-row:span 2;font-size:clamp(56px,7vw,104px)}
+#come .step h3{margin-top:4px;font-size:clamp(24px,1.4rem + .9vw,36px)}
+
+#servizi .svcs{grid-template-columns:minmax(0,1fr);gap:0}
+#servizi .svc{flex-direction:row;align-items:center;gap:clamp(16px,3vw,40px);background:transparent;box-shadow:none;border-radius:0;border-top:1.5px solid var(--ink);padding:clamp(22px,3vw,34px) clamp(8px,1.5vw,20px);position:relative;transition:background .25s ease,color .25s ease,padding .25s ease}
+#servizi .svc:last-child{border-bottom:1.5px solid var(--ink)}
+#servizi .svc h3{font-size:clamp(24px,3.1vw,46px);letter-spacing:-.04em;min-width:0;line-height:1.05}
+#servizi .svc{display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,24em);column-gap:clamp(16px,3vw,40px);align-items:center}
+#servizi .svc p{margin:0;max-width:none;text-align:left;font-size:clamp(16px,.95rem + .2vw,18px);line-height:1.5;color:var(--muted)}
+#servizi .svc:hover{transform:none}
+@media (max-width:860px){
+  #servizi .svc{grid-template-columns:52px minmax(0,1fr);row-gap:8px;align-items:start}
+  #servizi .svc h3{padding-top:10px}
+  #servizi .svc p{grid-column:2}
+}
+
+.facts{margin-top:clamp(40px,6vw,72px)}
+.fact{background:var(--btn2-bg);color:var(--btn2-ink);box-shadow:none}
+.fact small,.fact p{color:inherit;opacity:.72}
+.fact b{font-size:clamp(36px,4.4vw,72px);color:var(--brand);white-space:nowrap;letter-spacing:-.04em}
+
+.join-head{margin-bottom:clamp(32px,5vw,56px)}
+.join-head h2{font-size:clamp(44px,8vw,120px);letter-spacing:-.055em;line-height:.95;margin-top:14px}
+.join-head h2 span{color:var(--brand-big)}
+
+@media (prefers-reduced-motion: reduce){
+  .stack .card{animation:none}
+  .why .wd{opacity:1}
+  .rot .w{transition:none}
+}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion: reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .track,.note i{animation:none}
+  .btn,.svc{transition:none}
+}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Needo, torna all'inizio">needo<i aria-hidden="true"></i></a>
+    <nav class="links" aria-label="Sezioni">
+      <a class="hide-sm" href="#perche">Perché</a>
+      <a class="hide-sm" href="#come">Come</a>
+      <a class="hide-sm" href="#servizi">Servizi</a>
+      <a class="hide-sm" href="#studenti">Studenti</a>
+      <a class="btn btn-primary" href="#famiglie">Lista d'attesa</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1 aria-label="La tua casa. La tua vita. A modo tuo."><span class="ln" aria-hidden="true"><span>La tua casa<span class="p">.</span></span></span><span class="ln" aria-hidden="true"><span>La tua vita<span class="p">.</span></span></span><span class="ln" aria-hidden="true"><span class="o">A modo tuo<span class="p">.</span></span></span></h1>
+      <p class="lead rv d1">Studenti universitari di fiducia vengono a casa tua o dei tuoi cari: la spesa, il telefono che non funziona, un caffè o due chiacchiere. Dopo ogni visita, un breve racconto di com'è andata.</p>
+      <div class="ctas rv d2">
+        <a class="btn btn-primary" href="#famiglie">Entra nella lista d'attesa <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#studenti">Sei uno studente?</a>
+      </div>
+    </div>
+
+    <div class="stage rv d2" aria-hidden="true">
+      <div class="stack">
+        <div class="card story">
+          <div class="who"><div class="avatar">G</div><div><b>Il racconto di oggi</b><small>Giulia, da Anna · 1 ora</small></div></div>
+          <p class="quote">“Siamo andate al mercato e ha scelto lei tutto, come sempre. Poi le ho mostrato le videochiamate: ha chiamato subito la nipote.”</p>
+          <div class="tags"><span class="tag">Spesa</span><span class="tag">WhatsApp</span><span class="tag">Un caffè</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="why" id="perche">
+    <div class="wrap">
+      <div class="eyebrow rv">Perché esistiamo</div>
+      <blockquote class="rv d1 words">Invecchiare non deve voler dire rinunciare alle proprie abitudini e alla propria libertà.</blockquote>
+    </div>
+  </section>
+
+  <section id="come">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow rv">Come lo facciamo</div>
+        <h2 class="rv d1">Una persona giovane e di fiducia, scelta da te.</h2>
+      </div>
+      <div class="steps">
+        <div class="step rv">
+          <div class="num">01</div>
+          <h3>Selezionati e verificati</h3>
+          <p>Studenti universitari selezionati, controllati e assicurati ad ogni visita.</p>
+        </div>
+        <div class="step rv d1">
+          <div class="num">02</div>
+          <h3>Sempre la stessa persona</h3>
+          <p>Quando possibile, viene sempre lo stesso studente. Così nasce fiducia e un rapporto vero.</p>
+        </div>
+        <div class="step rv d2">
+          <div class="num">03</div>
+          <h3>Il racconto della visita</h3>
+          <p>Dopo ogni visita, un breve racconto di com'è andata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="whatbg" id="servizi">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow rv">Cosa facciamo</div>
+        <h2 class="rv d1">Le piccole cose che fanno la differenza.</h2>
+      </div>
+      <div class="svcs">
+        <div class="card svc rv">
+          <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+          <h3>Spesa e commissioni</h3><p>Il mercato, la farmacia, la posta. Insieme, oppure ci pensiamo noi.</p>
+        </div>
+        <div class="card svc rv d1">
+          <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></div>
+          <h3>Telefono e tecnologia</h3><p>WhatsApp, videochiamate, la TV.</p>
+        </div>
+        <div class="card svc rv d2">
+          <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M12 3v3"/></svg></div>
+          <h3>Compagnia</h3><p>Un caffè, una passeggiata, una partita a carte, due chiacchiere.</p>
+        </div>
+        <div class="card svc rv d3">
+          <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></div>
+          <h3>Piccole faccende</h3><p>Riordinare, cambiare una lampadina, preparare qualcosa da mangiare.</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="card fact rv"><small>Prezzo</small><b>€20–30 l'ora</b><p>Paghi solo il tempo prenotato.</p></div>
+        <div class="card fact rv d1"><small>Dove</small><b>Tutta Roma</b><p>Presto anche in altre città.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap join-head">
+      <div class="eyebrow rv">Inizia ora</div>
+      <h2 class="rv d1">Siamo qui,<br><span>quando vuoi.</span></h2>
+    </div>
+    <div class="wrap join">
+      <div class="card form rv" id="famiglie">
+        <h3>Lista d'attesa</h3>
+        <p class="intro">Per te o per una persona cara: lasciaci un contatto e ti scriviamo appena partiamo.</p>
+        <form data-kind="famiglia" novalidate>
+          <div class="row2">
+            <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" autocomplete="given-name" required></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="f-email-err"><p class="err" id="f-email-err" aria-live="polite" hidden></p></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="f-zona">Zona</label>
+              <select id="f-zona" name="zona" required>
+                <option value="">Scegli il municipio…</option>
+                <option>Municipio I · Centro Storico, Prati, Trastevere</option>
+                <option>Municipio II · Parioli, Nomentano, Salario</option>
+                <option>Municipio III · Monte Sacro</option>
+                <option>Municipio IV · Tiburtino</option>
+                <option>Municipio V · Prenestino, Centocelle</option>
+                <option>Municipio VI · Roma delle Torri</option>
+                <option>Municipio VII · Appio-Latino, Tuscolano, Cinecittà</option>
+                <option>Municipio VIII · Appia Antica, Garbatella</option>
+                <option>Municipio IX · EUR</option>
+                <option>Municipio X · Ostia, Acilia</option>
+                <option>Municipio XI · Arvalia, Portuense</option>
+                <option>Municipio XII · Monteverde</option>
+                <option>Municipio XIII · Aurelio</option>
+                <option>Municipio XIV · Monte Mario</option>
+                <option>Municipio XV · Cassia, Flaminia</option>
+                <option value="fuori">Fuori Roma</option>
+              </select></div>
+            <div class="field"><label for="f-per">Per chi?</label>
+              <select id="f-per" name="per"><option>Per me</option><option>Mia madre</option><option>Mio padre</option><option>Entrambi i genitori</option><option>Un nonno o una nonna</option><option value="altro">Altro</option></select></div>
+          </div>
+          <div class="field extra" id="f-citta-wrap" hidden><label for="f-citta">In che città?</label>
+            <input id="f-citta" name="citta" placeholder="Es. Milano"></div>
+          <div class="field extra" id="f-altro-wrap" hidden><label for="f-altro">Per chi, esattamente?</label>
+            <input id="f-altro" name="per_altro" placeholder="Es. mia zia, un vicino di casa"></div>
+          <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button> e acconsento al trattamento dei miei dati per essere ricontattato.</span></label>
+          <button class="btn btn-primary" type="submit">Entra nella lista d'attesa <span class="arr" aria-hidden="true">→</span></button>
+          <p class="fail" role="alert" hidden>Qualcosa non ha funzionato. Riprova tra poco.</p>
+        </form>
+        <div class="done" role="status">
+          <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+          <h4>Grazie, ci sentiamo presto.</h4>
+          <p>Ti scriviamo appena partiamo nella tua zona.</p>
+        </div>
+      </div>
+
+      <div class="card form form-dark rv d1" id="studenti">
+        <h3>Sei uno studente?</h3>
+        <p class="intro">Cerchiamo universitari a Roma che abbiano voglia di fare la differenza.</p>
+        <ul class="perks">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Orari flessibili</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Pagato a ogni visita</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Un impatto concreto sulla vita di qualcuno</li>
+        </ul>
+        <form data-kind="studente" novalidate>
+          <div class="row2">
+            <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" autocomplete="given-name" required></div>
+            <div class="field"><label for="s-email">Email universitaria</label><input id="s-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required data-uni="1" placeholder="nome@studenti.uniroma1.it" aria-describedby="s-email-err"><p class="err" id="s-email-err" aria-live="polite" hidden></p></div>
+          </div>
+          <div class="field"><label for="s-nascita">Data di nascita</label><input id="s-nascita" name="nascita" type="text" inputmode="numeric" placeholder="gg/mm/aaaa" maxlength="10" required autocomplete="bday" aria-describedby="s-nascita-err"><p class="err" id="s-nascita-err" aria-live="polite" hidden></p></div>
+          <div class="field"><label for="s-uni">Università e corso</label><input id="s-uni" name="universita" placeholder="Es. Sapienza, Lettere" required></div>
+          <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button>, confermo di avere almeno 18 anni e acconsento al trattamento dei miei dati per valutare la candidatura.</span></label>
+          <button class="btn btn-primary" type="submit">Candidati <span class="arr" aria-hidden="true">→</span></button>
+          <p class="fail" role="alert" hidden>Qualcosa non ha funzionato. Riprova tra poco.</p>
+        </form>
+        <div class="done" role="status">
+          <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+          <h4>Controlla la tua email.</h4>
+          <p>Ti abbiamo mandato un link alla tua email universitaria: cliccalo per confermare la candidatura. Poi ti contattiamo per un breve colloquio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top">Torna su ↑</a>
+    <span>A modo tuo · Roma · © 2026 · <button type="button" class="linkbtn" data-privacy>Privacy</button></span>
+  </div>
+</footer>
+
+<dialog class="priv" id="privacy" aria-labelledby="privacy-title">
+  <div class="priv-in">
+    <button type="button" class="close" aria-label="Chiudi">×</button>
+    <h2 id="privacy-title">Informativa privacy</h2>
+    <p>Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR). Ultimo aggiornamento: novembre 2026.</p>
+    <h3>Chi tratta i tuoi dati</h3>
+    <p>Titolare del trattamento: Luca Gragnoli. Contatto: <a href="mailto:gragnoliluca@gmail.com">gragnoliluca@gmail.com</a>.</p>
+    <h3>Quali dati raccogliamo</h3>
+    <ul>
+      <li><b>Lista d'attesa:</b> nome, email, zona o città, per chi è il servizio.</li>
+      <li><b>Candidature studenti:</b> nome, email universitaria, data di nascita, università e corso.</li>
+    </ul>
+    <h3>Perché li usiamo</h3>
+    <ul>
+      <li>Lista d'attesa: per avvisarti quando il servizio è disponibile nella tua zona. Base giuridica: il tuo consenso (art. 6.1.a GDPR).</li>
+      <li>Studenti: per verificare l'email universitaria e la maggiore età, valutare la candidatura e contattarti per un colloquio. Base giuridica: misure precontrattuali richieste da te (art. 6.1.b) e il tuo consenso (art. 6.1.a).</li>
+    </ul>
+    <p>Non vendiamo i tuoi dati e non li usiamo per pubblicità di terzi.</p>
+    <h3>Dove sono conservati e per quanto</h3>
+    <p>I dati sono conservati su servizi di Google (Google Sheets e Gmail), che agisce come fornitore. Google può trattare dati anche fuori dall'Unione Europea, con le garanzie previste dal GDPR (clausole contrattuali standard). Conserviamo i dati per al massimo 12 mesi, o meno se ritiri il consenso.</p>
+    <h3>I tuoi diritti</h3>
+    <p>Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso o riceverne una copia, e ritirare il consenso, scrivendo a <a href="mailto:gragnoliluca@gmail.com">gragnoliluca@gmail.com</a>. Puoi anche presentare un reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
+  </div>
+</dialog>
+
+<script>
+/* ===== CONFIG: incolla qui l'URL della Web App di Google Apps Script ===== */
+var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxeYg_Fo4xMkXmtbzH4itt2OuAt1wTuY91N9n1a6Sa-1R5mFakC-Y_e1zTw0ut2bowQ/exec';
+/* ====================================================================== */
+
+document.documentElement.classList.add('js');
+
+/* hero card: gentle 3D tilt following the mouse (desktop only) */
+(function(){
+  var st=document.querySelector('.stage'), card=document.querySelector('.story');
+  if(!st||!card) return;
+  if(!window.matchMedia('(pointer:fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  st.addEventListener('pointermove',function(e){ var r=st.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5; card.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) translateZ(0)'; });
+  st.addEventListener('pointerleave',function(){ card.style.transform=''; });
+})();
+
+/* v2 motion: progress bar, compact header, rotating word, word-by-word manifesto */
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hdr=document.getElementById('hdr'), bar=document.getElementById('progress');
+  var why=document.querySelector('.why blockquote.words'), words=[];
+  if(why){
+    var txt=why.textContent.trim(); why.textContent='';
+    txt.split(/\s+/).forEach(function(w,i,a){ var s=document.createElement('span'); s.className='wd'+(reduce?' on':''); s.textContent=w; why.appendChild(s); if(i<a.length-1) why.appendChild(document.createTextNode(' ')); words.push(s); });
+    why.setAttribute('aria-label',txt);
+  }
+  var ticking=false;
+  function onScroll(){
+    ticking=false;
+    var y=window.scrollY||0, h=document.documentElement.scrollHeight-innerHeight;
+    if(bar) bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';
+    if(hdr) hdr.classList.toggle('scrolled',y>40);
+    if(why && !reduce){
+      var r=why.getBoundingClientRect(), start=innerHeight*0.95, end=innerHeight*0.6;
+      var p=Math.max(0,Math.min(1,(start-r.top)/(start-end)));
+      var n=Math.round(p*words.length);
+      for(var i=0;i<words.length;i++) words[i].classList.toggle('on',i<n);
+    }
+  }
+  window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(onScroll);} },{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+  var el=document.getElementById('rotw');
+  if(el && !reduce){
+    var list=['la spesa','il telefono','un caffè','due chiacchiere','una passeggiata','le commissioni'], k=0;
+    setInterval(function(){ el.classList.add('out'); setTimeout(function(){ k=(k+1)%list.length; el.textContent=list[k]; el.classList.remove('out'); },250); },2200);
+  }
+})();
+
+/* theme: follows the device automatically (no toggle) */
+try{ localStorage.removeItem('needo-theme'); localStorage.removeItem('theme'); }catch(e){}
+
+/* reveal on scroll */
+(function(){
+  var els=document.querySelectorAll('.rv');
+  function showAll(){els.forEach(function(e){e.classList.add('in');});}
+  if(!('IntersectionObserver' in window)){showAll();return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e);});
+  setTimeout(function(){document.querySelectorAll('.rv:not(.in)').forEach(function(e){var r=e.getBoundingClientRect(); if(r.top<innerHeight) e.classList.add('in');});},1200);
+})();
+
+/* extra fields */
+function toggleExtra(sel, val, wrapId){
+  var wrap=document.getElementById(wrapId), ctl=wrap.querySelector('input,select');
+  function run(){ var on=sel.value===val; wrap.hidden=!on; ctl.required=on; if(!on) ctl.value=''; }
+  sel.addEventListener('change',function(){run(); if(sel.value===val) ctl.focus();});
+  run();
+}
+toggleExtra(document.getElementById('f-zona'),'fuori','f-citta-wrap');
+toggleExtra(document.getElementById('f-per'),'altro','f-altro-wrap');
+
+/* email checks */
+var EMAIL_RE=/^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
+var TYPOS={'gmial.com':'gmail.com','gmai.com':'gmail.com','gamil.com':'gmail.com','gnail.com':'gmail.com','gmal.com':'gmail.com','gmail.co':'gmail.com','gmail.con':'gmail.com','gmail.cm':'gmail.com',
+  'hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.co':'hotmail.com','hotmail.con':'hotmail.com','hotmai.it':'hotmail.it',
+  'yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.co':'yahoo.com','yaho.it':'yahoo.it','outlok.com':'outlook.com','outlook.co':'outlook.com','outlok.it':'outlook.it',
+  'iclod.com':'icloud.com','icloud.co':'icloud.com','libero.com':'libero.it','liber.it':'libero.it','virgilio.com':'virgilio.it','tiscali.com':'tiscali.it',
+  'uniroma.it':'uniroma1.it','studenti.uniroma.it':'studenti.uniroma1.it','studenti.uniroma1.com':'studenti.uniroma1.it','uniroma1.com':'uniroma1.it'};
+/* universities: Rome first, then main Italian ones; plus .edu / .ac.xx / "uni..." / "studenti." patterns */
+var UNI_DOMAINS=['uniroma1.it','uniroma2.it','uniroma2.eu','uniroma3.it','uniroma4.it','luiss.it','luiss.edu','lumsa.it','unicampus.it','unicatt.it','icatt.it','unier.it','unint.eu','unilink.it','unisanraffaele.gov.it','uninettunouniversity.net','johncabot.edu','aur.edu','unigre.it','pusc.it','pul.va','pust.it','urbaniana.edu','unibocconi.it','studbocconi.it','polimi.it','polito.it','poliba.it','univpm.it','sns.it','santannapisa.it','sissa.it','iuav.it','iulm.it','unisr.it','hunimed.eu','imtlucca.it','gssi.it','unistrapg.it','unistrasi.it'];
+var NOT_UNI=['unicredit','unipol','unipolsai','unieuro','unicef','unilever','uniqlo','unisalute','unicoop','uniontrasporti','unibet','unicode','uniud-shop'];
+function isUniversityEmail(v){
+  var d=v.split('@').pop().toLowerCase();
+  for(var i=0;i<UNI_DOMAINS.length;i++){var u=UNI_DOMAINS[i]; if(d===u||d.slice(-(u.length+1))==='.'+u) return true;}
+  if(/\.edu$/.test(d)||/\.edu\.[a-z]{2}$/.test(d)||/\.ac\.[a-z]{2}$/.test(d)) return true;
+  var labels=d.split('.');
+  if(labels.some(function(l){return NOT_UNI.indexOf(l)>-1;})) return false;
+  var tld=labels[labels.length-1];
+  if(['it','eu','va','sm','ch','es','fr','de','pt','at','be','nl'].indexOf(tld)<0) return false;
+  return labels.some(function(l){return /^uni[a-z0-9-]{2,}$/.test(l)||/^(studenti|studente|students|student|stud|studium)$/.test(l);});
+}
+function checkEmail(input, strict){
+  var err=document.getElementById(input.id+'-err'), field=input.parentElement;
+  var v=input.value.trim(); input.value=v;
+  function show(html,s){err.dataset.sugg=s||''; err.innerHTML=html; err.hidden=false; field.classList.add('invalid'); input.setAttribute('aria-invalid','true');}
+  function clear(){err.hidden=true; err.textContent=''; err.dataset.sugg=''; field.classList.remove('invalid'); input.removeAttribute('aria-invalid');}
+  if(!v){ if(strict){show(input.dataset.uni?'Inserisci la tua email universitaria.':'Inserisci la tua email.'); return false;} clear(); return true; }
+  if(!EMAIL_RE.test(v) || v.indexOf('..')>-1){ show('Controlla l’email: dovrebbe essere come nome@esempio.it'); return false; }
+  var at=v.lastIndexOf('@'), dom=v.slice(at+1).toLowerCase(), fix=TYPOS[dom];
+  if(fix && !(strict && input.dataset.ok===v)){
+    var sugg=v.slice(0,at+1)+fix;
+    if(strict) input.dataset.ok=v;
+    if(!err.hidden && err.dataset.sugg===sugg) return false;
+    show('Intendevi <b></b>? <button type="button" class="fix">Sì, correggi</button>',sugg);
+    err.querySelector('b').textContent=sugg;
+    err.querySelector('.fix').onclick=function(){input.value=sugg; clear(); input.focus();};
+    return false;
+  }
+  if(input.dataset.uni && !isUniversityEmail(v)){
+    show('Usa la tua email universitaria (per esempio nome@studenti.uniroma1.it). Per ora accettiamo solo studenti universitari.');
+    return false;
+  }
+  clear(); return true;
+}
+document.querySelectorAll('input[type=email]').forEach(function(inp){
+  inp.addEventListener('blur',function(){ if(inp.value) checkEmail(inp,false); });
+  inp.addEventListener('input',function(){
+    if(!inp.parentElement.classList.contains('invalid')) return;
+    var v=inp.value.trim();
+    if(EMAIL_RE.test(v) && (!inp.dataset.uni || isUniversityEmail(v))){ inp.parentElement.classList.remove('invalid'); var e=document.getElementById(inp.id+'-err'); e.hidden=true; e.dataset.sugg=''; inp.removeAttribute('aria-invalid'); }
+  });
+});
+
+/* age check: students must be 18+ */
+/* dd/mm/yyyy -> yyyy-mm-dd (or '' if not a real date) */
+function toISO(v){ var m=/^(\d{2})\/(\d{2})\/(\d{4})$/.exec(String(v).trim()); if(!m) return ''; var d=+m[1], mo=+m[2], y=+m[3]; var dt=new Date(y,mo-1,d); if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d) return ''; return m[3]+'-'+m[2]+'-'+m[1]; }
+function ageFrom(iso){ if(!iso) return -1; var d=new Date(iso+'T00:00:00'); if(isNaN(d)) return -1; var n=new Date(); var a=n.getFullYear()-d.getFullYear(); var m=n.getMonth()-d.getMonth(); if(m<0||(m===0&&n.getDate()<d.getDate())) a--; return a; }
+function checkAge(input){
+  var err=document.getElementById(input.id+'-err'), field=input.parentElement, a=ageFrom(toISO(input.value));
+  var msg = !input.value ? 'Inserisci la tua data di nascita.' : (a<0||a>100) ? 'Scrivi la data come gg/mm/aaaa, per esempio 05/03/2004.' : (a<18) ? 'Per candidarti devi avere almeno 18 anni.' : '';
+  if(msg){ err.textContent=msg; err.hidden=false; field.classList.add('invalid'); input.setAttribute('aria-invalid','true'); return false; }
+  err.hidden=true; field.classList.remove('invalid'); input.removeAttribute('aria-invalid'); return true;
+}
+(function(){
+  var dob=document.getElementById('s-nascita');
+  dob.addEventListener('input',function(e){
+    var digits=dob.value.replace(/\D/g,'').slice(0,8), out=digits;
+    if(digits.length>4) out=digits.slice(0,2)+'/'+digits.slice(2,4)+'/'+digits.slice(4);
+    else if(digits.length>2) out=digits.slice(0,2)+'/'+digits.slice(2);
+    if(e.inputType && e.inputType.indexOf('delete')===0 && /\/$/.test(dob.value)) out=dob.value;
+    dob.value=out;
+  });
+  dob.addEventListener('blur',function(){ if(dob.value) checkAge(dob); });
+})();
+
+/* privacy dialog */
+(function(){
+  var dlg=document.getElementById('privacy');
+  document.querySelectorAll('[data-privacy]').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); }); });
+  dlg.querySelector('.close').addEventListener('click',function(){ dlg.close ? dlg.close() : dlg.removeAttribute('open'); });
+  dlg.addEventListener('click',function(e){ if(e.target===dlg && dlg.close) dlg.close(); });
+})();
+
+/* send to Google Sheets (via Apps Script) */
+function sendData(kind, form){
+  var data=new URLSearchParams();
+  data.append('kind',kind);
+  Array.prototype.forEach.call(form.elements,function(el){ if(el.name && !el.closest('[hidden]')) data.append(el.name, el.name==='nascita' ? toISO(el.value) : el.value.trim()); });
+  if(!ENDPOINT) return Promise.resolve();
+  return fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:data});
+}
+
+document.querySelectorAll('form[data-kind]').forEach(function(f){
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=f.querySelector('input[type=email]');
+    var okEmail=checkEmail(email,true);
+    var first=null;
+    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ if(!first && c!==email && !c.checkValidity()) first=c; });
+    if(!okEmail){ email.focus(); return; }
+    var dob=f.querySelector('#s-nascita');
+    if(dob && !checkAge(dob)){ dob.focus(); return; }
+    if(first){ first.reportValidity(); return; }
+    var btn=f.querySelector('button[type=submit]'), fail=f.querySelector('.fail');
+    btn.disabled=true; fail.hidden=true;
+    sendData(f.dataset.kind,f).then(function(){ f.parentElement.classList.add('sent'); })
+      .catch(function(){ fail.hidden=false; })
+      .then(function(){ btn.disabled=false; });
+  });
+});
+</script>
+</body>
+</html>

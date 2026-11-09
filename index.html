@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-szTxVNKd0ZZz0Dk3M71aRCLaLpMJ00rN6d0m03XBCF4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-W3j5ZK5/VMc6p13zaPrBTVuNurFoW8+PNHq4yeVn8ZA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo</title>
@@ -774,7 +774,7 @@ function sendReliably(params){
 }
 /* second call, in the background: confirmation email + notice to Needo. If it fails, the server retries every hour. */
 function sendEmails(sid){
-  var p=new URLSearchParams(); p.append('action','invia'); p.append('sid',sid);
+  var p=new URLSearchParams(); p.append('action','invia'); p.append('rif',sid);
   try{ fetch(ENDPOINT,{method:'POST',body:p,keepalive:true}).catch(function(){}); }catch(e){}
 }
 
@@ -809,12 +809,13 @@ function removePending(qs){ writePending(readPending().filter(function(x){ retur
 /* a request saved on this device because the connection was down: send it again on the next visit */
 (function(){
   var list=readPending(); if(!list.length || !ENDPOINT) return;
-  list.forEach(function(qs){ var p=new URLSearchParams(qs); sendReliably(p).then(function(res){ removePending(qs); if(res.ok) sendEmails(p.get('sid')); }).catch(function(){}); });
+  list.forEach(function(qs){ var p=new URLSearchParams(qs); if(p.has('sid')){ p.set('rif',p.get('sid')); p.delete('sid'); } /* Google blocks requests with a 'sid' parameter */
+    sendReliably(p).then(function(res){ removePending(qs); if(res.ok) sendEmails(p.get('rif')); }).catch(function(){}); });
 })();
 
 function collect(kind, form, sid){
   var data=new URLSearchParams();
-  data.append('kind',kind); data.append('sid',sid);
+  data.append('kind',kind); data.append('rif',sid);  /* never call this 'sid': Google rejects those requests */
   Array.prototype.forEach.call(form.elements,function(el){
     if(!el.name || el.closest('[hidden]') || el.type==='submit' || el.type==='button') return;
     if(el.type==='checkbox'){ if(el.checked) data.append(el.name, el.value); return; }
@@ -825,6 +826,18 @@ function collect(kind, form, sid){
   });
   return data;
 }
+
+/* messages for required fields in Italian (the browser would use its own language) */
+function italianMessage(c){
+  if(c.type==='checkbox') return 'Per continuare spunta questa casella.';
+  if(c.tagName==='SELECT') return c.name==='zona' ? 'Scegli la tua zona.' : 'Scegli un’opzione.';
+  if(c.validity.tooLong) return 'Il testo è troppo lungo.';
+  var labels={nome:'Scrivi il tuo nome.',citta:'Scrivi in che città.',per_altro:'Scrivi per chi è il servizio.'};
+  return labels[c.name] || 'Compila questo campo.';
+}
+document.querySelectorAll('form[data-kind] input, form[data-kind] select').forEach(function(c){
+  ['input','change'].forEach(function(ev){ c.addEventListener(ev,function(){ c.setCustomValidity(''); }); });
+});
 
 function showFail(form, parts){
   var fail=form.querySelector('.fail'); fail.textContent='';
@@ -877,8 +890,8 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
     var dob=f.querySelector('#s-nascita');
     if(dob && !checkAge(dob)){ dob.focus(); return; }
     var first=null;
-    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ if(!first && c.type!=='hidden' && !c.closest('[hidden]') && !c.checkValidity()) first=c; });
-    if(first){ first.reportValidity(); return; }
+    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ c.setCustomValidity(''); if(!first && c.type!=='hidden' && !c.closest('[hidden]') && !c.checkValidity()) first=c; });
+    if(first){ first.setCustomValidity(italianMessage(first)); first.reportValidity(); return; }
     if(!ENDPOINT){ showDone(f,email.value,null); return; }
     var btn=f.querySelector('button[type=submit]'), label=btn.innerHTML;
     btn.disabled=true; btn.textContent='Invio in corso…';
@@ -901,7 +914,7 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
   var resend=done.querySelector('.resend'), note=done.querySelector('.note');
   resend.addEventListener('click',function(){
     resend.disabled=true; note.textContent='Invio in corso…';
-    var p=new URLSearchParams(); p.append('action','reinvia'); p.append('sid',card.dataset.sid||'');
+    var p=new URLSearchParams(); p.append('action','reinvia'); p.append('rif',card.dataset.sid||'');
     post(p).then(function(res){
       if(res.ok && res.verificata) note.textContent='La tua email è già confermata ✓';
       else if(res.ok) note.textContent='Fatto: te l’abbiamo rimandata. Controlla anche Spam o Posta indesiderata.';

@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-W3j5ZK5/VMc6p13zaPrBTVuNurFoW8+PNHq4yeVn8ZA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ZOmRCUZrpboh7oED4NNxBimK7TjrvFptE2V7DPRg19g='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo</title>
@@ -426,12 +426,13 @@ header.scrolled .nav{height:58px}
         <form data-kind="famiglia" novalidate>
           <div class="row2">
             <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
-            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" maxlength="254" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="f-email-err"><p class="err" id="f-email-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="f-cognome">Cognome</label><input id="f-cognome" name="cognome" maxlength="80" autocomplete="family-name" required></div>
           </div>
           <div class="row2">
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" maxlength="254" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="f-email-err"><p class="err" id="f-email-err" aria-live="polite" hidden></p></div>
             <div class="field"><label for="f-email2">Ripeti l'email</label><input id="f-email2" name="email2" maxlength="254" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="f-email" aria-describedby="f-email2-err"><p class="err" id="f-email2-err" aria-live="polite" hidden></p></div>
-            <div class="field"><label for="f-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="f-tel" name="telefono" maxlength="25" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="f-tel-err"><p class="err" id="f-tel-err" aria-live="polite" hidden></p></div>
           </div>
+          <div class="field"><label for="f-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="f-tel" name="telefono" maxlength="25" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="f-tel-err"><p class="err" id="f-tel-err" aria-live="polite" hidden></p></div>
           <div class="row2">
             <div class="field"><label for="f-zona">Zona</label>
               <select id="f-zona" name="zona" required>
@@ -470,7 +471,7 @@ header.scrolled .nav{height:58px}
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
           <h4>Conferma la tua email.</h4>
           <p class="msg">Ti abbiamo scritto a <span class="to"></span>.</p>
-          <p class="tip">Non la vedi? Controlla lo spam.</p>
+          <p class="tip">Non la vedi? Controlla lo spam e segnala l’email come “non spam”.</p>
           <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
           <p class="note" aria-live="polite"></p>
         </div>
@@ -487,14 +488,17 @@ header.scrolled .nav{height:58px}
         <form data-kind="studente" novalidate>
           <div class="row2">
             <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
-            <div class="field"><label for="s-email">Email universitaria</label><input id="s-email" name="email" maxlength="254" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required data-uni="1" placeholder="nome@studenti.uniroma1.it" aria-describedby="s-email-err"><p class="err" id="s-email-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="s-cognome">Cognome</label><input id="s-cognome" name="cognome" maxlength="80" autocomplete="family-name" required></div>
           </div>
           <div class="row2">
+            <div class="field"><label for="s-email">Email universitaria</label><input id="s-email" name="email" maxlength="254" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required data-uni="1" placeholder="nome@studenti.uniroma1.it" aria-describedby="s-email-err"><p class="err" id="s-email-err" aria-live="polite" hidden></p></div>
             <div class="field"><label for="s-email2">Ripeti l'email</label><input id="s-email2" name="email2" maxlength="254" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="s-email" aria-describedby="s-email2-err"><p class="err" id="s-email2-err" aria-live="polite" hidden></p></div>
+          </div>
+          <div class="row2">
             <div class="field"><label for="s-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="s-tel" name="telefono" maxlength="25" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="s-tel-err"><p class="err" id="s-tel-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="s-nascita">Data di nascita</label><input id="s-nascita" name="nascita" type="text" inputmode="numeric" placeholder="gg/mm/aaaa" maxlength="10" required autocomplete="bday" aria-describedby="s-nascita-err"><p class="err" id="s-nascita-err" aria-live="polite" hidden></p></div>
           </div>
           <input type="hidden" name="uni_manuale" value="">
-          <div class="field"><label for="s-nascita">Data di nascita</label><input id="s-nascita" name="nascita" type="text" inputmode="numeric" placeholder="gg/mm/aaaa" maxlength="10" required autocomplete="bday" aria-describedby="s-nascita-err"><p class="err" id="s-nascita-err" aria-live="polite" hidden></p></div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button>, confermo di avere almeno 18 anni e acconsento al trattamento dei miei dati per valutare la candidatura.</span></label>
           <input type="hidden" name="sostituisce" value="">
           <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
@@ -505,7 +509,7 @@ header.scrolled .nav{height:58px}
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
           <h4>Conferma la tua email.</h4>
           <p class="msg">Ti abbiamo scritto a <span class="to"></span>.</p>
-          <p class="tip">Non la vedi? Controlla lo spam.</p>
+          <p class="tip">Non la vedi? Controlla lo spam e segnala l’email come “non spam”.</p>
           <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
           <p class="note" aria-live="polite"></p>
         </div>
@@ -530,8 +534,8 @@ header.scrolled .nav{height:58px}
     <p>Titolare del trattamento: Luca Gragnoli. Contatto: <a href="mailto:privacy@getneedo.com">privacy@getneedo.com</a>.</p>
     <h3>Quali dati raccogliamo</h3>
     <ul>
-      <li><b>Lista d'attesa:</b> nome, email, telefono (se lo lasci), zona o città, per chi è il servizio.</li>
-      <li><b>Candidature studenti:</b> nome, email universitaria, telefono (se lo lasci), data di nascita.</li>
+      <li><b>Lista d'attesa:</b> nome e cognome, email, telefono (se lo lasci), zona o città, per chi è il servizio.</li>
+      <li><b>Candidature studenti:</b> nome e cognome, email universitaria, telefono (se lo lasci), data di nascita.</li>
     </ul>
     <h3>Perché li usiamo</h3>
     <ul>
@@ -832,7 +836,7 @@ function italianMessage(c){
   if(c.type==='checkbox') return 'Per continuare spunta questa casella.';
   if(c.tagName==='SELECT') return c.name==='zona' ? 'Scegli la tua zona.' : 'Scegli un’opzione.';
   if(c.validity.tooLong) return 'Il testo è troppo lungo.';
-  var labels={nome:'Scrivi il tuo nome.',citta:'Scrivi in che città.',per_altro:'Scrivi per chi è il servizio.'};
+  var labels={nome:'Scrivi il tuo nome.',cognome:'Scrivi il tuo cognome.',citta:'Scrivi in che città.',per_altro:'Scrivi per chi è il servizio.'};
   return labels[c.name] || 'Compila questo campo.';
 }
 document.querySelectorAll('form[data-kind] input, form[data-kind] select').forEach(function(c){
@@ -849,7 +853,7 @@ function showFail(form, parts){
 }
 function mailtoFor(kind, form){
   var lines=[]; Array.prototype.forEach.call(form.elements,function(el){ if(el.name && el.type!=='hidden' && el.type!=='checkbox' && el.value && !el.closest('[hidden]')) lines.push((el.labels&&el.labels[0]?el.labels[0].textContent.replace(/\s*\(facoltativo\)/,''):el.name)+': '+el.value.trim()); });
-  return 'mailto:ciao@getneedo.com?subject='+encodeURIComponent(kind==='studente'?'Candidatura studente':'Lista d’attesa')+'&body='+encodeURIComponent(lines.join('\n'));
+  return 'mailto:team@getneedo.com?subject='+encodeURIComponent(kind==='studente'?'Candidatura studente':'Lista d’attesa')+'&body='+encodeURIComponent(lines.join('\n'));
 }
 
 function handleServerError(form, res){
@@ -863,7 +867,7 @@ function handleServerError(form, res){
     case 'universita': checkEmail(email,true); email.focus(); return;
     case 'eta': var d=form.querySelector('#s-nascita'); if(d){ checkAge(d); d.focus(); } return;
     case 'privacy': var c=form.querySelector('input[name=privacy]'); c.focus(); c.reportValidity && c.reportValidity(); return;
-    default: showFail(form,['Qualcosa non ha funzionato. Riprova tra poco oppure scrivici a ',{href:'mailto:ciao@getneedo.com',text:'ciao@getneedo.com'},'.']);
+    default: showFail(form,['Qualcosa non ha funzionato. Riprova tra poco oppure scrivici a ',{href:'mailto:team@getneedo.com',text:'team@getneedo.com'},'.']);
   }
 }
 
@@ -919,7 +923,7 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
       if(res.ok && res.verificata) note.textContent='La tua email è già confermata ✓';
       else if(res.ok) note.textContent='Fatto: te l’abbiamo rimandata. Controlla anche Spam o Posta indesiderata.';
       else if(res.error==='stato') note.textContent='La riceverai a breve.';
-      else if(res.error==='limite') setText(note,['Ti abbiamo già scritto più volte. Scrivici a ',{b:'ciao@getneedo.com'},' e ti aiutiamo noi.']);
+      else if(res.error==='limite') setText(note,['Ti abbiamo già scritto più volte. Scrivici a ',{b:'team@getneedo.com'},' e ti aiutiamo noi.']);
       else note.textContent='Non è stato possibile reinviarla. Riprova tra poco.';
     }).catch(function(){ note.textContent='Connessione assente. Riprova tra poco.'; })
       .then(function(){ setTimeout(function(){ resend.disabled=false; },30000); });
@@ -955,7 +959,7 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
         if(res.ok){ ic.innerHTML=OK; h.textContent='Email confermata';
           msg.textContent=(res.nome?'Grazie '+res.nome+'! ':'Grazie! ')+(res.kind==='studente'?'Ti contattiamo presto per un breve colloquio.':'Ti scriviamo appena partiamo nella tua zona.'); clean(); }
         else { ic.innerHTML=NO; h.textContent=res.error==='sostituita'?'Email già corretta':'Link non valido';
-          setText(msg,['Questo link non è più valido, forse perché hai corretto l’email. Se hai dubbi scrivici a ',{b:'ciao@getneedo.com'},'.']); clean(); }
+          setText(msg,['Questo link non è più valido, forse perché hai corretto l’email. Se hai dubbi scrivici a ',{b:'team@getneedo.com'},'.']); clean(); }
       })
       .catch(function(){
         if(i<tries.length-1) return attempt(i+1);

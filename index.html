@@ -2,6 +2,8 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-szTxVNKd0ZZz0Dk3M71aRCLaLpMJ00rN6d0m03XBCF4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo</title>
 <meta name="description" content="Studenti universitari di fiducia vengono a casa tua o dei tuoi cari: la spesa, il telefono, un caffè o due chiacchiere. Dopo ogni visita, un breve racconto di com'è andata. Roma.">
@@ -205,6 +207,7 @@ section{padding:clamp(64px,10vw,128px) 0}
 .sent .done{display:block}
 .fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px;line-height:1.45}
 .fail a{color:inherit;font-weight:800}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
 .field .opt{font-weight:500;opacity:.7}
 .done .to{font-weight:800;word-break:break-all}
 .done .tip{font-size:14px;margin-top:12px}
@@ -422,12 +425,12 @@ header.scrolled .nav{height:58px}
         <p class="intro">Per te o per una persona cara: lasciaci un contatto e ti scriviamo appena partiamo.</p>
         <form data-kind="famiglia" novalidate>
           <div class="row2">
-            <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" autocomplete="given-name" required></div>
-            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="f-email-err"><p class="err" id="f-email-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" maxlength="254" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="f-email-err"><p class="err" id="f-email-err" aria-live="polite" hidden></p></div>
           </div>
           <div class="row2">
-            <div class="field"><label for="f-email2">Ripeti l'email</label><input id="f-email2" name="email2" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="f-email" aria-describedby="f-email2-err"><p class="err" id="f-email2-err" aria-live="polite" hidden></p></div>
-            <div class="field"><label for="f-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="f-tel-err"><p class="err" id="f-tel-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="f-email2">Ripeti l'email</label><input id="f-email2" name="email2" maxlength="254" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="f-email" aria-describedby="f-email2-err"><p class="err" id="f-email2-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="f-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="f-tel" name="telefono" maxlength="25" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="f-tel-err"><p class="err" id="f-tel-err" aria-live="polite" hidden></p></div>
           </div>
           <div class="row2">
             <div class="field"><label for="f-zona">Zona</label>
@@ -454,19 +457,20 @@ header.scrolled .nav{height:58px}
               <select id="f-per" name="per"><option>Per me</option><option>Mia madre</option><option>Mio padre</option><option>Entrambi i genitori</option><option>Un nonno o una nonna</option><option value="altro">Altro</option></select></div>
           </div>
           <div class="field extra" id="f-citta-wrap" hidden><label for="f-citta">In che città?</label>
-            <input id="f-citta" name="citta" placeholder="Es. Milano"></div>
+            <input id="f-citta" name="citta" maxlength="80" placeholder="Es. Milano"></div>
           <div class="field extra" id="f-altro-wrap" hidden><label for="f-altro">Per chi, esattamente?</label>
-            <input id="f-altro" name="per_altro" placeholder="Es. mia zia, un vicino di casa"></div>
+            <input id="f-altro" name="per_altro" maxlength="120" placeholder="Es. mia zia, un vicino di casa"></div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button> e acconsento al trattamento dei miei dati per essere ricontattato.</span></label>
           <input type="hidden" name="sostituisce" value="">
+          <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
           <button class="btn btn-primary" type="submit">Entra nella lista d'attesa <span class="arr" aria-hidden="true">→</span></button>
           <p class="fail" role="alert" hidden></p>
         </form>
         <div class="done" role="status">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
-          <h4>Ultimo passo: conferma la tua email.</h4>
-          <p class="msg">Ti abbiamo scritto a <span class="to"></span>. Clicca il link nell'email: così siamo sicuri di poterti avvisare appena partiamo nella tua zona.</p>
-          <p class="tip">Non la trovi? Guarda anche in Spam o Posta indesiderata.</p>
+          <h4>Conferma la tua email.</h4>
+          <p class="msg">Ti abbiamo scritto a <span class="to"></span>.</p>
+          <p class="tip">Non la vedi? Controlla lo spam.</p>
           <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
           <p class="note" aria-live="polite"></p>
         </div>
@@ -482,26 +486,26 @@ header.scrolled .nav{height:58px}
         </ul>
         <form data-kind="studente" novalidate>
           <div class="row2">
-            <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" autocomplete="given-name" required></div>
-            <div class="field"><label for="s-email">Email universitaria</label><input id="s-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required data-uni="1" placeholder="nome@studenti.uniroma1.it" aria-describedby="s-email-err"><p class="err" id="s-email-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
+            <div class="field"><label for="s-email">Email universitaria</label><input id="s-email" name="email" maxlength="254" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required data-uni="1" placeholder="nome@studenti.uniroma1.it" aria-describedby="s-email-err"><p class="err" id="s-email-err" aria-live="polite" hidden></p></div>
           </div>
           <div class="row2">
-            <div class="field"><label for="s-email2">Ripeti l'email</label><input id="s-email2" name="email2" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="s-email" aria-describedby="s-email2-err"><p class="err" id="s-email2-err" aria-live="polite" hidden></p></div>
-            <div class="field"><label for="s-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="s-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="s-tel-err"><p class="err" id="s-tel-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="s-email2">Ripeti l'email</label><input id="s-email2" name="email2" maxlength="254" type="email" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" required data-confirm="s-email" aria-describedby="s-email2-err"><p class="err" id="s-email2-err" aria-live="polite" hidden></p></div>
+            <div class="field"><label for="s-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="s-tel" name="telefono" maxlength="25" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" aria-describedby="s-tel-err"><p class="err" id="s-tel-err" aria-live="polite" hidden></p></div>
           </div>
           <input type="hidden" name="uni_manuale" value="">
           <div class="field"><label for="s-nascita">Data di nascita</label><input id="s-nascita" name="nascita" type="text" inputmode="numeric" placeholder="gg/mm/aaaa" maxlength="10" required autocomplete="bday" aria-describedby="s-nascita-err"><p class="err" id="s-nascita-err" aria-live="polite" hidden></p></div>
-          <div class="field"><label for="s-uni">Università e corso</label><input id="s-uni" name="universita" placeholder="Es. Sapienza, Lettere" required></div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button>, confermo di avere almeno 18 anni e acconsento al trattamento dei miei dati per valutare la candidatura.</span></label>
           <input type="hidden" name="sostituisce" value="">
+          <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
           <button class="btn btn-primary" type="submit">Candidati <span class="arr" aria-hidden="true">→</span></button>
           <p class="fail" role="alert" hidden></p>
         </form>
         <div class="done" role="status">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
-          <h4>Controlla la tua email.</h4>
-          <p class="msg">Ti abbiamo scritto a <span class="to"></span>. Clicca il link nell'email per confermare la candidatura, poi ti contattiamo per un breve colloquio.</p>
-          <p class="tip">Non la trovi? Guarda anche in Spam o Posta indesiderata.</p>
+          <h4>Conferma la tua email.</h4>
+          <p class="msg">Ti abbiamo scritto a <span class="to"></span>.</p>
+          <p class="tip">Non la vedi? Controlla lo spam.</p>
           <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
           <p class="note" aria-live="polite"></p>
         </div>
@@ -527,7 +531,7 @@ header.scrolled .nav{height:58px}
     <h3>Quali dati raccogliamo</h3>
     <ul>
       <li><b>Lista d'attesa:</b> nome, email, telefono (se lo lasci), zona o città, per chi è il servizio.</li>
-      <li><b>Candidature studenti:</b> nome, email universitaria, telefono (se lo lasci), data di nascita, università e corso.</li>
+      <li><b>Candidature studenti:</b> nome, email universitaria, telefono (se lo lasci), data di nascita.</li>
     </ul>
     <h3>Perché li usiamo</h3>
     <ul>
@@ -706,7 +710,9 @@ document.addEventListener('pointercancel',function(){ pointerIsDown=false; },tru
 function onBlurSafe(inp, fn){ inp.addEventListener('blur',function(){ if(pointerIsDown) afterClick.push(fn); else fn(); }); }
 document.querySelectorAll('input[type=email]').forEach(function(inp){
   var isConf=!!inp.dataset.confirm;
-  onBlurSafe(inp,function(){ if(!inp.value) return; if(isConf) checkConfirm(inp,false); else { checkEmail(inp,false); syncConfirm(inp);} });
+  onBlurSafe(inp,function(){ if(!inp.value) return; if(isConf) checkConfirm(inp,false); else {
+    if(checkEmail(inp,false)){ var v=inp.value; domainOk(v.split('@').pop()).then(function(ok){ if(ok===false && inp.value===v) domainError(inp); }); }
+    syncConfirm(inp);} });
   inp.addEventListener('input',function(){
     if(!inp.parentElement.classList.contains('invalid')) return;
     if(isConf){ var m=document.getElementById(inp.dataset.confirm); if(inp.value.trim().toLowerCase()===m.value.trim().toLowerCase()) fieldError(inp,null); return; }
@@ -750,21 +756,50 @@ function checkAge(input){
 function uid(){ try{ return crypto.randomUUID(); }catch(e){ return 'id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); } }
 function wait(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
 function post(params, timeout){
-  var ctl=('AbortController' in window)?new AbortController():null, t=ctl?setTimeout(function(){ctl.abort();},timeout||20000):0;
+  var ctl=('AbortController' in window)?new AbortController():null, t=ctl?setTimeout(function(){ctl.abort();},timeout||15000):0;
   return fetch(ENDPOINT,{method:'POST',body:params,signal:ctl?ctl.signal:undefined})
     .then(function(r){ clearTimeout(t); if(!r.ok) throw new Error('http '+r.status); return r.json(); })
     .catch(function(e){ clearTimeout(t); throw e; });
 }
-/* tries a few times; if the answer can't be read at all, sends once more "blind" (the server ignores duplicates) */
+/* success is shown ONLY when the server confirms the row is in the spreadsheet; one quick retry (the server ignores duplicates) */
 function sendReliably(params){
-  var tries=[0,1500,4000];
+  var tries=[0,1200];
   function attempt(i){
-    return wait(tries[i]).then(function(){ return post(params); }).catch(function(err){
-      if(i<tries.length-1) return attempt(i+1);
-      return fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:params}).then(function(){ return {ok:true, blind:true}; });
-    });
+    return wait(tries[i]).then(function(){ return post(params); }).then(function(res){
+      if(!res || typeof res.ok!=='boolean') throw new Error('bad answer');
+      return res;
+    }).catch(function(err){ if(i<tries.length-1) return attempt(i+1); throw err; });
   }
   return attempt(0);
+}
+/* second call, in the background: confirmation email + notice to Needo. If it fails, the server retries every hour. */
+function sendEmails(sid){
+  var p=new URLSearchParams(); p.append('action','invia'); p.append('sid',sid);
+  try{ fetch(ENDPOINT,{method:'POST',body:p,keepalive:true}).catch(function(){}); }catch(e){}
+}
+
+/* does the email's domain exist and receive mail? (asks Google's public DNS; if it can't tell, we never block) */
+var domainCache={};
+function domainOk(dom){
+  dom=String(dom||'').toLowerCase();
+  if(!dom) return Promise.resolve(null);
+  if(domainCache[dom]!==undefined) return Promise.resolve(domainCache[dom]);
+  function q(type){
+    var ctl=('AbortController' in window)?new AbortController():null; if(ctl) setTimeout(function(){ctl.abort();},3500);
+    return fetch('https://dns.google/resolve?name='+encodeURIComponent(dom)+'&type='+type,{signal:ctl?ctl.signal:undefined,referrerPolicy:'no-referrer'}).then(function(r){ return r.json(); });
+  }
+  return q('MX').then(function(mx){
+    if(mx.Status===3) return false;
+    if(mx.Status!==0) return null;
+    var ans=(mx.Answer||[]).filter(function(a){ return a.type===15; });
+    if(ans.length) return !ans.every(function(a){ return /(^|\s)\.$/.test(a.data); });
+    return q('A').then(function(a){ return a.Status===0 && (a.Answer||[]).length>0; });
+  }).catch(function(){ return null; }).then(function(v){ if(v!==null) domainCache[dom]=v; return v; });
+}
+function domainError(input){
+  var dom=input.value.split('@').pop().toLowerCase();
+  fieldError(input,'L’indirizzo <b></b> non esiste o non riceve email. Controlla di averlo scritto bene.');
+  document.getElementById(input.id+'-err').querySelector('b').textContent='@'+dom;
 }
 var PENDING_KEY='needo-pending';
 function readPending(){ try{ return JSON.parse(localStorage.getItem(PENDING_KEY)||'[]'); }catch(e){ return []; } }
@@ -774,7 +809,7 @@ function removePending(qs){ writePending(readPending().filter(function(x){ retur
 /* a request saved on this device because the connection was down: send it again on the next visit */
 (function(){
   var list=readPending(); if(!list.length || !ENDPOINT) return;
-  list.forEach(function(qs){ sendReliably(new URLSearchParams(qs)).then(function(){ removePending(qs); }).catch(function(){}); });
+  list.forEach(function(qs){ var p=new URLSearchParams(qs); sendReliably(p).then(function(res){ removePending(qs); if(res.ok) sendEmails(p.get('sid')); }).catch(function(){}); });
 })();
 
 function collect(kind, form, sid){
@@ -847,15 +882,19 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
     if(!ENDPOINT){ showDone(f,email.value,null); return; }
     var btn=f.querySelector('button[type=submit]'), label=btn.innerHTML;
     btn.disabled=true; btn.textContent='Invio in corso…';
-    f.dataset.sid=f.dataset.pendingSid||uid(); f.dataset.pendingSid=f.dataset.sid;  /* same id if the person presses again */
-    var params=collect(kind,f,f.dataset.sid), qs=params.toString();
-    addPending(qs);  /* saved on this device until the server confirms */
-    sendReliably(params).then(function(res){
-      if(res && res.ok){ removePending(qs); delete f.dataset.pendingSid; showDone(f,res.email||email.value.toLowerCase(),res); }
-      else { removePending(qs); delete f.dataset.pendingSid; handleServerError(f,res||{}); }
-    }).catch(function(){
-      showFail(f,['Sembra che la connessione non funzioni. Abbiamo salvato i tuoi dati su questo dispositivo e li invieremo da soli appena possibile. Puoi anche riprovare ora oppure ',{href:mailtoFor(kind,f),text:'mandarceli via email'},'.']);
-    }).then(function(){ btn.disabled=false; btn.innerHTML=label; });
+    domainOk(email.value.split('@').pop()).then(function(ok){
+      if(ok===false){ domainError(email); email.focus(); btn.disabled=false; btn.innerHTML=label; return; }
+      f.dataset.sid=f.dataset.pendingSid||uid(); f.dataset.pendingSid=f.dataset.sid;  /* same id if the person presses again */
+      var params=collect(kind,f,f.dataset.sid), qs=params.toString();
+      addPending(qs);  /* kept on this device until the server confirms */
+      return sendReliably(params).then(function(res){
+        removePending(qs); delete f.dataset.pendingSid;
+        if(res.ok){ showDone(f,res.email||email.value.toLowerCase(),res); sendEmails(res.id||f.dataset.sid); }
+        else handleServerError(f,res);
+      }).catch(function(){
+        showFail(f,['Non siamo riusciti a inviare la richiesta. Riprova tra poco: i tuoi dati restano salvati su questo dispositivo. Oppure ',{href:mailtoFor(kind,f),text:'mandaceli via email'},'.']);
+      }).then(function(){ btn.disabled=false; btn.innerHTML=label; });
+    });
   });
 
   /* "Reinvia l'email" */
@@ -866,6 +905,7 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
     post(p).then(function(res){
       if(res.ok && res.verificata) note.textContent='La tua email è già confermata ✓';
       else if(res.ok) note.textContent='Fatto: te l’abbiamo rimandata. Controlla anche Spam o Posta indesiderata.';
+      else if(res.error==='stato') note.textContent='La riceverai a breve.';
       else if(res.error==='limite') setText(note,['Ti abbiamo già scritto più volte. Scrivici a ',{b:'ciao@getneedo.com'},' e ti aiutiamo noi.']);
       else note.textContent='Non è stato possibile reinviarla. Riprova tra poco.';
     }).catch(function(){ note.textContent='Connessione assente. Riprova tra poco.'; })
@@ -901,7 +941,7 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
         btn.hidden=false; btn.textContent='Vai al sito'; btn.onclick=close;
         if(res.ok){ ic.innerHTML=OK; h.textContent='Email confermata';
           msg.textContent=(res.nome?'Grazie '+res.nome+'! ':'Grazie! ')+(res.kind==='studente'?'Ti contattiamo presto per un breve colloquio.':'Ti scriviamo appena partiamo nella tua zona.'); clean(); }
-        else { ic.innerHTML=NO; h.textContent='Link non valido';
+        else { ic.innerHTML=NO; h.textContent=res.error==='sostituita'?'Email già corretta':'Link non valido';
           setText(msg,['Questo link non è più valido, forse perché hai corretto l’email. Se hai dubbi scrivici a ',{b:'ciao@getneedo.com'},'.']); clean(); }
       })
       .catch(function(){

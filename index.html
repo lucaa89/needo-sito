@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-CHat4NlOxJmWEx1SaJUjhER5tYSVfORMlj3ttyMjisY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-UH772UIeBvqpZ6GXVZtkC/KzZVZywgZifU1XIhPANIc='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo · Compagnia e aiuto per anziani a Roma</title>
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://getneedo.com/og-image.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Needo", "url": "https://getneedo.com/", "logo": "https://getneedo.com/icon-512.png", "email": "team@getneedo.com", "telephone": "+39 333 506 8326", "areaServed": {"@type": "City", "name": "Roma"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Needo", "url": "https://getneedo.com/", "logo": "https://getneedo.com/icon-512.png", "email": "team@getneedo.com", "areaServed": {"@type": "City", "name": "Roma"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Compagnia e aiuto per anziani a domicilio", "serviceType": "Compagnia e aiuto non sanitario per anziani", "provider": {"@type": "Organization", "name": "Needo", "url": "https://getneedo.com/"}, "areaServed": {"@type": "City", "name": "Roma"}, "availableLanguage": "it", "offers": {"@type": "Offer", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 16, "priceCurrency": "EUR", "unitText": "ora", "valueAddedTaxIncluded": true}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto costa Needo?", "acceptedAnswer": {"@type": "Answer", "text": "Da 16€ l'ora: paghi solo il tempo prenotato e il prezzo dipende dal servizio. Per le prime famiglie la prima ora è gratis e il prezzo resta bloccato per 12 mesi."}}, {"@type": "Question", "name": "Chi sono gli studenti e come li scegliete?", "acceptedAnswer": {"@type": "Answer", "text": "Sono studenti universitari maggiorenni. Verifichiamo la loro email universitaria e facciamo un colloquio prima della prima visita. Quando possibile, viene sempre la stessa persona."}}, {"@type": "Question", "name": "Cosa può fare uno studente Needo?", "acceptedAnswer": {"@type": "Answer", "text": "La spesa e le commissioni, l'accompagnamento fuori casa, l'aiuto con il telefono, WhatsApp e la TV, un po' di compagnia e piccole faccende di casa."}}, {"@type": "Question", "name": "Fate assistenza sanitaria?", "acceptedAnswer": {"@type": "Answer", "text": "No. Needo offre aiuto pratico e compagnia e non fa prestazioni sanitarie."}}, {"@type": "Question", "name": "In quali zone di Roma siete attivi?", "acceptedAnswer": {"@type": "Answer", "text": "Stiamo partendo a Roma, in tutti i municipi, e presto arriveremo in altre città. Iscriviti alla lista d'attesa: ti scriviamo appena possiamo venire nella tua zona."}}, {"@type": "Question", "name": "Posso iscrivere un mio genitore o un nonno?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Puoi iscriverlo tu dalla lista d'attesa: dopo ogni visita il racconto di com'è andata arriva a te, anche se vivi lontano."}}, {"@type": "Question", "name": "Come funziona per gli studenti?", "acceptedAnswer": {"@type": "Answer", "text": "Lavoro occasionale da 10€ l'ora, senza turni fissi: accetti solo le visite che vuoi. Paghiamo ogni settimana e c'è un bonus di 10€ per ogni amico che porti. Ti candidi con l'email universitaria."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -341,6 +341,7 @@ header.scrolled .nav{height:58px}
       <a class="hide-sm" href="#come">Come</a>
       <a class="hide-sm" href="#servizi">Servizi</a>
       <a class="hide-sm" href="#studenti">Studenti</a>
+      <a class="hide-sm" href="/chi-siamo.html">Chi siamo</a>
       <a class="btn btn-primary" href="#famiglie">Lista d'attesa</a>
     </nav>
   </div>
@@ -450,7 +451,7 @@ header.scrolled .nav{height:58px}
     <div class="wrap join">
       <div class="card form rv" id="famiglie">
         <h3>Lista d'attesa</h3>
-        <p class="intro">Per te o per una persona cara: lasciaci un contatto e ti scriviamo appena partiamo.</p>
+        <p class="intro">Per te o per una persona cara: ti contattiamo appena sarà attivo il servizio.</p>
         <form data-kind="famiglia" novalidate>
           <div class="row2">
             <div class="field"><label for="f-nome">Nome</label><input id="f-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
@@ -577,8 +578,8 @@ header.scrolled .nav{height:58px}
 
 <footer>
   <div class="wrap foot">
-    <a href="#top">Torna su ↑</a>
-    <span class="contact"><a href="mailto:team@getneedo.com">team@getneedo.com</a> · <a href="tel:+393335068326">333 506 8326</a></span>
+    <span><a href="#top">Torna su ↑</a> · <a href="/chi-siamo.html">Chi siamo</a></span>
+    <span class="contact"><a href="mailto:team@getneedo.com">team@getneedo.com</a></span>
     <span>A modo tuo · Roma · © 2026 · <button type="button" class="linkbtn" data-privacy>Privacy</button></span>
   </div>
 </footer>
@@ -812,6 +813,7 @@ function checkAge(input){
   document.querySelectorAll('[data-privacy]').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); }); });
   dlg.querySelector('.close').addEventListener('click',function(){ dlg.close ? dlg.close() : dlg.removeAttribute('open'); });
   dlg.addEventListener('click',function(e){ if(e.target===dlg && dlg.close) dlg.close(); });
+  if(location.hash==='#privacy'){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); }
 })();
 
 /* ===== sending: real answer from the server, retries, nothing gets lost ===== */

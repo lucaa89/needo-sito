@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-CHat4NlOxJmWEx1SaJUjhER5tYSVfORMlj3ttyMjisY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>needo</title>
-<meta name="description" content="Studenti universitari di fiducia vengono a casa tua o dei tuoi cari: la spesa, il telefono, un caffè o due chiacchiere. Dopo ogni visita, un breve racconto di com'è andata. Roma.">
+<title>needo · Compagnia e aiuto per anziani a Roma</title>
+<meta name="description" content="Needo: studenti universitari selezionati aiutano gli anziani a Roma, a casa e fuori: spesa e commissioni, telefono e tecnologia, compagnia, piccole faccende. Da 16€/h, prima ora gratis per le prime famiglie.">
 <meta name="theme-color" content="#FFFBF7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121010" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -15,11 +15,14 @@
 <link rel="canonical" href="https://getneedo.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getneedo.com/">
-<meta property="og:title" content="Needo · La tua casa. La tua vita. A modo tuo.">
-<meta property="og:description" content="Studenti universitari di fiducia, a casa tua o dei tuoi cari. Roma.">
+<meta property="og:title" content="needo · Compagnia e aiuto per anziani a Roma">
+<meta property="og:description" content="Studenti universitari di fiducia per la spesa, il telefono, un caffè o una passeggiata. Dopo ogni visita, un breve racconto alla famiglia. Roma.">
 <meta property="og:image" content="https://getneedo.com/og-image.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Needo", "url": "https://getneedo.com/", "logo": "https://getneedo.com/icon-512.png", "email": "team@getneedo.com", "telephone": "+39 333 506 8326", "areaServed": {"@type": "City", "name": "Roma"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Compagnia e aiuto per anziani a domicilio", "serviceType": "Compagnia e aiuto non sanitario per anziani", "provider": {"@type": "Organization", "name": "Needo", "url": "https://getneedo.com/"}, "areaServed": {"@type": "City", "name": "Roma"}, "availableLanguage": "it", "offers": {"@type": "Offer", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 16, "priceCurrency": "EUR", "unitText": "ora", "valueAddedTaxIncluded": true}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto costa Needo?", "acceptedAnswer": {"@type": "Answer", "text": "Da 16€ l'ora: paghi solo il tempo prenotato e il prezzo dipende dal servizio. Per le prime famiglie la prima ora è gratis e il prezzo resta bloccato per 12 mesi."}}, {"@type": "Question", "name": "Chi sono gli studenti e come li scegliete?", "acceptedAnswer": {"@type": "Answer", "text": "Sono studenti universitari maggiorenni. Verifichiamo la loro email universitaria e facciamo un colloquio prima della prima visita. Quando possibile, viene sempre la stessa persona."}}, {"@type": "Question", "name": "Cosa può fare uno studente Needo?", "acceptedAnswer": {"@type": "Answer", "text": "La spesa e le commissioni, l'accompagnamento fuori casa, l'aiuto con il telefono, WhatsApp e la TV, un po' di compagnia e piccole faccende di casa."}}, {"@type": "Question", "name": "Fate assistenza sanitaria?", "acceptedAnswer": {"@type": "Answer", "text": "No. Needo offre aiuto pratico e compagnia e non fa prestazioni sanitarie."}}, {"@type": "Question", "name": "In quali zone di Roma siete attivi?", "acceptedAnswer": {"@type": "Answer", "text": "Stiamo partendo a Roma, in tutti i municipi, e presto arriveremo in altre città. Iscriviti alla lista d'attesa: ti scriviamo appena possiamo venire nella tua zona."}}, {"@type": "Question", "name": "Posso iscrivere un mio genitore o un nonno?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Puoi iscriverlo tu dalla lista d'attesa: dopo ogni visita il racconto di com'è andata arriva a te, anche se vivi lontano."}}, {"@type": "Question", "name": "Come funziona per gli studenti?", "acceptedAnswer": {"@type": "Answer", "text": "Lavoro occasionale da 10€ l'ora, senza turni fissi: accetti solo le visite che vuoi. Paghiamo ogni settimana e c'è un bonus di 10€ per ogni amico che porti. Ti candidi con l'email universitaria."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
@@ -174,6 +177,22 @@ section{padding:clamp(64px,10vw,128px) 0}
 .fact small{color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .fact b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-.05em;line-height:1;margin-top:10px}
 .fact p{color:var(--muted);margin-top:10px}
+.offers{margin-top:clamp(28px,4vw,48px)}
+.offers .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,20px);margin-top:14px}
+@media (max-width:800px){.offers .grid{grid-template-columns:minmax(0,1fr)}}
+.offer{padding:clamp(20px,2.4vw,28px)}
+.offer h3{font-size:clamp(20px,1.6vw,24px)}
+.offer p{color:var(--muted);margin-top:8px}
+.offers .note{font-size:14px;color:var(--muted);margin-top:12px}
+.faq{max-width:860px}
+.faq details{border-top:1.5px solid var(--line);padding:18px 0}
+.faq details:last-child{border-bottom:1.5px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;font-family:var(--head);font-weight:800;font-size:clamp(19px,1.6vw,23px);letter-spacing:-.02em;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:28px;line-height:1;color:var(--brand-text);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);margin-top:10px;max-width:46em}
+.foot .contact a{color:var(--muted)}
 
 /* forms */
 .join{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
@@ -331,7 +350,7 @@ header.scrolled .nav{height:58px}
   <div class="wrap hero">
     <div>
       <h1 aria-label="La tua casa. La tua vita. A modo tuo."><span class="ln" aria-hidden="true"><span>La tua casa<span class="p">.</span></span></span><span class="ln" aria-hidden="true"><span>La tua vita<span class="p">.</span></span></span><span class="ln" aria-hidden="true"><span class="o">A modo tuo<span class="p">.</span></span></span></h1>
-      <p class="lead rv d1">Studenti universitari di fiducia vengono a casa tua o dei tuoi cari: la spesa, il telefono che non funziona, un caffè o due chiacchiere. Dopo ogni visita, un breve racconto di com'è andata.</p>
+      <p class="lead rv d1">Studenti universitari di fiducia aiutano gli anziani a Roma, a casa e fuori: la spesa, il telefono che non funziona, un caffè o due chiacchiere. Dopo ogni visita, un breve racconto di com'è andata.</p>
       <div class="ctas rv d2">
         <a class="btn btn-primary" href="#famiglie">Entra nella lista d'attesa <span class="arr" aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="#studenti">Sei uno studente?</a>
@@ -386,13 +405,13 @@ header.scrolled .nav{height:58px}
   <section class="whatbg" id="servizi">
     <div class="wrap">
       <div class="head">
-        <div class="eyebrow rv">Cosa facciamo</div>
+        <div class="eyebrow rv">Servizi per anziani a Roma</div>
         <h2 class="rv d1">Le piccole cose che fanno la differenza.</h2>
       </div>
       <div class="svcs">
         <div class="card svc rv">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
-          <h3>Spesa e commissioni</h3><p>Il mercato, la farmacia, la posta. Insieme, oppure ci pensiamo noi.</p>
+          <h3>Spesa e commissioni</h3><p>Il mercato, la farmacia, la posta, un accompagnamento. Insieme, oppure ci pensiamo noi.</p>
         </div>
         <div class="card svc rv d1">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></div>
@@ -410,6 +429,15 @@ header.scrolled .nav{height:58px}
       <div class="facts">
         <div class="card fact rv"><small>Prezzo</small><b>Da 16€/h</b><p>Paghi solo il tempo prenotato.</p></div>
         <div class="card fact rv d1"><small>Dove</small><b>Tutta Roma</b><p>Presto anche in altre città.</p></div>
+      </div>
+      <div class="offers">
+        <div class="eyebrow rv">Per le prime famiglie</div>
+        <div class="grid">
+          <div class="card offer rv"><h3>La prima ora è gratis</h3><p>Per conoscerci, senza impegno.</p></div>
+          <div class="card offer rv d1"><h3>Prezzo bloccato per 12 mesi</h3><p>La tariffa di oggi resta la tua.</p></div>
+          <div class="card offer rv d2"><h3>Porta un'altra famiglia</h3><p>Un'ora gratis a te e a lei, dopo la sua prima visita.</p></div>
+        </div>
+        <p class="note">Offerte valide per il periodo di avvio a Roma.</p>
       </div>
     </div>
   </section>
@@ -461,6 +489,11 @@ header.scrolled .nav{height:58px}
             <input id="f-citta" name="citta" maxlength="80" placeholder="Es. Milano"></div>
           <div class="field extra" id="f-altro-wrap" hidden><label for="f-altro">Per chi, esattamente?</label>
             <input id="f-altro" name="per_altro" maxlength="120" placeholder="Es. mia zia, un vicino di casa"></div>
+          <div class="row2">
+            <div class="field"><label for="f-fonte">Come ci hai conosciuto? <span class="opt">(facoltativo)</span></label>
+              <select id="f-fonte" name="fonte"><option value="">Scegli…</option><option>Amici o parenti</option><option>Farmacia</option><option>Parrocchia</option><option>Medico</option><option>Portiere del palazzo</option><option>Locandina</option><option>Facebook o Instagram</option><option>Giornale o sito di notizie</option><option>Altro</option></select></div>
+            <div class="field"><label for="f-ref">Chi ti ha consigliato Needo? <span class="opt">(facoltativo)</span></label><input id="f-ref" name="consigliato_da" maxlength="80" placeholder="Nome e cognome"></div>
+          </div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button> e acconsento al trattamento dei miei dati per essere ricontattato.</span></label>
           <input type="hidden" name="sostituisce" value="">
           <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
@@ -481,8 +514,9 @@ header.scrolled .nav{height:58px}
         <h3>Sei uno studente?</h3>
         <p class="intro">Cerchiamo universitari a Roma che abbiano voglia di fare la differenza.</p>
         <ul class="perks">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Orari flessibili, senza turni fissi</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Pagato a ogni visita</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Da 10€/h, orari flessibili, senza turni fissi</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Pagato ogni settimana</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>+10€ per ogni amico che porti</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Un impatto concreto sulla vita di qualcuno</li>
         </ul>
         <form data-kind="studente" novalidate>
@@ -499,6 +533,11 @@ header.scrolled .nav{height:58px}
             <div class="field"><label for="s-nascita">Data di nascita</label><input id="s-nascita" name="nascita" type="text" inputmode="numeric" placeholder="gg/mm/aaaa" maxlength="10" required autocomplete="bday" aria-describedby="s-nascita-err"><p class="err" id="s-nascita-err" aria-live="polite" hidden></p></div>
           </div>
           <input type="hidden" name="uni_manuale" value="">
+          <div class="row2">
+            <div class="field"><label for="s-fonte">Come ci hai conosciuto? <span class="opt">(facoltativo)</span></label>
+              <select id="s-fonte" name="fonte"><option value="">Scegli…</option><option>Amici</option><option>Gruppo WhatsApp del corso</option><option>Locandina in università</option><option>Associazione studentesca</option><option>Instagram o TikTok</option><option>Altro</option></select></div>
+            <div class="field"><label for="s-ref">Chi ti ha presentato Needo? <span class="opt">(facoltativo)</span></label><input id="s-ref" name="consigliato_da" maxlength="80" placeholder="Nome e cognome"></div>
+          </div>
           <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button>, confermo di avere almeno 18 anni e acconsento al trattamento dei miei dati per valutare la candidatura.</span></label>
           <input type="hidden" name="sostituisce" value="">
           <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
@@ -516,11 +555,30 @@ header.scrolled .nav{height:58px}
       </div>
     </div>
   </section>
+
+  <section id="domande">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow rv">Domande frequenti</div>
+        <h2 class="rv d1">Tutto quello che vorresti sapere.</h2>
+      </div>
+      <div class="faq">
+        <details class="rv"><summary>Quanto costa Needo?</summary><p>Da 16€ l&#39;ora: paghi solo il tempo prenotato e il prezzo dipende dal servizio. Per le prime famiglie la prima ora è gratis e il prezzo resta bloccato per 12 mesi.</p></details>
+        <details class="rv"><summary>Chi sono gli studenti e come li scegliete?</summary><p>Sono studenti universitari maggiorenni. Verifichiamo la loro email universitaria e facciamo un colloquio prima della prima visita. Quando possibile, viene sempre la stessa persona.</p></details>
+        <details class="rv"><summary>Cosa può fare uno studente Needo?</summary><p>La spesa e le commissioni, l&#39;accompagnamento fuori casa, l&#39;aiuto con il telefono, WhatsApp e la TV, un po&#39; di compagnia e piccole faccende di casa.</p></details>
+        <details class="rv"><summary>Fate assistenza sanitaria?</summary><p>No. Needo offre aiuto pratico e compagnia e non fa prestazioni sanitarie.</p></details>
+        <details class="rv"><summary>In quali zone di Roma siete attivi?</summary><p>Stiamo partendo a Roma, in tutti i municipi, e presto arriveremo in altre città. Iscriviti alla lista d&#39;attesa: ti scriviamo appena possiamo venire nella tua zona.</p></details>
+        <details class="rv"><summary>Posso iscrivere un mio genitore o un nonno?</summary><p>Sì. Puoi iscriverlo tu dalla lista d&#39;attesa: dopo ogni visita il racconto di com&#39;è andata arriva a te, anche se vivi lontano.</p></details>
+        <details class="rv"><summary>Come funziona per gli studenti?</summary><p>Lavoro occasionale da 10€ l&#39;ora, senza turni fissi: accetti solo le visite che vuoi. Paghiamo ogni settimana e c&#39;è un bonus di 10€ per ogni amico che porti. Ti candidi con l&#39;email universitaria.</p></details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap foot">
     <a href="#top">Torna su ↑</a>
+    <span class="contact"><a href="mailto:team@getneedo.com">team@getneedo.com</a> · <a href="tel:+393335068326">333 506 8326</a></span>
     <span>A modo tuo · Roma · © 2026 · <button type="button" class="linkbtn" data-privacy>Privacy</button></span>
   </div>
 </footer>
@@ -534,8 +592,8 @@ header.scrolled .nav{height:58px}
     <p>Titolare del trattamento: Luca Gragnoli. Contatto: <a href="mailto:privacy@getneedo.com">privacy@getneedo.com</a>.</p>
     <h3>Quali dati raccogliamo</h3>
     <ul>
-      <li><b>Lista d'attesa:</b> nome e cognome, email, telefono (se lo lasci), zona o città, per chi è il servizio.</li>
-      <li><b>Candidature studenti:</b> nome e cognome, email universitaria, telefono (se lo lasci), data di nascita.</li>
+      <li><b>Lista d'attesa:</b> nome e cognome, email, telefono (se lo lasci), zona o città, per chi è il servizio, come ci hai conosciuto e chi ti ha consigliato (se lo indichi).</li>
+      <li><b>Candidature studenti:</b> nome e cognome, email universitaria, telefono (se lo lasci), data di nascita, come ci hai conosciuto e chi ti ha presentato (se lo indichi).</li>
     </ul>
     <h3>Perché li usiamo</h3>
     <ul>

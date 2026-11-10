@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-ZOmRCUZrpboh7oED4NNxBimK7TjrvFptE2V7DPRg19g='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-CHat4NlOxJmWEx1SaJUjhER5tYSVfORMlj3ttyMjisY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo</title>
@@ -470,7 +470,7 @@ header.scrolled .nav{height:58px}
         <div class="done" role="status">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
           <h4>Conferma la tua email.</h4>
-          <p class="msg">Ti abbiamo scritto a <span class="to"></span>.</p>
+          <p class="msg">Ti abbiamo scritto a <span class="to"></span>. Può volerci qualche minuto.</p>
           <p class="tip">Non la vedi? Controlla lo spam.</p>
           <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
           <p class="note" aria-live="polite"></p>
@@ -508,7 +508,7 @@ header.scrolled .nav{height:58px}
         <div class="done" role="status">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
           <h4>Conferma la tua email.</h4>
-          <p class="msg">Ti abbiamo scritto a <span class="to"></span>.</p>
+          <p class="msg">Ti abbiamo scritto a <span class="to"></span>. Può volerci qualche minuto.</p>
           <p class="tip">Non la vedi? Controlla lo spam.</p>
           <div class="acts"><button type="button" class="btn btn-primary resend">Reinvia l'email</button><button type="button" class="btn btn-ghost change">Ho sbagliato email</button></div>
           <p class="note" aria-live="polite"></p>
@@ -877,6 +877,9 @@ function showDone(form, email, res){
   var note=done.querySelector('.note'); note.textContent='';
   if(res && res.inviata===false) note.textContent='L’email di conferma sta partendo: potrebbe arrivare tra qualche minuto.';
   card.classList.add('sent');
+  /* the email usually arrives within a minute: the resend button wakes up after 60 s, so nobody sends two by impatience */
+  var rs=done.querySelector('.resend'); rs.disabled=true; var left=60; rs.textContent='Reinvia tra '+left+' s';
+  clearInterval(card._t); card._t=setInterval(function(){ left--; if(left<=0){ clearInterval(card._t); rs.disabled=false; rs.textContent='Reinvia l’email'; } else rs.textContent='Reinvia tra '+left+' s'; },1000);
   card.dataset.sid=form.dataset.sid; card.dataset.email=email;
   done.setAttribute('tabindex','-1'); done.focus({preventScroll:true});
   var r=card.getBoundingClientRect(); if(r.top<0||r.top>innerHeight*0.6) card.scrollIntoView({behavior:'smooth',block:'start'});

@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-UH772UIeBvqpZ6GXVZtkC/KzZVZywgZifU1XIhPANIc='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-YQiEnQWMf1QfZYwaW4PuTkHovO5UK4zkiDumwNd2CAA='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo · Compagnia e aiuto per anziani a Roma</title>
@@ -178,8 +178,9 @@ section{padding:clamp(64px,10vw,128px) 0}
 .fact b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(40px,5vw,64px);letter-spacing:-.05em;line-height:1;margin-top:10px}
 .fact p{color:var(--muted);margin-top:10px}
 .offers{margin-top:clamp(28px,4vw,48px)}
-.offers .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,20px);margin-top:14px}
-@media (max-width:800px){.offers .grid{grid-template-columns:minmax(0,1fr)}}
+.offers .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,20px);margin-top:14px}
+@media (max-width:1000px){.offers .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.offers .grid{grid-template-columns:minmax(0,1fr)}}
 .offer{padding:clamp(20px,2.4vw,28px)}
 .offer h3{font-size:clamp(20px,1.6vw,24px)}
 .offer p{color:var(--muted);margin-top:8px}
@@ -222,6 +223,17 @@ section{padding:clamp(64px,10vw,128px) 0}
 .done .ic{margin:0 auto 16px;width:64px;height:64px;border-radius:50%}
 .done h4{font-size:28px;letter-spacing:-.03em}
 .done p{margin-top:8px;opacity:.8}
+.callback{margin-top:clamp(16px,2vw,24px);padding:clamp(22px,3vw,36px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:clamp(16px,3vw,40px);align-items:start;background:var(--soft);box-shadow:none}
+@media (max-width:900px){.callback{grid-template-columns:minmax(0,1fr)}}
+.callback h3{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.035em;line-height:1.1}
+.callback .cb-text p{color:var(--muted);margin-top:10px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:700px){.row3{grid-template-columns:minmax(0,1fr)}}
+.callback .btn{width:auto;margin-top:6px}
+@media (max-width:480px){.callback .btn{width:100%}}
+.cb-done{font-size:18px;line-height:1.5;padding:8px 0}
+.cb-done b{display:block;font-family:var(--head);font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+.field select:invalid,.field input:invalid{box-shadow:none}
 .sent form{display:none}
 .sent .done{display:block}
 .fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px;line-height:1.45}
@@ -437,6 +449,7 @@ header.scrolled .nav{height:58px}
           <div class="card offer rv"><h3>La prima ora è gratis</h3><p>Senza impegno.</p></div>
           <div class="card offer rv d1"><h3>Stesso prezzo per un anno</h3><p>Per 12 mesi paghi la tariffa di oggi, anche se aumenta.</p></div>
           <div class="card offer rv d2"><h3>Invita un'altra famiglia</h3><p>Un'ora gratis a entrambe.</p></div>
+          <div class="card offer rv d3"><h3>Pacchetto mensile</h3><p>4 visite al mese, a un prezzo più basso.</p></div>
         </div>
         <p class="note">Solo a Roma, per un periodo limitato.</p>
       </div>
@@ -555,6 +568,27 @@ header.scrolled .nav{height:58px}
         </div>
       </div>
     </div>
+    <div class="wrap">
+      <div class="card callback rv" id="richiamo">
+        <div class="cb-text">
+          <h3>Preferisci parlare con una persona?</h3>
+          <p>Lasciaci il tuo numero: ti richiamiamo noi, senza impegno.</p>
+        </div>
+        <form class="cb-form" novalidate>
+          <div class="row3">
+            <div class="field"><label for="c-nome">Nome</label><input id="c-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
+            <div class="field"><label for="c-tel">Telefono</label><input id="c-tel" name="telefono" maxlength="25" type="tel" inputmode="tel" autocomplete="tel" placeholder="Es. 333 123 4567" required></div>
+            <div class="field"><label for="c-quando">Quando chiamarti</label>
+              <select id="c-quando" name="quando"><option>Quando volete</option><option>In mattinata</option><option>Nel pomeriggio</option><option>In serata</option></select></div>
+          </div>
+          <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<button type="button" class="linkbtn" data-privacy>informativa privacy</button> e acconsento a essere richiamato.</span></label>
+          <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn btn-primary" type="submit">Richiamatemi <span class="arr" aria-hidden="true">→</span></button>
+          <p class="fail" role="alert" hidden></p>
+        </form>
+        <div class="cb-done" role="status" hidden><b>Grazie, ti richiamiamo presto.</b> Di solito entro un giorno lavorativo, nella fascia che hai scelto.</div>
+      </div>
+    </div>
   </section>
 
   <section id="domande">
@@ -594,11 +628,13 @@ header.scrolled .nav{height:58px}
     <h3>Quali dati raccogliamo</h3>
     <ul>
       <li><b>Lista d'attesa:</b> nome e cognome, email, telefono (se lo lasci), zona o città, per chi è il servizio, come ci hai conosciuto e chi ti ha consigliato (se lo indichi).</li>
+      <li><b>Richiesta di essere richiamato:</b> nome, telefono e quando preferisci essere chiamato.</li>
       <li><b>Candidature studenti:</b> nome e cognome, email universitaria, telefono (se lo lasci), data di nascita, come ci hai conosciuto e chi ti ha presentato (se lo indichi).</li>
     </ul>
     <h3>Perché li usiamo</h3>
     <ul>
       <li>Lista d'attesa: per avvisarti quando il servizio è disponibile nella tua zona. Base giuridica: il tuo consenso (art. 6.1.a GDPR).</li>
+      <li>Richiamata: per telefonarti e rispondere alle tue domande sul servizio. Base giuridica: il tuo consenso (art. 6.1.a GDPR).</li>
       <li>Studenti: per verificare l'email universitaria e la maggiore età, valutare la candidatura e contattarti per un colloquio. Base giuridica: misure precontrattuali richieste da te (art. 6.1.b) e il tuo consenso (art. 6.1.a).</li>
     </ul>
     <p>Dopo l'iscrizione ti mandiamo un'email per confermare l'indirizzo; se non la confermi, ti mandiamo al massimo due promemoria. Non vendiamo i tuoi dati e non li usiamo per pubblicità di terzi.</p>
@@ -896,7 +932,7 @@ function italianMessage(c){
   if(c.type==='checkbox') return 'Per continuare spunta questa casella.';
   if(c.tagName==='SELECT') return c.name==='zona' ? 'Scegli la tua zona.' : 'Scegli un’opzione.';
   if(c.validity.tooLong) return 'Il testo è troppo lungo.';
-  var labels={nome:'Scrivi il tuo nome.',cognome:'Scrivi il tuo cognome.',citta:'Scrivi in che città.',per_altro:'Scrivi per chi è il servizio.'};
+  var labels={telefono:'Scrivi il tuo numero di telefono.',nome:'Scrivi il tuo nome.',cognome:'Scrivi il tuo cognome.',citta:'Scrivi in che città.',per_altro:'Scrivi per chi è il servizio.'};
   return labels[c.name] || 'Compila questo campo.';
 }
 document.querySelectorAll('form[data-kind] input, form[data-kind] select').forEach(function(c){
@@ -1032,6 +1068,32 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
     })(0);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+})();
+
+/* ===== "ti richiamiamo noi" ===== */
+(function(){
+  var f=document.querySelector('.cb-form'); if(!f) return;
+  var card=f.closest('.callback'), done=card.querySelector('.cb-done'), fail=f.querySelector('.fail'), btn=f.querySelector('button[type=submit]');
+  Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ ['input','change'].forEach(function(ev){ c.addEventListener(ev,function(){ c.setCustomValidity(''); }); }); });
+  var rif=uid();
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); fail.hidden=true;
+    var tel=f.querySelector('#c-tel'), digits=tel.value.replace(/[^0-9]/g,'');
+    var first=null;
+    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ c.setCustomValidity(''); if(!first && c.type!=='hidden' && !c.closest('.hp') && !c.checkValidity()) first=c; });
+    if(!first && (digits.length<6 || digits.length>15)){ tel.setCustomValidity('Controlla il numero: sembra incompleto.'); first=tel; }
+    if(first){ if(!first.validationMessage || first.validity.valueMissing) first.setCustomValidity(italianMessage(first)); first.reportValidity(); return; }
+    var p=new URLSearchParams(new FormData(f)); p.append('action','richiamo'); p.append('rif',rif);
+    btn.disabled=true; btn.setAttribute('aria-busy','true');
+    sendReliably(p).then(function(res){
+      if(res.ok){ f.hidden=true; done.hidden=false; done.focus&&done.setAttribute('tabindex','-1'); try{done.focus();}catch(e){} return; }
+      throw new Error(res.error||'server');
+    }).catch(function(err){
+      var m=String(err&&err.message);
+      fail.textContent= m==='telefono' ? 'Controlla il numero di telefono.' : 'Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a team@getneedo.com.';
+      fail.hidden=false;
+    }).then(function(){ btn.disabled=false; btn.removeAttribute('aria-busy'); });
+  });
 })();
 </script>
 </body>

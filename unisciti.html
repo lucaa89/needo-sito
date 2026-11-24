@@ -282,6 +282,23 @@ section{padding:clamp(64px,10vw,128px) 0}
 .price-offers li svg{flex:none;width:26px;height:26px;padding:4px;border-radius:50%;background:var(--brand);fill:none;stroke:var(--on-brand);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .price-offers li b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(19px,1.1rem + .4vw,24px);letter-spacing:-.025em;line-height:1.15}
 .price-offers li span{display:block;opacity:.75;font-size:16px;margin-top:3px}
+
+/* v6 */
+.trust li{white-space:nowrap}
+.join{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;align-items:start}
+@media (max-width:900px){.join{grid-template-columns:minmax(0,1fr)!important}}
+.side{display:flex;flex-direction:column;gap:clamp(14px,1.6vw,20px)}
+.side .callback{margin-top:0;grid-template-columns:minmax(0,1fr)!important;gap:16px}
+.side .callback .row3{grid-template-columns:minmax(0,1fr)}
+.side .callback .btn{width:100%}
+.side-stud{padding:clamp(22px,3vw,32px);background:var(--btn2-bg);color:var(--btn2-ink);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.side-stud h3{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.035em}
+.side-stud p{opacity:.8;font-size:16px}
+.side-stud .btn{color:inherit;border-color:color-mix(in srgb,currentColor 30%,transparent);margin-top:4px}
+.price-main b{font-size:clamp(40px,10.5vw,92px);white-space:normal}
+.price-main b small{white-space:nowrap}
+.price-offers li b{font-size:clamp(18px,1rem + .5vw,23px)}
+.price-offers li{align-items:center}
 .sent form{display:none}
 .sent .done{display:block}
 .fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px;line-height:1.45}
@@ -391,6 +408,28 @@ header.scrolled .nav{height:58px}
   .btn,.svc{transition:none}
 }
 
+/* v6 hero: card stack più ricco */
+.stage{padding:44px 0 40px}
+.stage::before{inset:0 0 0 28px;border-radius:44px;opacity:1;background:radial-gradient(120% 90% at 85% 0%,color-mix(in srgb,var(--brand) 32%,transparent) 0,transparent 60%),color-mix(in srgb,var(--brand) 10%,transparent)}
+.stage::after{display:none}
+.stack{gap:16px;padding-right:0;max-width:430px;margin-left:auto}
+.stack .card{border:1px solid color-mix(in srgb,var(--ink) 7%,transparent)}
+.ping,.next{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:20px;width:max-content;max-width:100%}
+.ping{margin-left:-10px;transform:rotate(-1.5deg)}
+.next{margin-left:auto;margin-right:-10px;transform:rotate(1.5deg)}
+.ping b,.next b{display:block;font-size:15px;line-height:1.25}
+.ping small,.next small{display:block;color:var(--muted);font-size:13px}
+.ping .dot{width:34px;height:34px;border-radius:50%;background:#1F9D55;display:grid;place-items:center;flex:none}
+.ping .dot svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ping .now{margin-left:8px;font-size:12px;color:var(--muted);align-self:flex-start}
+.next .cal{width:40px;border-radius:10px;overflow:hidden;text-align:center;flex:none;background:var(--soft)}
+.next .cal small{display:block;background:var(--brand);color:var(--on-brand);font-size:10px;font-weight:800;letter-spacing:.08em;padding:2px 0;margin:0}
+.next .cal b{display:block;font-family:var(--head);font-size:17px;padding:3px 0 4px}
+.story{margin-left:28px}
+@media (max-width:900px){.stack{max-width:none;margin:0}.stage{margin:0 -4px}.ping{margin-left:12px}.next{margin-right:6px}}
+@media (prefers-reduced-motion:no-preference){.ping{animation:pingIn .7s .5s cubic-bezier(.16,1,.3,1) both}.next{animation:pingIn .7s .8s cubic-bezier(.16,1,.3,1) both}}
+@keyframes pingIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+
 main{overflow-x:clip}
 .about-hero{padding-top:clamp(56px,9vw,128px);padding-bottom:clamp(40px,6vw,80px)}
 .about-hero h1{font-size:clamp(48px,9vw,128px);letter-spacing:-.055em;line-height:.93;margin-top:16px}
@@ -469,7 +508,8 @@ img.ph{height:auto;display:block}
 .turn .turn-b{color:#FFFBF7;margin-top:.12em}
 .js .turn-b.rv{transform:translateY(28px)}
 .page-hero{padding-top:clamp(56px,9vw,128px);padding-bottom:clamp(40px,6vw,80px)}
-.page-hero h1{font-size:clamp(46px,8.4vw,120px);letter-spacing:-.055em;line-height:.93;margin-top:16px}
+.page-hero h1{font-size:clamp(40px,8.4vw,120px);letter-spacing:-.05em;line-height:1;margin-top:16px}
+.page-hero h1 .ln>span{line-height:1}
 .page-hero h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 .page-hero h1 .ln>span{display:inline-block;transform:translateY(110%);animation:lineUp 1.1s cubic-bezier(.16,1,.3,1) forwards}
 .page-hero h1 .ln:nth-child(2)>span{animation-delay:.14s;color:var(--brand-big)}
@@ -517,6 +557,18 @@ img.ph{height:auto;display:block}
 .sources{font-size:13px;color:var(--muted);line-height:1.6;margin-top:clamp(28px,3vw,40px);max-width:60em}
 .sources a{color:inherit}
 @media (prefers-reduced-motion: reduce){.page-hero h1 .ln>span{animation:none;transform:none}}
+.biz-contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:900px){.biz-contact{grid-template-columns:minmax(0,1fr)}}
+.biz-list{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:12px}
+.biz-list li{display:flex;gap:12px;align-items:center;font-weight:700;font-size:17px}
+.biz-list li::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%2317120E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.dl{font-weight:700;color:var(--brand-text);text-decoration:none}
+.dl:hover{text-decoration:underline;text-underline-offset:4px}
+.biz-done{font-size:18px;line-height:1.5;padding:8px 0}
+.biz-done b{display:block;font-family:var(--head);font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+.check a{color:inherit}
+.page-hero h1,main h2{word-spacing:.05em}
+
 </style>
 </head>
 <body>
@@ -526,12 +578,12 @@ img.ph{height:auto;display:block}
     <a class="logo" href="/" aria-label="Needo, vai alla home">needo<i aria-hidden="true"></i></a>
     <nav class="links" aria-label="Menu principale">
       <a class="hide-sm" href="/#famiglie">Famiglie</a>
-      <a class="hide-sm" href="/#studenti">Studenti</a>
+      <a class="hide-sm" href="/studenti.html">Studenti</a>
       <a class="hide-sm" href="/aziende.html">Aziende</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu"><span></span><span></span><span></span></button>
       <div class="menu" id="menu" hidden>
         <a class="only-sm" href="/#famiglie">Famiglie</a>
-        <a class="only-sm" href="/#studenti">Studenti</a>
+        <a class="only-sm" href="/studenti.html">Studenti</a>
         <a class="only-sm" href="/aziende.html">Aziende</a>
         <a href="/chi-siamo.html">Chi siamo</a>
         <a href="/unisciti.html">Unisciti a noi</a>
@@ -544,7 +596,7 @@ img.ph{height:auto;display:block}
   <section class="wrap page-hero">
     <div class="eyebrow rv">Unisciti a noi</div>
     <h1><span class="ln"><span>Invecchiare</span></span><span class="ln"><span>in un modo nuovo.</span></span></h1>
-    <p class="about-lead rv d2">A Needo siamo uniti da una convinzione: <b>invecchiare bene non è un lusso, è un bisogno.</b> Vogliamo renderlo realtà. Unisciti alla nostra missione.</p>
+    <p class="about-lead rv d2">A Needo siamo uniti da una convinzione: <b>invecchiare bene non è un lusso, è un bisogno.</b> Unisciti alla nostra missione.</p>
   </section>
 
   <section class="sec" style="padding-top:clamp(16px,3vw,40px)">
@@ -554,7 +606,7 @@ img.ph{height:auto;display:block}
         <div class="card value rv"><span class="num">01</span><h3>Ridefinire cosa vuol dire invecchiare</h3><p>Tutti hanno diritto a vivere come vogliono, a qualsiasi età.</p></div>
         <div class="card value rv d1"><span class="num">02</span><h3>Lavorare insieme</h3><p>Le grandi sfide si vincono insieme.</p></div>
         <div class="card value rv d2"><span class="num">03</span><h3>Pensare e agire con audacia</h3><p>Solo chi rischia di andare troppo lontano scopre fin dove può arrivare.</p></div>
-        <div class="card value rv d3"><span class="num">04</span><h3>Per chi ne ha bisogno</h3><p>Le persone che aiutiamo sono il motivo per cui facciamo tutto questo.</p></div>
+        <div class="card value rv d3"><span class="num">04</span><h3>Per chi ne ha bisogno</h3><p>Le persone che aiutiamo sono il motore di Needo.</p></div>
       </div>
     </div>
   </section>
@@ -565,13 +617,12 @@ img.ph{height:auto;display:block}
         <div class="card path rv">
           <h3>Sei uno studente?</h3>
           <p>Dai una mano a chi ne ha bisogno, quando vuoi tu. Da 9€/ora, senza turni fissi e con pagamento ogni settimana.</p>
-          <a class="btn btn-primary" href="/#studenti">Candidati <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="/studenti.html">Candidati <span class="arr" aria-hidden="true">→</span></a>
         </div>
         <div class="card path alt rv d1">
           <h3>Vuoi unirti al team?</h3>
           <p>Cerchiamo persone che condividano la nostra missione e abbiano voglia di costruire qualcosa di grande.</p>
           <a class="btn btn-primary" href="mailto:team@getneedo.com?subject=Vorrei%20unirmi%20a%20Needo">Contattaci <span class="arr" aria-hidden="true">→</span></a>
-          <p style="font-size:15px">team@getneedo.com</p>
         </div>
       </div>
     </div>
@@ -580,7 +631,7 @@ img.ph{height:auto;display:block}
 
 <footer>
   <div class="wrap foot">
-    <span><a href="/">Home</a> · <a href="/aziende.html">Aziende</a> · <a href="/chi-siamo.html">Chi siamo</a> · <a href="/unisciti.html">Unisciti a noi</a></span>
+    <span><a href="/">Home</a> · <a href="/studenti.html">Studenti</a> · <a href="/aziende.html">Aziende</a> · <a href="/chi-siamo.html">Chi siamo</a> · <a href="/unisciti.html">Unisciti a noi</a></span>
     <span class="contact"><a href="mailto:team@getneedo.com">team@getneedo.com</a></span>
     <span>A modo tuo · Roma · © 2026 · <a href="/#privacy">Privacy</a></span>
   </div>

@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-SiDLjrQ24KJNxxf1iMrQNXnOCwX+NOUoTh8+BDdWLig='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-Q/6CGJrdf6Fsn/IpuhTNLWVo5CKwro0Zw3Rt4Qbwt/Y='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Needo per le aziende</title>
@@ -282,6 +282,23 @@ section{padding:clamp(64px,10vw,128px) 0}
 .price-offers li svg{flex:none;width:26px;height:26px;padding:4px;border-radius:50%;background:var(--brand);fill:none;stroke:var(--on-brand);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .price-offers li b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(19px,1.1rem + .4vw,24px);letter-spacing:-.025em;line-height:1.15}
 .price-offers li span{display:block;opacity:.75;font-size:16px;margin-top:3px}
+
+/* v6 */
+.trust li{white-space:nowrap}
+.join{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;align-items:start}
+@media (max-width:900px){.join{grid-template-columns:minmax(0,1fr)!important}}
+.side{display:flex;flex-direction:column;gap:clamp(14px,1.6vw,20px)}
+.side .callback{margin-top:0;grid-template-columns:minmax(0,1fr)!important;gap:16px}
+.side .callback .row3{grid-template-columns:minmax(0,1fr)}
+.side .callback .btn{width:100%}
+.side-stud{padding:clamp(22px,3vw,32px);background:var(--btn2-bg);color:var(--btn2-ink);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.side-stud h3{font-size:clamp(24px,2.4vw,30px);letter-spacing:-.035em}
+.side-stud p{opacity:.8;font-size:16px}
+.side-stud .btn{color:inherit;border-color:color-mix(in srgb,currentColor 30%,transparent);margin-top:4px}
+.price-main b{font-size:clamp(40px,10.5vw,92px);white-space:normal}
+.price-main b small{white-space:nowrap}
+.price-offers li b{font-size:clamp(18px,1rem + .5vw,23px)}
+.price-offers li{align-items:center}
 .sent form{display:none}
 .sent .done{display:block}
 .fail{color:var(--err);font-weight:600;font-size:14px;margin-top:10px;line-height:1.45}
@@ -391,6 +408,28 @@ header.scrolled .nav{height:58px}
   .btn,.svc{transition:none}
 }
 
+/* v6 hero: card stack più ricco */
+.stage{padding:44px 0 40px}
+.stage::before{inset:0 0 0 28px;border-radius:44px;opacity:1;background:radial-gradient(120% 90% at 85% 0%,color-mix(in srgb,var(--brand) 32%,transparent) 0,transparent 60%),color-mix(in srgb,var(--brand) 10%,transparent)}
+.stage::after{display:none}
+.stack{gap:16px;padding-right:0;max-width:430px;margin-left:auto}
+.stack .card{border:1px solid color-mix(in srgb,var(--ink) 7%,transparent)}
+.ping,.next{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:20px;width:max-content;max-width:100%}
+.ping{margin-left:-10px;transform:rotate(-1.5deg)}
+.next{margin-left:auto;margin-right:-10px;transform:rotate(1.5deg)}
+.ping b,.next b{display:block;font-size:15px;line-height:1.25}
+.ping small,.next small{display:block;color:var(--muted);font-size:13px}
+.ping .dot{width:34px;height:34px;border-radius:50%;background:#1F9D55;display:grid;place-items:center;flex:none}
+.ping .dot svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ping .now{margin-left:8px;font-size:12px;color:var(--muted);align-self:flex-start}
+.next .cal{width:40px;border-radius:10px;overflow:hidden;text-align:center;flex:none;background:var(--soft)}
+.next .cal small{display:block;background:var(--brand);color:var(--on-brand);font-size:10px;font-weight:800;letter-spacing:.08em;padding:2px 0;margin:0}
+.next .cal b{display:block;font-family:var(--head);font-size:17px;padding:3px 0 4px}
+.story{margin-left:28px}
+@media (max-width:900px){.stack{max-width:none;margin:0}.stage{margin:0 -4px}.ping{margin-left:12px}.next{margin-right:6px}}
+@media (prefers-reduced-motion:no-preference){.ping{animation:pingIn .7s .5s cubic-bezier(.16,1,.3,1) both}.next{animation:pingIn .7s .8s cubic-bezier(.16,1,.3,1) both}}
+@keyframes pingIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+
 main{overflow-x:clip}
 .about-hero{padding-top:clamp(56px,9vw,128px);padding-bottom:clamp(40px,6vw,80px)}
 .about-hero h1{font-size:clamp(48px,9vw,128px);letter-spacing:-.055em;line-height:.93;margin-top:16px}
@@ -469,7 +508,8 @@ img.ph{height:auto;display:block}
 .turn .turn-b{color:#FFFBF7;margin-top:.12em}
 .js .turn-b.rv{transform:translateY(28px)}
 .page-hero{padding-top:clamp(56px,9vw,128px);padding-bottom:clamp(40px,6vw,80px)}
-.page-hero h1{font-size:clamp(46px,8.4vw,120px);letter-spacing:-.055em;line-height:.93;margin-top:16px}
+.page-hero h1{font-size:clamp(40px,8.4vw,120px);letter-spacing:-.05em;line-height:1;margin-top:16px}
+.page-hero h1 .ln>span{line-height:1}
 .page-hero h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 .page-hero h1 .ln>span{display:inline-block;transform:translateY(110%);animation:lineUp 1.1s cubic-bezier(.16,1,.3,1) forwards}
 .page-hero h1 .ln:nth-child(2)>span{animation-delay:.14s;color:var(--brand-big)}
@@ -517,6 +557,18 @@ img.ph{height:auto;display:block}
 .sources{font-size:13px;color:var(--muted);line-height:1.6;margin-top:clamp(28px,3vw,40px);max-width:60em}
 .sources a{color:inherit}
 @media (prefers-reduced-motion: reduce){.page-hero h1 .ln>span{animation:none;transform:none}}
+.biz-contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:900px){.biz-contact{grid-template-columns:minmax(0,1fr)}}
+.biz-list{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:12px}
+.biz-list li{display:flex;gap:12px;align-items:center;font-weight:700;font-size:17px}
+.biz-list li::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%2317120E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.dl{font-weight:700;color:var(--brand-text);text-decoration:none}
+.dl:hover{text-decoration:underline;text-underline-offset:4px}
+.biz-done{font-size:18px;line-height:1.5;padding:8px 0}
+.biz-done b{display:block;font-family:var(--head);font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+.check a{color:inherit}
+.page-hero h1,main h2{word-spacing:.05em}
+
 </style>
 </head>
 <body>
@@ -526,12 +578,12 @@ img.ph{height:auto;display:block}
     <a class="logo" href="/" aria-label="Needo, vai alla home">needo<i aria-hidden="true"></i></a>
     <nav class="links" aria-label="Menu principale">
       <a class="hide-sm" href="/#famiglie">Famiglie</a>
-      <a class="hide-sm" href="/#studenti">Studenti</a>
+      <a class="hide-sm" href="/studenti.html">Studenti</a>
       <a class="hide-sm cur" aria-current="page" href="/aziende.html">Aziende</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu"><span></span><span></span><span></span></button>
       <div class="menu" id="menu" hidden>
         <a class="only-sm" href="/#famiglie">Famiglie</a>
-        <a class="only-sm" href="/#studenti">Studenti</a>
+        <a class="only-sm" href="/studenti.html">Studenti</a>
         <a class="only-sm" href="/aziende.html">Aziende</a>
         <a href="/chi-siamo.html">Chi siamo</a>
         <a href="/unisciti.html">Unisciti a noi</a>
@@ -546,8 +598,8 @@ img.ph{height:auto;display:block}
     <h1><span class="ln"><span>Supporta</span></span><span class="ln"><span>chi ti supporta.</span></span></h1>
     <p class="about-lead rv d2">Needo offre un servizio unico per i programmi di welfare aziendale: <b>assistenza di qualità ai familiari anziani</b> dei tuoi dipendenti, per il benessere loro e delle loro famiglie.</p>
     <div class="ctas rv d3">
-      <a class="btn btn-primary" href="mailto:team@getneedo.com?subject=Needo%20per%20la%20mia%20azienda">Parliamone <span class="arr" aria-hidden="true">→</span></a>
-      <a class="btn btn-ghost" href="#come-funziona">Come funziona</a>
+      <a class="btn btn-primary" href="#contatti">Parliamone <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="/needo-aziende.pdf" download>Scarica la presentazione (PDF)</a>
     </div>
   </section>
 
@@ -599,16 +651,48 @@ img.ph{height:auto;display:block}
     </div>
   </section>
 
-  <section class="wrap cta">
-    <h2 class="rv">Parliamone.</h2>
-    <a class="btn btn-primary rv d1" href="mailto:team@getneedo.com?subject=Needo%20per%20la%20mia%20azienda">Scrivici <span class="arr" aria-hidden="true">→</span></a>
-    <p class="mail rv d2">Ti mostriamo come Needo può entrare nel vostro piano welfare: <a href="mailto:team@getneedo.com?subject=Needo%20per%20la%20mia%20azienda">team@getneedo.com</a></p>
+  <section class="sec" id="contatti" style="padding-top:clamp(16px,3vw,40px)">
+    <div class="wrap biz-contact">
+      <div class="biz-left">
+        <div class="eyebrow rv">Per le prime aziende</div>
+        <h2 class="rv d1">Provalo gratis per un mese.</h2>
+        <p class="intro2 rv d2">Le prime aziende partner provano Needo per un mese senza costi e senza impegno, con un report finale sull'impatto per i dipendenti.</p>
+        <ul class="biz-list rv d3">
+          <li>Attivazione in una settimana</li>
+          <li>Nessun lavoro in più per l'HR</li>
+          <li>Report anonimi sull'uso e sulla soddisfazione</li>
+        </ul>
+        <p class="rv d3" style="margin-top:22px"><a class="dl" href="/needo-aziende.pdf" download>Scarica la presentazione in PDF →</a></p>
+      </div>
+      <div class="card form rv d1">
+        <h3>Parliamone.</h3>
+        <p class="intro">Lasciaci i tuoi contatti: ti scriviamo entro due giorni lavorativi.</p>
+        <form class="biz-form" novalidate>
+          <div class="row2">
+            <div class="field"><label for="b-nome">Nome e cognome</label><input id="b-nome" name="nome" maxlength="80" autocomplete="name" required></div>
+            <div class="field"><label for="b-azienda">Azienda</label><input id="b-azienda" name="azienda" maxlength="120" autocomplete="organization" required></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="b-email">Email di lavoro</label><input id="b-email" name="email" type="email" maxlength="254" autocomplete="email" autocapitalize="off" spellcheck="false" required></div>
+            <div class="field"><label for="b-tel">Telefono <span class="opt">(facoltativo)</span></label><input id="b-tel" name="telefono" type="tel" maxlength="25" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label for="b-dip">Numero di dipendenti</label>
+            <select id="b-dip" name="dipendenti" required><option value="">Scegli…</option><option>Meno di 50</option><option>50–249</option><option>250–999</option><option>1000 o più</option></select></div>
+          <div class="field"><label for="b-msg">Messaggio <span class="opt">(facoltativo)</span></label><input id="b-msg" name="messaggio" maxlength="500" placeholder="Es. abbiamo già un piano welfare con…"></div>
+          <label class="check"><input type="checkbox" name="privacy" value="si-v1" required><span>Ho letto l'<a href="/#privacy">informativa privacy</a> e acconsento a essere ricontattato.</span></label>
+          <div class="hp" aria-hidden="true"><label>Lascia vuoto<input name="hp" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn btn-primary" type="submit">Invia la richiesta <span class="arr" aria-hidden="true">→</span></button>
+          <p class="fail" role="alert" hidden></p>
+        </form>
+        <div class="biz-done" role="status" hidden><b>Grazie, abbiamo ricevuto la richiesta.</b> Ti scriviamo entro due giorni lavorativi. Per qualsiasi cosa: team@getneedo.com</div>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <span><a href="/">Home</a> · <a href="/aziende.html">Aziende</a> · <a href="/chi-siamo.html">Chi siamo</a> · <a href="/unisciti.html">Unisciti a noi</a></span>
+    <span><a href="/">Home</a> · <a href="/studenti.html">Studenti</a> · <a href="/aziende.html">Aziende</a> · <a href="/chi-siamo.html">Chi siamo</a> · <a href="/unisciti.html">Unisciti a noi</a></span>
     <span class="contact"><a href="mailto:team@getneedo.com">team@getneedo.com</a></span>
     <span>A modo tuo · Roma · © 2026 · <a href="/#privacy">Privacy</a></span>
   </div>
@@ -663,6 +747,30 @@ img.ph{height:auto;display:block}
   document.addEventListener('click',function(e){ if(!m.hidden && !m.contains(e.target)) set(false); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !m.hidden){ set(false); btn.focus(); } });
   m.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+})();
+
+/* modulo aziende */
+(function(){
+  var f=document.querySelector('.biz-form'); if(!f) return;
+  var EP='https://script.google.com/macros/s/AKfycbye9rQoqGWRP3BPYZRj3VZN_XyHXS0YVdjomnLB65H5kylvuJxhjyEw3udEk2DSolMC/exec';
+  var done=document.querySelector('.biz-done'), fail=f.querySelector('.fail'), btn=f.querySelector('button[type=submit]');
+  var rif; try{ rif=crypto.randomUUID(); }catch(e){ rif='b-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+  var MSG={nome:'Scrivi il tuo nome.',azienda:"Scrivi il nome dell'azienda.",email:'Scrivi la tua email di lavoro.',dipendenti:'Scegli un’opzione.',privacy:'Per continuare spunta questa casella.'};
+  Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ ['input','change'].forEach(function(ev){ c.addEventListener(ev,function(){ c.setCustomValidity(''); }); }); });
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); fail.hidden=true;
+    var first=null;
+    Array.prototype.forEach.call(f.querySelectorAll('input,select'),function(c){ c.setCustomValidity(''); if(!first && !c.closest('.hp') && !c.checkValidity()) first=c; });
+    var em=f.querySelector('#b-email');
+    if(!first && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())){ em.setCustomValidity('Controlla l’email: sembra incompleta.'); first=em; }
+    if(first){ if(!first.validationMessage || first.validity.valueMissing) first.setCustomValidity(MSG[first.name]||'Compila questo campo.'); first.reportValidity(); return; }
+    var p=new URLSearchParams(new FormData(f)); p.append('action','azienda'); p.append('rif',rif);
+    btn.disabled=true;
+    function send(n){ return fetch(EP,{method:'POST',body:p}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(err){ if(n>0) return new Promise(function(ok){setTimeout(ok,1200);}).then(function(){return send(n-1);}); throw err; }); }
+    send(1).then(function(res){ if(!res||!res.ok) throw new Error('server'); f.hidden=true; done.hidden=false; })
+      .catch(function(){ fail.textContent='Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a team@getneedo.com.'; fail.hidden=false; })
+      .then(function(){ btn.disabled=false; });
+  });
 })();
 </script>
 </body>

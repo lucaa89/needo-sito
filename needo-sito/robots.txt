@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://getneedo.com/sitemap.xml

@@ -430,6 +430,44 @@ header.scrolled .nav{height:58px}
 @media (prefers-reduced-motion:no-preference){.ping{animation:pingIn .7s .5s cubic-bezier(.16,1,.3,1) both}.next{animation:pingIn .7s .8s cubic-bezier(.16,1,.3,1) both}}
 @keyframes pingIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
 
+/* v7 */
+.step{grid-template-columns:clamp(76px,9.4vw,140px) minmax(0,1fr)}
+.step .num{font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  .step{display:block}
+  .step .num{font-size:56px;margin-bottom:10px}
+}
+.price-main{container-type:inline-size}
+.price-main b{white-space:nowrap!important;font-size:clamp(34px,var(--pfs,16cqi),92px)!important}
+.price-main .where{margin-top:26px}
+.price-offers ul{gap:30px;margin-top:26px}
+.price-offers li{padding-bottom:30px;border-bottom:1px solid color-mix(in srgb,var(--btn2-ink) 10%,transparent);margin-bottom:-30px}
+.price-offers li:last-child{border-bottom:0;padding-bottom:0;margin-bottom:0}
+.price-offers li svg{width:30px;height:30px;padding:5px}
+.price-main{position:relative;overflow:hidden}
+.price-main::after{content:"";position:absolute;width:260px;height:260px;right:-90px;bottom:-110px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 38%,transparent),transparent 70%);pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.price-main::after{animation:glow 7s ease-in-out infinite alternate}}
+@keyframes glow{from{transform:translate(0,0) scale(1)}to{transform:translate(-40px,-30px) scale(1.25)}}
+/* nastro di servizi */
+.marq{overflow:hidden;padding:clamp(18px,2.4vw,28px) 0;margin:0 0 clamp(18px,2.4vw,28px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq-t{display:flex;gap:12px;width:max-content}
+.marq span{flex:none;font-family:var(--head);font-weight:700;font-size:clamp(16px,1rem + .35vw,21px);letter-spacing:-.02em;padding:10px 20px;border-radius:999px;background:var(--surface);box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 8%,transparent),0 6px 18px -10px color-mix(in srgb,var(--ink) 30%,transparent);border:1px solid color-mix(in srgb,var(--ink) 7%,transparent)}
+.marq span:nth-child(3n+1){background:var(--brand);color:var(--on-brand);border-color:transparent}
+@media (prefers-reduced-motion:no-preference){.marq-t{animation:marq 38s linear infinite}.marq:hover .marq-t{animation-play-state:paused}}
+@keyframes marq{to{transform:translateX(calc(-50% - 6px))}}
+/* micro-interazioni più fluide */
+.card{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .svc:hover,.offer:hover,.card.side-stud:hover{transform:translateY(-6px)!important;box-shadow:0 24px 48px -24px color-mix(in srgb,var(--ink) 35%,transparent)}
+  .btn{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,background .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0) scale(.98)}
+  details summary{transition:color .2s}
+  details summary:hover{color:var(--brand-text)}
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 main{overflow-x:clip}
 .about-hero{padding-top:clamp(56px,9vw,128px);padding-bottom:clamp(40px,6vw,80px)}
 .about-hero h1{font-size:clamp(48px,9vw,128px);letter-spacing:-.055em;line-height:.93;margin-top:16px}
@@ -535,8 +573,8 @@ img.ph{height:auto;display:block}
 .duo p{font-size:clamp(18px,1.1rem + .3vw,22px);line-height:1.4;margin-top:10px}
 .duo .src{font-size:12px;opacity:.7;margin-top:8px}
 .steps3{margin-top:clamp(28px,4vw,48px);border-top:1.5px solid var(--ink)}
-.steps3 .st{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(18px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-bottom:1.5px solid var(--line)}
-.steps3 .num{font-family:var(--head);font-weight:800;font-size:clamp(44px,5vw,72px);letter-spacing:-.05em;color:var(--brand-big);line-height:1;grid-row:span 2}
+.steps3 .st{display:grid;grid-template-columns:clamp(60px,6.8vw,100px) minmax(0,1fr);column-gap:clamp(18px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-bottom:1.5px solid var(--line)}
+.steps3 .num{font-variant-numeric:tabular-nums;font-family:var(--head);font-weight:800;font-size:clamp(44px,5vw,72px);letter-spacing:-.05em;color:var(--brand-big);line-height:1;grid-row:span 2}
 .steps3 h3{font-size:clamp(22px,2.2vw,32px);letter-spacing:-.035em;margin-top:4px}
 .steps3 p{color:var(--muted);font-size:clamp(16px,.95rem + .2vw,18px);line-height:1.5;margin-top:6px;max-width:40em}
 .values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,20px);margin-top:clamp(28px,4vw,48px)}

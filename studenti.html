@@ -307,7 +307,7 @@ section{padding:clamp(64px,10vw,128px) 0}
 .stu-hero h1{font-size:clamp(46px,8.4vw,120px);line-height:.94;letter-spacing:-.05em;margin-top:16px}
 .stu-hero h1 .o{color:var(--brand-big)}
 .stu-hero h1 .ln{display:block;padding-bottom:.06em}
-.stu-hero h1{word-spacing:.05em;line-height:1}
+.stu-hero h1{word-spacing:.05em;line-height:1;letter-spacing:-.03em}
 @media (max-width:600px){.stu-hero h1{font-size:clamp(40px,11.5vw,64px)}}
 .stu-perks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,20px)}
 @media (max-width:1000px){.stu-perks{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -452,6 +452,45 @@ header.scrolled .nav{height:58px}
 @media (max-width:900px){.stack{max-width:none;margin:0}.stage{margin:0 -4px}.ping{margin-left:12px}.next{margin-right:6px}}
 @media (prefers-reduced-motion:no-preference){.ping{animation:pingIn .7s .5s cubic-bezier(.16,1,.3,1) both}.next{animation:pingIn .7s .8s cubic-bezier(.16,1,.3,1) both}}
 @keyframes pingIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+
+/* v7 */
+#come .step,.step{grid-template-columns:clamp(76px,9.4vw,140px) minmax(0,1fr)}
+.step .num{font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  #come .step,.step{display:block}
+  #come .step .num,.step .num{font-size:56px;margin-bottom:12px}
+}
+.price-main{container-type:inline-size}
+.price-main b{white-space:nowrap!important;font-size:clamp(34px,var(--pfs,16cqi),92px)!important}
+.price-main .where{margin-top:26px}
+.price-offers ul{gap:0;margin-top:14px}
+.price-offers li{padding:20px 0;border-top:1px solid color-mix(in srgb,var(--btn2-ink) 10%,transparent)}
+.price-offers li:first-child{border-top:0}
+.price-offers li:last-child{padding-bottom:0}
+.price-offers li svg{width:30px;height:30px;padding:5px}
+.price-main{position:relative;overflow:hidden}
+.price-main::after{content:"";position:absolute;width:260px;height:260px;right:-90px;bottom:-110px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 38%,transparent),transparent 70%);pointer-events:none}
+@media (prefers-reduced-motion:no-preference){.price-main::after{animation:glow 7s ease-in-out infinite alternate}}
+@keyframes glow{from{transform:translate(0,0) scale(1)}to{transform:translate(-40px,-30px) scale(1.25)}}
+/* nastro di servizi */
+.marq{overflow:hidden;padding:clamp(18px,2.4vw,28px) 0;margin:0 0 clamp(18px,2.4vw,28px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq-t{display:flex;gap:12px;width:max-content}
+.marq span{flex:none;font-family:var(--head);font-weight:700;font-size:clamp(16px,1rem + .35vw,21px);letter-spacing:-.02em;padding:10px 20px;border-radius:999px;background:var(--surface);box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 8%,transparent),0 6px 18px -10px color-mix(in srgb,var(--ink) 30%,transparent);border:1px solid color-mix(in srgb,var(--ink) 7%,transparent)}
+.marq span:nth-child(3n+1){background:var(--brand);color:var(--on-brand);border-color:transparent}
+@media (prefers-reduced-motion:no-preference){.marq-t{animation:marq 38s linear infinite}.marq:hover .marq-t{animation-play-state:paused}}
+@keyframes marq{to{transform:translateX(calc(-50% - 6px))}}
+/* micro-interazioni più fluide */
+.card{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .svc:hover,.offer:hover,.card.side-stud:hover{transform:translateY(-6px)!important;box-shadow:0 24px 48px -24px color-mix(in srgb,var(--ink) 35%,transparent)}
+  .btn{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,background .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0) scale(.98)}
+  details summary{transition:color .2s}
+  details summary:hover{color:var(--brand-text)}
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -504,8 +543,8 @@ header.scrolled .nav{height:58px}
       </div>
       <div class="steps">
         <div class="step rv"><div class="num">01</div><h3>Candidati</h3><p>Con la tua email universitaria, in due minuti.</p></div>
-        <div class="step rv d1"><div class="num">02</div><h3>Conosciamoci</h3><p>Un breve colloquio e una formazione prima della prima visita.</p></div>
-        <div class="step rv d2"><div class="num">03</div><h3>Scegli le visite</h3><p>Dall'app accetti quelle che vuoi e vieni pagato ogni settimana.</p></div>
+        <div class="step rv d1"><div class="num">02</div><h3>Conosciamoci</h3><p>Un breve colloquio e un video prima della prima visita.</p></div>
+        <div class="step rv d2"><div class="num">03</div><h3>Scegli le visite</h3><p>Dall'app accetti quelle che vuoi.</p></div>
       </div>
     </div>
   </section>
@@ -514,7 +553,7 @@ header.scrolled .nav{height:58px}
     <div class="wrap stu-join">
       <div class="card form form-dark rv" id="studenti">
         <h3>Candidati</h3>
-        <p class="intro">Ti serve solo l'email universitaria. Ti scriviamo per un breve colloquio.</p>
+        <p class="intro">Serve solo l'email universitaria. Ti contattiamo per un breve colloquio e ti rispondiamo in giornata.</p>
         <form data-kind="studente" novalidate>
           <div class="row2">
             <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>

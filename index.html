@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-QHNyvWXRc6ZRGN6/4P1w8562lsa6UaY+77UjCeIDh50=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-89Sa1WTDD0BAsH2xBGpWfJ23Z5HIQrXnbnSzWAUU+JI=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>needo · Compagnia e aiuto per anziani a Roma</title>
@@ -1207,6 +1207,8 @@ document.querySelectorAll('form[data-kind]').forEach(function(f){
 (function(){
   var q=new URLSearchParams(location.search), token=q.get('verifica');
   if(!token) return;
+  /* togli subito il codice dalla barra degli indirizzi (cronologia, screenshot, statistiche) */
+  try{ q.delete('verifica'); history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash); }catch(e){}
   var dlg=document.getElementById('verify'), ic=dlg.querySelector('.ic'), h=dlg.querySelector('h2'), msg=dlg.querySelector('.vmsg'), btn=dlg.querySelector('.vbtn');
   var OK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>', NO='<svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg>';
   function open(){ if(dlg.showModal){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }

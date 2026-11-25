@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-SiDLjrQ24KJNxxf1iMrQNXnOCwX+NOUoTh8+BDdWLig='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-A0N7VX5VAueAoIEzDw+0vf4OlzHTymz+NFg4Rq577Bo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chi siamo · needo</title>
@@ -21,13 +21,13 @@
 <meta property="og:locale" content="it_IT">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "AboutPage", "url": "https://getneedo.com/chi-siamo.html", "name": "Chi siamo · needo", "mainEntity": {"@type": "Organization", "name": "Needo", "url": "https://getneedo.com/", "email": "team@getneedo.com", "founder": [{"@type": "Person", "name": "Luca Gragnoli", "jobTitle": "Co-founder, CEO"}, {"@type": "Person", "name": "Giovanni Paolo Peccerillo", "jobTitle": "Co-founder, CFO"}, {"@type": "Person", "name": "Claudio De Angelis", "jobTitle": "Co-founder, COO"}, {"@type": "Person", "name": "Flavio Lischetti", "jobTitle": "Co-founder, Marketing"}]}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="preload" href="/fonts/jakarta-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
   --bg:#FFFBF7; --surface:#FFFFFF; --soft:#FFF0E5; --ink:#17120E; --muted:#5F554D; --line:#EFE4D9;
-  --brand:#FF6A1A; --on-brand:#17120E; --brand-text:#C84C12; --brand-big:#E8590C;
+  --brand:#FF6A1A; --on-brand:#17120E; --brand-text:#B8460F; --brand-big:#E8590C;
   --why-bg:#FF6A1A; --why-ink:#17120E; --err:#B42318;
   --btn2-bg:#17120E; --btn2-ink:#FFFBF7; --err-dark:#FFB4A6;
   --shadow:0 1px 2px rgba(40,20,10,.05),0 16px 40px rgba(40,20,10,.08);
@@ -431,19 +431,22 @@ header.scrolled .nav{height:58px}
 @media (prefers-reduced-motion:no-preference){.ping{animation:pingIn .7s .5s cubic-bezier(.16,1,.3,1) both}.next{animation:pingIn .7s .8s cubic-bezier(.16,1,.3,1) both}}
 @keyframes pingIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
 
+
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 /* v7 */
-.step{grid-template-columns:clamp(76px,9.4vw,140px) minmax(0,1fr)}
+#come .step,.step{grid-template-columns:clamp(76px,9.4vw,140px) minmax(0,1fr)}
 .step .num{font-variant-numeric:tabular-nums}
 @media (max-width:640px){
-  .step{display:block}
-  .step .num{font-size:56px;margin-bottom:10px}
+  #come .step,.step{display:block}
+  #come .step .num,.step .num{font-size:56px;margin-bottom:12px}
 }
 .price-main{container-type:inline-size}
 .price-main b{white-space:nowrap!important;font-size:clamp(34px,var(--pfs,16cqi),92px)!important}
 .price-main .where{margin-top:26px}
-.price-offers ul{gap:30px;margin-top:26px}
-.price-offers li{padding-bottom:30px;border-bottom:1px solid color-mix(in srgb,var(--btn2-ink) 10%,transparent);margin-bottom:-30px}
-.price-offers li:last-child{border-bottom:0;padding-bottom:0;margin-bottom:0}
+.price-offers ul{gap:0;margin-top:14px}
+.price-offers li{padding:20px 0;border-top:1px solid color-mix(in srgb,var(--btn2-ink) 10%,transparent)}
+.price-offers li:first-child{border-top:0}
+.price-offers li:last-child{padding-bottom:0}
 .price-offers li svg{width:30px;height:30px;padding:5px}
 .price-main{position:relative;overflow:hidden}
 .price-main::after{content:"";position:absolute;width:260px;height:260px;right:-90px;bottom:-110px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 38%,transparent),transparent 70%);pointer-events:none}
@@ -454,7 +457,7 @@ header.scrolled .nav{height:58px}
 .marq-t{display:flex;gap:12px;width:max-content}
 .marq span{flex:none;font-family:var(--head);font-weight:700;font-size:clamp(16px,1rem + .35vw,21px);letter-spacing:-.02em;padding:10px 20px;border-radius:999px;background:var(--surface);box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 8%,transparent),0 6px 18px -10px color-mix(in srgb,var(--ink) 30%,transparent);border:1px solid color-mix(in srgb,var(--ink) 7%,transparent)}
 .marq span:nth-child(3n+1){background:var(--brand);color:var(--on-brand);border-color:transparent}
-@media (prefers-reduced-motion:no-preference){.marq-t{animation:marq 38s linear infinite}.marq:hover .marq-t{animation-play-state:paused}}
+@media (prefers-reduced-motion:no-preference){.marq-t{animation:marq 38s linear infinite}}
 @keyframes marq{to{transform:translateX(calc(-50% - 6px))}}
 /* micro-interazioni più fluide */
 .card{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}
@@ -567,6 +570,8 @@ img.ph{height:auto;display:block}
 .stat .src{font-size:12px;color:var(--muted);opacity:.85;margin-top:auto;padding-top:6px}
 .dark{background:var(--btn2-bg);color:var(--btn2-ink);margin:0 clamp(8px,1.6vw,24px);border-radius:clamp(28px,4vw,56px)}
 .dark .eyebrow{color:var(--brand)}
+@media (prefers-color-scheme:dark){.dark .eyebrow,.dark .duo .big,.dark .intro2 b.hl{color:#B8460F}}
+.hl{color:var(--brand)}
 .dark .intro2{color:inherit;opacity:.78}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px);margin-top:clamp(28px,4vw,48px)}
 @media (max-width:760px){.duo{grid-template-columns:minmax(0,1fr)}}
@@ -611,6 +616,7 @@ img.ph{height:auto;display:block}
 </style>
 </head>
 <body>
+<noscript><p style="margin:0;padding:12px 20px;background:#17120E;color:#FFFBF7;font:600 15px/1.4 system-ui,sans-serif;text-align:center">Alcune funzioni del sito richiedono JavaScript. Puoi scriverci a <a href="mailto:team@getneedo.com" style="color:#FF8A4C">team@getneedo.com</a>.</p></noscript>
 <header id="hdr">
   <div class="progress" id="progress" aria-hidden="true"></div>
   <div class="wrap nav">
@@ -653,7 +659,8 @@ img.ph{height:auto;display:block}
 
   <section class="team-sec">
     <div class="wrap">
-      <div class="eyebrow rv">Il team</div>
+      <h2 class="sr-only">Il team</h2>
+      <div class="eyebrow rv" aria-hidden="true">Il team</div>
       <div class="people">
         <article class="person rv">
           <img class="ph" src="/team/luca-gragnoli.jpg" alt="Luca Gragnoli" width="300" height="300" loading="lazy">
@@ -716,8 +723,8 @@ img.ph{height:auto;display:block}
   var hdr=document.getElementById('hdr'), bar=document.getElementById('progress');
   var blocks=[].slice.call(document.querySelectorAll('.words')).map(function(el){
     var txt=el.textContent.trim().replace(/\s+/g,' '), html=el.innerHTML, words=[];
-    el.setAttribute('aria-label',txt);
     var tmp=document.createElement('div'); tmp.innerHTML=html; el.textContent='';
+    var sr=document.createElement('span'); sr.className='sr-only'; sr.textContent=txt; el.appendChild(sr);
     [].slice.call(tmp.childNodes).forEach(function(n){
       var strong=n.nodeType===1, t=(n.textContent||'');
       t.split(/(\s+)/).forEach(function(w){

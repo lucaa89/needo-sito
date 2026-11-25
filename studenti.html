@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-1uE8mJzZtaHPRlHH+ZPMBbR4RQOgaPqorQ5+zZhisFM='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-EyrHLwAac7LtTmtmpKI1BTxJsp6cJ/66yPje83Mrcls='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com https://dns.google; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lavora con Needo · Studenti</title>
@@ -23,13 +23,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Needo", "url": "https://getneedo.com/", "logo": "https://getneedo.com/icon-512.png", "email": "team@getneedo.com", "areaServed": {"@type": "City", "name": "Roma"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Compagnia e aiuto per anziani a domicilio", "serviceType": "Compagnia e aiuto non sanitario per anziani", "provider": {"@type": "Organization", "name": "Needo", "url": "https://getneedo.com/"}, "areaServed": {"@type": "City", "name": "Roma"}, "availableLanguage": "it", "offers": {"@type": "Offer", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 16, "priceCurrency": "EUR", "unitText": "ora", "valueAddedTaxIncluded": true}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Chi può candidarsi?", "acceptedAnswer": {"@type": "Answer", "text": "Studenti universitari maggiorenni, di qualsiasi corso e ateneo. Ti candidi con la tua email universitaria."}}, {"@type": "Question", "name": "Quanto guadagno e quando vengo pagato?", "acceptedAnswer": {"@type": "Answer", "text": "Da 9€ l'ora, in base al servizio. Paghiamo ogni settimana le visite completate."}}, {"@type": "Question", "name": "Devo avere esperienza?", "acceptedAnswer": {"@type": "Answer", "text": "No. Servono gentilezza, pazienza e affidabilità: al resto pensiamo noi con un colloquio e una breve formazione."}}, {"@type": "Question", "name": "Quanto tempo devo dedicare?", "acceptedAnswer": {"@type": "Answer", "text": "Quanto vuoi tu. Non ci sono turni fissi né un minimo di ore: scegli le visite che ti interessano dall'app."}}, {"@type": "Question", "name": "Che tipo di lavoro è?", "acceptedAnswer": {"@type": "Answer", "text": "Un lavoro occasionale: aiuti persone anziane con commissioni, accompagnamenti, tecnologia e compagnia. Niente prestazioni sanitarie."}}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="preload" href="/fonts/jakarta-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
   --bg:#FFFBF7; --surface:#FFFFFF; --soft:#FFF0E5; --ink:#17120E; --muted:#5F554D; --line:#EFE4D9;
-  --brand:#FF6A1A; --on-brand:#17120E; --brand-text:#C84C12; --brand-big:#E8590C;
+  --brand:#FF6A1A; --on-brand:#17120E; --brand-text:#B8460F; --brand-big:#E8590C;
   --why-bg:#FF6A1A; --why-ink:#17120E; --err:#B42318;
   --btn2-bg:#17120E; --btn2-ink:#FFFBF7; --err-dark:#FFB4A6;
   --shadow:0 1px 2px rgba(40,20,10,.05),0 16px 40px rgba(40,20,10,.08);
@@ -453,6 +453,8 @@ header.scrolled .nav{height:58px}
 @media (prefers-reduced-motion:no-preference){.ping{animation:pingIn .7s .5s cubic-bezier(.16,1,.3,1) both}.next{animation:pingIn .7s .8s cubic-bezier(.16,1,.3,1) both}}
 @keyframes pingIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
 
+
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 /* v7 */
 #come .step,.step{grid-template-columns:clamp(76px,9.4vw,140px) minmax(0,1fr)}
 .step .num{font-variant-numeric:tabular-nums}
@@ -494,6 +496,7 @@ html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
+<noscript><p style="margin:0;padding:12px 20px;background:#17120E;color:#FFFBF7;font:600 15px/1.4 system-ui,sans-serif;text-align:center">Per usare i moduli serve JavaScript. Puoi scriverci a <a href="mailto:team@getneedo.com" style="color:#FF8A4C">team@getneedo.com</a>.</p></noscript>
 <header id="hdr">
   <div class="progress" id="progress" aria-hidden="true"></div>
   <div class="wrap nav">
@@ -526,6 +529,7 @@ html{scroll-behavior:smooth}
 
   <section class="whatbg">
     <div class="wrap">
+      <h2 class="sr-only">Perché candidarti</h2>
       <div class="stu-perks">
         <div class="card perk rv"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h3>Da 9€/ora</h3><p>Un compenso chiaro per ogni ora di visita.</p></div>
         <div class="card perk rv d1"><span class="pk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><h3>Senza turni fissi</h3><p>Accetti solo le visite che vuoi, quando sei libero.</p></div>
@@ -634,7 +638,7 @@ html{scroll-behavior:smooth}
     </ul>
     <p>Dopo l'iscrizione ti mandiamo un'email per confermare l'indirizzo; se non la confermi, ti mandiamo al massimo due promemoria. Non vendiamo i tuoi dati e non li usiamo per pubblicità di terzi.</p>
     <h3>Dove sono conservati e per quanto</h3>
-    <p>I dati sono conservati su servizi di Google (Google Sheets e Gmail), che agisce come fornitore. Google può trattare dati anche fuori dall'Unione Europea, con le garanzie previste dal GDPR (clausole contrattuali standard). Conserviamo i dati per al massimo 12 mesi, o meno se ritiri il consenso.</p>
+    <p>I dati sono conservati su servizi di Google (Google Sheets e Gmail), che agisce come fornitore. Google può trattare dati anche fuori dall'Unione Europea, con le garanzie previste dal GDPR (clausole contrattuali standard). Per controllare che l'email esista, il tuo browser chiede al servizio DNS pubblico di Google solo il dominio dell'indirizzo (per esempio “gmail.com”), mai l'indirizzo completo. Il sito non usa cookie né strumenti di tracciamento e i caratteri tipografici sono ospitati sul nostro server. Conserviamo i dati per al massimo 12 mesi, o meno se ritiri il consenso.</p>
     <h3>I tuoi diritti</h3>
     <p>Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso o riceverne una copia, e ritirare il consenso, scrivendo a <a href="mailto:privacy@getneedo.com">privacy@getneedo.com</a>. Puoi anche presentare un reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
   </div>
@@ -899,8 +903,12 @@ function domainError(input){
   document.getElementById(input.id+'-err').querySelector('b').textContent='@'+dom;
 }
 var PENDING_KEY='needo-pending';
-function readPending(){ try{ return JSON.parse(localStorage.getItem(PENDING_KEY)||'[]'); }catch(e){ return []; } }
-function writePending(list){ try{ if(list.length) localStorage.setItem(PENDING_KEY,JSON.stringify(list)); else localStorage.removeItem(PENDING_KEY); }catch(e){} }
+function readPending(){ try{
+  var t=+localStorage.getItem(PENDING_KEY+'-t')||0;
+  if(t && Date.now()-t>14*864e5){ localStorage.removeItem(PENDING_KEY); localStorage.removeItem(PENDING_KEY+'-t'); return []; } /* dati in sospeso: mai più di 14 giorni sul dispositivo */
+  var l=JSON.parse(localStorage.getItem(PENDING_KEY)||'[]'); return Array.isArray(l)?l.filter(function(x){ return typeof x==='string'; }):[];
+}catch(e){ return []; } }
+function writePending(list){ try{ if(list.length){ localStorage.setItem(PENDING_KEY,JSON.stringify(list)); if(!localStorage.getItem(PENDING_KEY+'-t')) localStorage.setItem(PENDING_KEY+'-t',String(Date.now())); } else { localStorage.removeItem(PENDING_KEY); localStorage.removeItem(PENDING_KEY+'-t'); } }catch(e){} }
 function addPending(qs){ var l=readPending(); if(l.indexOf(qs)<0) l.push(qs); writePending(l); }
 function removePending(qs){ writePending(readPending().filter(function(x){ return x!==qs; })); }
 /* a request saved on this device because the connection was down: send it again on the next visit */

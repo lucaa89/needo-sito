@@ -474,6 +474,9 @@ header.scrolled .nav{height:58px}
 .skip:focus{top:12px}
 .hero .lead{font-size:clamp(20px,1.05rem + .8vw,28px);line-height:1.45;max-width:30em}
 .hero .lead b{color:var(--ink);font-weight:700}
+.lead b,.intro b,details p b,.side p b,.stu-more b{color:var(--ink);font-weight:700}
+.why-sub b{font-weight:800}
+.form-dark .intro b{color:inherit;font-weight:700;filter:brightness(1.25)}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
@@ -578,6 +581,9 @@ img.ph{height:auto;display:block}
 @media (prefers-color-scheme:dark){.dark .eyebrow,.dark .duo .big,.dark .intro2 b.hl{color:#B8460F}}
 .hl{color:var(--brand)}
 .dark .intro2{color:inherit;opacity:.78}
+.sec .intro2 b{color:var(--ink);font-weight:700}
+.dark .intro2 b{color:inherit}
+.dark .intro2 .hl{color:var(--brand)}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px);margin-top:clamp(28px,4vw,48px)}
 @media (max-width:760px){.duo{grid-template-columns:minmax(0,1fr)}}
 .duo .big{font-family:var(--head);font-weight:800;font-size:clamp(64px,9vw,128px);line-height:.9;letter-spacing:-.06em;color:var(--brand)}
@@ -658,7 +664,7 @@ img.ph{height:auto;display:block}
     <div class="wrap">
       <div class="eyebrow rv">Perché conviene</div>
       <h2 class="rv d1">Attira e trattieni i migliori talenti.</h2>
-      <p class="intro2 rv d2">Dai una mano a chi si prende cura dei propri cari. Con needo aiuti i tuoi dipendenti ad affrontare una fonte di stress che pesa sia a casa sia al lavoro: più sereni a casa, più presenti al lavoro.</p>
+      <p class="intro2 rv d2">Dai una mano a chi si prende cura dei propri cari. Con needo aiuti i tuoi dipendenti ad affrontare una fonte di stress che pesa sia a casa sia al lavoro: <b>più sereni a casa, più presenti al lavoro.</b></p>
       <div class="stats">
         <div class="card stat rv">
           <span class="lab">Riduci i doppi turni</span><b>1 su 3</b><p>dei dipendenti di aziende medio-grandi si prende cura di un familiare anziano o non autosufficiente. Il 77% lo fa spesso o ogni giorno.</p><span class="src">Jointly e Università Cattolica, 2019</span>
@@ -707,7 +713,7 @@ img.ph{height:auto;display:block}
       <div class="biz-left">
         <div class="eyebrow rv">Per le prime aziende</div>
         <h2 class="rv d1">Provalo gratis per un mese.</h2>
-        <p class="intro2 rv d2">Le prime aziende partner provano needo per un mese senza costi e senza impegno, con un report finale sull'impatto per i dipendenti.</p>
+        <p class="intro2 rv d2">Le prime aziende partner provano needo <b>per un mese senza costi e senza impegno</b>, con un report finale sull'impatto per i dipendenti.</p>
         <ul class="biz-list rv d3">
           <li>Attivazione in una settimana</li>
           <li>Nessun lavoro in più per l'HR</li>
@@ -717,7 +723,7 @@ img.ph{height:auto;display:block}
       </div>
       <div class="card form rv d1">
         <h3>Parliamone.</h3>
-        <p class="intro">Lasciaci i tuoi contatti: ti scriviamo entro due giorni lavorativi.</p>
+        <p class="intro">Lasciaci i tuoi contatti: <b>ti scriviamo entro due giorni lavorativi</b>.</p>
         <form class="biz-form" novalidate>
           <div class="row2">
             <div class="field"><label for="b-nome">Nome e cognome</label><input id="b-nome" name="nome" maxlength="80" autocomplete="name" required></div>

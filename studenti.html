@@ -497,6 +497,9 @@ header.scrolled .nav{height:58px}
 .skip:focus{top:12px}
 .hero .lead{font-size:clamp(20px,1.05rem + .8vw,28px);line-height:1.45;max-width:30em}
 .hero .lead b{color:var(--ink);font-weight:700}
+.lead b,.intro b,details p b,.side p b,.stu-more b{color:var(--ink);font-weight:700}
+.why-sub b{font-weight:800}
+.form-dark .intro b{color:inherit;font-weight:700;filter:brightness(1.25)}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -530,7 +533,7 @@ html{scroll-behavior:smooth}
     <div>
       <div class="eyebrow rv">Per gli studenti</div>
       <h1 aria-label="Quando vuoi tu. Fai la differenza."><span class="ln" aria-hidden="true"><span>Quando vuoi tu.</span></span><span class="ln" aria-hidden="true"><span class="o">Fai la differenza.</span></span></h1>
-      <p class="lead rv d1">Guadagna aiutando gli anziani della tua città: la spesa, il telefono, un caffè o due chiacchiere. Decidi tu quando.</p>
+      <p class="lead rv d1"><b>Guadagna aiutando gli anziani</b> della tua città: la spesa, il telefono, un caffè o due chiacchiere. <b>Decidi tu quando.</b></p>
       <div class="ctas rv d2"><a class="btn btn-primary" href="#candidati">Candidati in 2 minuti <span class="arr" aria-hidden="true">→</span></a></div>
     </div>
   </section>
@@ -565,7 +568,7 @@ html{scroll-behavior:smooth}
     <div class="wrap stu-join">
       <div class="card form form-dark rv" id="studenti">
         <h3>Candidati</h3>
-        <p class="intro">Serve solo l'email universitaria. Ti contattiamo per un breve colloquio e ti rispondiamo in giornata.</p>
+        <p class="intro">Serve solo <b>l'email universitaria</b>. Ti contattiamo per un breve colloquio e <b>ti rispondiamo in giornata</b>.</p>
         <form data-kind="studente" novalidate>
           <div class="row2">
             <div class="field"><label for="s-nome">Nome</label><input id="s-nome" name="nome" maxlength="80" autocomplete="given-name" required></div>
@@ -604,10 +607,10 @@ html{scroll-behavior:smooth}
         <div class="eyebrow rv">Domande frequenti</div>
         <div class="faq">
           <details class="rv"><summary>Chi può candidarsi?</summary><p>Studenti universitari maggiorenni, di qualsiasi corso e ateneo. Ti candidi con la tua email universitaria.</p></details>
-          <details class="rv"><summary>Quanto guadagno e quando vengo pagato?</summary><p>Da 9€ l&#x27;ora, in base al servizio. Paghiamo ogni settimana le visite completate.</p></details>
+          <details class="rv"><summary>Quanto guadagno e quando vengo pagato?</summary><p><b>Da 9€ l&#x27;ora</b>, in base al servizio. Paghiamo ogni settimana le visite completate.</p></details>
           <details class="rv"><summary>Devo avere esperienza?</summary><p>No. Servono gentilezza, pazienza e affidabilità: al resto pensiamo noi con un colloquio e una breve formazione.</p></details>
-          <details class="rv"><summary>Quanto tempo devo dedicare?</summary><p>Quanto vuoi tu. Non ci sono turni fissi né un minimo di ore: scegli le visite che ti interessano dall&#x27;app.</p></details>
-          <details class="rv"><summary>Cosa faccio durante le visite?</summary><p>Aiuti persone anziane con commissioni, accompagnamenti, tecnologia e compagnia, quando vuoi tu. Niente prestazioni sanitarie.</p></details>
+          <details class="rv"><summary>Quanto tempo devo dedicare?</summary><p><b>Quanto vuoi tu.</b> Non ci sono turni fissi né un minimo di ore: scegli le visite che ti interessano dall&#x27;app.</p></details>
+          <details class="rv"><summary>Cosa faccio durante le visite?</summary><p>Aiuti persone anziane con commissioni, accompagnamenti, tecnologia e compagnia, quando vuoi tu. <b>Niente prestazioni sanitarie.</b></p></details>
         </div>
         <p class="stu-more rv">Altre domande? Scrivici a <a href="mailto:team@getneedo.com">team@getneedo.com</a></p>
       </div>

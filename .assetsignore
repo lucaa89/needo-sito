@@ -3,5 +3,4 @@
 .assetsignore
 wrangler.jsonc
 .nojekyll
-CNAME
 node_modules

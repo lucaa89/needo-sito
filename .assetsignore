@@ -1,0 +1,7 @@
+.git
+.github
+.assetsignore
+wrangler.jsonc
+.nojekyll
+CNAME
+node_modules

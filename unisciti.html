@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-A0N7VX5VAueAoIEzDw+0vf4OlzHTymz+NFg4Rq577Bo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-A0N7VX5VAueAoIEzDw+0vf4OlzHTymz+NFg4Rq577Bo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Unisciti a Needo</title>
-<meta name="description" content="Unisciti a Needo: invecchiare in un modo nuovo. Studenti che vogliono dare una mano e persone che vogliono costruire con noi.">
+<title>Unisciti a needo</title>
+<meta name="description" content="Unisciti a needo: invecchiare in un modo nuovo. Studenti che vogliono dare una mano e persone che vogliono costruire con noi.">
 <meta name="theme-color" content="#FFFBF7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121010" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -15,8 +15,8 @@
 <link rel="canonical" href="https://getneedo.com/unisciti.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getneedo.com/unisciti.html">
-<meta property="og:title" content="Unisciti a Needo">
-<meta property="og:description" content="Unisciti a Needo: invecchiare in un modo nuovo. Studenti che vogliono dare una mano e persone che vogliono costruire con noi.">
+<meta property="og:title" content="Unisciti a needo">
+<meta property="og:description" content="Unisciti a needo: invecchiare in un modo nuovo. Studenti che vogliono dare una mano e persone che vogliono costruire con noi.">
 <meta property="og:image" content="https://getneedo.com/og-image.png">
 <meta property="og:locale" content="it_IT">
 <script>document.documentElement.classList.add('js');</script>
@@ -468,6 +468,10 @@ header.scrolled .nav{height:58px}
   details summary{transition:color .2s}
   details summary:hover{color:var(--brand-text)}
 }
+.check input{width:24px;height:24px;margin:-1px 0 0}
+.foot a{white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:1000;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:12px}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
@@ -540,7 +544,7 @@ img.ph{height:auto;display:block}
 }
 
 .links a.cur{color:var(--brand-text)}
-/* "Non tutti... Con Needo, sì." – stessa misura, allineato, niente punto finto */
+/* "Non tutti... Con needo, sì." – stessa misura, allineato, niente punto finto */
 .turn{background:var(--why-bg);color:var(--why-ink);margin:0 clamp(8px,1.6vw,24px) clamp(56px,8vw,112px);border-radius:clamp(28px,4vw,56px);padding:clamp(64px,10vw,140px) 0;text-align:left;position:relative;overflow:hidden}
 .turn::after{content:"";position:absolute;right:-8vw;bottom:-10vw;width:34vw;height:34vw;max-width:420px;max-height:420px;border-radius:50%;background:color-mix(in srgb,#FFFBF7 16%,transparent);pointer-events:none}
 .turn .wrap{position:relative;z-index:1}
@@ -616,10 +620,11 @@ img.ph{height:auto;display:block}
 </head>
 <body>
 <noscript><p style="margin:0;padding:12px 20px;background:#17120E;color:#FFFBF7;font:600 15px/1.4 system-ui,sans-serif;text-align:center">Alcune funzioni del sito richiedono JavaScript. Puoi scriverci a <a href="mailto:team@getneedo.com" style="color:#FF8A4C">team@getneedo.com</a>.</p></noscript>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
 <header id="hdr">
   <div class="progress" id="progress" aria-hidden="true"></div>
   <div class="wrap nav">
-    <a class="logo" href="/" aria-label="Needo, vai alla home">needo<i aria-hidden="true"></i></a>
+    <a class="logo" href="/" aria-label="needo, vai alla home">needo<i aria-hidden="true"></i></a>
     <nav class="links" aria-label="Menu principale">
       <a class="hide-sm" href="/#famiglie">Famiglie</a>
       <a class="hide-sm" href="/studenti.html">Studenti</a>
@@ -636,11 +641,11 @@ img.ph{height:auto;display:block}
   </div>
 </header>
 
-<main>
+<main id="contenuto" tabindex="-1">
   <section class="wrap page-hero">
     <div class="eyebrow rv">Unisciti a noi</div>
     <h1><span class="ln"><span>Invecchiare</span></span><span class="ln"><span>in un modo nuovo.</span></span></h1>
-    <p class="about-lead rv d2">A Needo siamo uniti da una convinzione: <b>invecchiare bene non è un lusso, è un bisogno.</b> Unisciti alla nostra missione.</p>
+    <p class="about-lead rv d2">A needo siamo uniti da una convinzione: <b>invecchiare bene non è un lusso, è un bisogno.</b> Unisciti alla nostra missione.</p>
   </section>
 
   <section class="sec" style="padding-top:clamp(16px,3vw,40px)">
@@ -651,7 +656,7 @@ img.ph{height:auto;display:block}
         <div class="card value rv"><span class="num">01</span><h3>Ridefinire cosa vuol dire invecchiare</h3><p>Tutti hanno diritto a vivere come vogliono, a qualsiasi età.</p></div>
         <div class="card value rv d1"><span class="num">02</span><h3>Lavorare insieme</h3><p>Le grandi sfide si vincono insieme.</p></div>
         <div class="card value rv d2"><span class="num">03</span><h3>Pensare e agire con audacia</h3><p>Solo chi rischia di andare troppo lontano scopre fin dove può arrivare.</p></div>
-        <div class="card value rv d3"><span class="num">04</span><h3>Per chi ne ha bisogno</h3><p>Le persone che aiutiamo sono il motore di Needo.</p></div>
+        <div class="card value rv d3"><span class="num">04</span><h3>Per chi ne ha bisogno</h3><p>Le persone che aiutiamo sono il motore di needo.</p></div>
       </div>
     </div>
   </section>
@@ -667,7 +672,7 @@ img.ph{height:auto;display:block}
         <div class="card path alt rv d1">
           <h3>Vuoi unirti al team?</h3>
           <p>Cerchiamo persone che condividano la nostra missione e abbiano voglia di costruire qualcosa di grande.</p>
-          <a class="btn btn-primary" href="mailto:team@getneedo.com?subject=Vorrei%20unirmi%20a%20Needo">Contattaci <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="mailto:team@getneedo.com?subject=Vorrei%20unirmi%20a%20needo">Contattaci <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>

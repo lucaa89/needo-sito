@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-MCNNlRiI7ZusmUorLUlsRWOK0F184SM/IZ3pwId+X5w='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-Hor+XzWpdlk9vMxfJhVxDC2yf2phGbStUA7RZGxBn90='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Needo per le aziende</title>
-<meta name="description" content="Needo per il welfare aziendale: assistenza di fiducia ai familiari anziani dei tuoi dipendenti. Meno stress, meno assenze, più talenti che restano.">
+<title>needo per le aziende · Welfare per chi assiste un genitore</title>
+<meta name="description" content="needo per il welfare aziendale: assistenza di fiducia ai familiari anziani dei tuoi dipendenti. Meno stress, meno assenze, più talenti che restano.">
 <meta name="theme-color" content="#FFFBF7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121010" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -15,8 +15,8 @@
 <link rel="canonical" href="https://getneedo.com/aziende.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getneedo.com/aziende.html">
-<meta property="og:title" content="Needo per le aziende">
-<meta property="og:description" content="Needo per il welfare aziendale: assistenza di fiducia ai familiari anziani dei tuoi dipendenti. Meno stress, meno assenze, più talenti che restano.">
+<meta property="og:title" content="needo per le aziende · Welfare per chi assiste un genitore">
+<meta property="og:description" content="needo per il welfare aziendale: assistenza di fiducia ai familiari anziani dei tuoi dipendenti. Meno stress, meno assenze, più talenti che restano.">
 <meta property="og:image" content="https://getneedo.com/og-image.png">
 <meta property="og:locale" content="it_IT">
 <script>document.documentElement.classList.add('js');</script>
@@ -468,6 +468,10 @@ header.scrolled .nav{height:58px}
   details summary{transition:color .2s}
   details summary:hover{color:var(--brand-text)}
 }
+.check input{width:24px;height:24px;margin:-1px 0 0}
+.foot a{white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:1000;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:12px}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
@@ -540,7 +544,7 @@ img.ph{height:auto;display:block}
 }
 
 .links a.cur{color:var(--brand-text)}
-/* "Non tutti... Con Needo, sì." – stessa misura, allineato, niente punto finto */
+/* "Non tutti... Con needo, sì." – stessa misura, allineato, niente punto finto */
 .turn{background:var(--why-bg);color:var(--why-ink);margin:0 clamp(8px,1.6vw,24px) clamp(56px,8vw,112px);border-radius:clamp(28px,4vw,56px);padding:clamp(64px,10vw,140px) 0;text-align:left;position:relative;overflow:hidden}
 .turn::after{content:"";position:absolute;right:-8vw;bottom:-10vw;width:34vw;height:34vw;max-width:420px;max-height:420px;border-radius:50%;background:color-mix(in srgb,#FFFBF7 16%,transparent);pointer-events:none}
 .turn .wrap{position:relative;z-index:1}
@@ -616,10 +620,11 @@ img.ph{height:auto;display:block}
 </head>
 <body>
 <noscript><p style="margin:0;padding:12px 20px;background:#17120E;color:#FFFBF7;font:600 15px/1.4 system-ui,sans-serif;text-align:center">Alcune funzioni del sito richiedono JavaScript. Puoi scriverci a <a href="mailto:team@getneedo.com" style="color:#FF8A4C">team@getneedo.com</a>.</p></noscript>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
 <header id="hdr">
   <div class="progress" id="progress" aria-hidden="true"></div>
   <div class="wrap nav">
-    <a class="logo" href="/" aria-label="Needo, vai alla home">needo<i aria-hidden="true"></i></a>
+    <a class="logo" href="/" aria-label="needo, vai alla home">needo<i aria-hidden="true"></i></a>
     <nav class="links" aria-label="Menu principale">
       <a class="hide-sm" href="/#famiglie">Famiglie</a>
       <a class="hide-sm" href="/studenti.html">Studenti</a>
@@ -636,11 +641,11 @@ img.ph{height:auto;display:block}
   </div>
 </header>
 
-<main>
+<main id="contenuto" tabindex="-1">
   <section class="wrap page-hero">
     <div class="eyebrow rv">Per le aziende</div>
     <h1><span class="ln"><span>Supporta</span></span><span class="ln"><span>chi ti supporta.</span></span></h1>
-    <p class="about-lead rv d2">Needo offre un servizio unico per i programmi di welfare aziendale: <b>assistenza di qualità ai familiari anziani</b> dei tuoi dipendenti, per il benessere loro e delle loro famiglie.</p>
+    <p class="about-lead rv d2">needo offre un servizio unico per i programmi di welfare aziendale: <b>assistenza di qualità ai familiari anziani</b> dei tuoi dipendenti, per il benessere loro e delle loro famiglie.</p>
     <div class="ctas rv d3">
       <a class="btn btn-primary" href="#contatti">Parliamone <span class="arr" aria-hidden="true">→</span></a>
       <a class="btn btn-ghost" href="/needo-aziende.pdf" download>Scarica la presentazione (PDF)</a>
@@ -651,10 +656,10 @@ img.ph{height:auto;display:block}
     <div class="wrap">
       <div class="eyebrow rv">Perché conviene</div>
       <h2 class="rv d1">Attira e trattieni i migliori talenti.</h2>
-      <p class="intro2 rv d2">Dai una mano a chi si prende cura dei propri cari. Con Needo aiuti i tuoi dipendenti ad affrontare una delle prime cause di stress e burnout: più sereni a casa, più presenti al lavoro.</p>
+      <p class="intro2 rv d2">Dai una mano a chi si prende cura dei propri cari. Con needo aiuti i tuoi dipendenti ad affrontare una fonte di stress che pesa sia a casa sia al lavoro: più sereni a casa, più presenti al lavoro.</p>
       <div class="stats">
         <div class="card stat rv">
-          <span class="lab">Riduci i doppi turni</span><b>1 su 3</b><p>dei dipendenti si prende cura di un familiare anziano o non autosufficiente. Per il 77% è quasi un secondo lavoro.</p><span class="src">Jointly e Università Cattolica, 2019</span>
+          <span class="lab">Riduci i doppi turni</span><b>1 su 3</b><p>dei dipendenti di aziende medio-grandi si prende cura di un familiare anziano o non autosufficiente. Il 77% lo fa spesso o ogni giorno.</p><span class="src">Jointly e Università Cattolica, 2019</span>
         </div>
         <div class="card stat rv d1">
           <span class="lab">Migliora il benessere</span><b>88%</b><p>dei caregiver riconosce di soffrire di stress psicologico.</p><span class="src">Censis–Assindatcolf, 2025</span>
@@ -663,7 +668,7 @@ img.ph{height:auto;display:block}
           <span class="lab">Meno dispersione</span><b>89%</b><p>dei caregiver dice che la cura limita il tempo per il lavoro.</p><span class="src">Censis–Assindatcolf, 2025</span>
         </div>
         <div class="card stat rv d3">
-          <span class="lab">Trattieni i talenti</span><b>15%</b><p>delle famiglie valuta che uno dei due partner lasci il lavoro per occuparsi di un familiare.</p><span class="src">Censis</span>
+          <span class="lab">Trattieni i talenti</span><b>15%</b><p>delle famiglie valuta che uno dei familiari lasci il lavoro per occuparsi della cura.</p><span class="src">Censis, citato da Jointly (2019)</span>
         </div>
       </div>
     </div>
@@ -671,13 +676,13 @@ img.ph{height:auto;display:block}
 
   <section class="sec dark">
     <div class="wrap">
-      <div class="eyebrow rv">Needo può farlo per loro</div>
+      <div class="eyebrow rv">needo può farlo per loro</div>
       <h2 class="rv d1">Il tempo che manca, glielo restituiamo.</h2>
       <div class="duo">
         <div class="rv"><div class="big">91%</div><p>dei caregiver si occupa sempre delle pratiche di tutti i giorni.</p><div class="src">Censis–Assindatcolf, 2025</div></div>
         <div class="rv d1"><div class="big">75%</div><p>accompagna il familiare a visite mediche o terapie.</p><div class="src">Censis–Assindatcolf, 2025</div></div>
       </div>
-      <p class="intro2 rv d2" style="margin-top:clamp(28px,4vw,44px)">Pratiche, accompagnamenti, commissioni e compagnia: <b class="hl">ci pensa Needo.</b></p>
+      <p class="intro2 rv d2" style="margin-top:clamp(28px,4vw,44px)">Pratiche, accompagnamenti, commissioni e compagnia: <b class="hl">ci pensa needo.</b></p>
     </div>
   </section>
 
@@ -686,12 +691,12 @@ img.ph{height:auto;display:block}
       <div class="eyebrow rv">Come funziona</div>
       <h2 class="rv d1">Semplice per te e per loro.</h2>
       <div class="steps3">
-        <div class="st rv"><div class="num">01</div><h3>L&#x27;azienda attiva Needo</h3><p>Inserisci Needo nel piano di welfare aziendale. Per i dipendenti è un benefit esentasse, nei limiti previsti dalla legge per l&#x27;assistenza ai familiari anziani o non autosufficienti.</p></div>
+        <div class="st rv"><div class="num">01</div><h3>L&#x27;azienda attiva needo</h3><p>Inserisci needo nel piano di welfare aziendale. Per i dipendenti è un benefit esentasse per l&#x27;assistenza ai familiari con più di 75 anni o non autosufficienti (art. 51 TUIR), se offerto a tutti i dipendenti o a categorie di dipendenti.</p></div>
         <div class="st rv"><div class="num">02</div><h3>Il dipendente lo usa dall&#x27;app</h3><p>Riscatta il benefit, sceglie il servizio e prenota le visite per il suo familiare in pochi tocchi.</p></div>
         <div class="st rv"><div class="num">03</div><h3>Tecnologia facile, persone di fiducia</h3><p>Un&#x27;app semplice e accessibile anche per chi non è pratico, studenti selezionati e verificati, e un racconto dopo ogni visita.</p></div>
         <div class="st rv"><div class="num">04</div><h3>Tu vedi i risultati</h3><p>Ricevi report anonimi sull&#x27;uso del servizio e sulla soddisfazione dei dipendenti, per misurare l&#x27;impatto del benefit.</p></div>
       </div>
-      <p class="sources rv">Fonti: Jointly e Centro di Ateneo Studi e Ricerche sulla Famiglia dell'Università Cattolica, indagine su 30.000 lavoratori (2019); Censis per Assindatcolf, Rapporto 2025 Family (Net) Work; Censis, dati citati nello stesso studio Jointly.</p>
+      <p class="sources rv">Fonti: Jointly e Centro di Ateneo Studi e Ricerche sulla Famiglia dell'Università Cattolica, indagine su 30.000 lavoratori di aziende medio-grandi (2019); Censis per Assindatcolf, Rapporto 2025 Family (Net) Work, indagine su oltre 2.300 famiglie che impiegano personale domestico (percentuali arrotondate); Censis, dato citato nello studio Jointly (2019).</p>
     </div>
   </section>
 
@@ -700,7 +705,7 @@ img.ph{height:auto;display:block}
       <div class="biz-left">
         <div class="eyebrow rv">Per le prime aziende</div>
         <h2 class="rv d1">Provalo gratis per un mese.</h2>
-        <p class="intro2 rv d2">Le prime aziende partner provano Needo per un mese senza costi e senza impegno, con un report finale sull'impatto per i dipendenti.</p>
+        <p class="intro2 rv d2">Le prime aziende partner provano needo per un mese senza costi e senza impegno, con un report finale sull'impatto per i dipendenti.</p>
         <ul class="biz-list rv d3">
           <li>Attivazione in una settimana</li>
           <li>Nessun lavoro in più per l'HR</li>
@@ -810,7 +815,7 @@ img.ph{height:auto;display:block}
     if(first){ if(!first.validationMessage || first.validity.valueMissing) first.setCustomValidity(MSG[first.name]||'Compila questo campo.'); first.reportValidity(); return; }
     var p=new URLSearchParams(new FormData(f)); p.append('action','azienda'); p.append('rif',rif);
     btn.disabled=true;
-    function send(n){ return fetch(EP,{method:'POST',body:p}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(err){ if(n>0) return new Promise(function(ok){setTimeout(ok,1200);}).then(function(){return send(n-1);}); throw err; }); }
+    function send(n){ return (function(){ var ac=('AbortController' in window)?new AbortController():null, t=ac?setTimeout(function(){ ac.abort(); },20000):0; return fetch(EP,{method:'POST',body:p,signal:ac?ac.signal:undefined}).then(function(r){ clearTimeout(t); return r; },function(e){ clearTimeout(t); throw e; }); })().then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(err){ if(n>0) return new Promise(function(ok){setTimeout(ok,1200);}).then(function(){return send(n-1);}); throw err; }); }
     send(1).then(function(res){ if(!res||!res.ok) throw new Error('server'); f.hidden=true; done.hidden=false; })
       .catch(function(){ fail.textContent='Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a team@getneedo.com.'; fail.hidden=false; })
       .then(function(){ btn.disabled=false; });

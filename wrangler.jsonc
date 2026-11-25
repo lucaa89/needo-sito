@@ -1,6 +1,6 @@
 // Configurazione per Cloudflare (Workers con file statici). GitHub Pages la ignora.
 {
-  "name": "needo-sito",
+  "name": "needo",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": ".",

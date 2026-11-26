@@ -13,3 +13,6 @@
 
 /team/*
   Cache-Control: public, max-age=2592000
+
+/video/*
+  Cache-Control: public, max-age=604800
